@@ -1,0 +1,388 @@
+
+#cadastro {
+    display:flex;
+    background-color: rgb(255, 255, 255);
+    width: 50vw;
+    height: 9vh;
+    left: 13vw;
+    top: 3vw;
+    border-radius: 14px;
+    position: absolute;
+    justify-content: space-evenly;
+    align-items: center;
+    align-content: center;
+    flex-direction: row;
+    z-index: 5;
+}
+#baixe-app {
+    display:flex;
+    background-color: rgb(0, 255, 98);
+    width: 12vw;
+    height: 9vh;
+    left: 74vw;
+    top: 2vw;
+    border-radius: 10px;
+    position: absolute;
+    justify-content: space-evenly; /*espacamento entre os elementos da linha*/
+    align-items: center;
+    align-content: center;
+    flex-direction: row;
+    font-family: 'Fredoka One';
+    font-size: 1.5vw;
+    z-index: 5;
+}
+#saiba-mais {
+    display:flex;
+    background-color: rgb(0, 255, 98);
+    width: 16vw;
+    height: 9vh;
+    left: 27vw;
+    top: 46vw;
+    border-radius: 10px;
+    position: absolute;
+    justify-content: space-evenly; /*espacamento entre os elementos da linha*/
+    align-items: center;
+    align-content: center;
+    flex-direction: row;
+    font-family: 'Fredoka One';
+    font-size: 1vw;
+    z-index: 5;
+}
+#text1 {
+    position: absolute;
+    left: 17vw;
+    top: 10vw;
+    font-size: 1.5vw;
+    font-family: 'Fredoka One';
+    z-index: 5;
+}
+#text1-part2 {
+    position: absolute;
+    left: 15pc;
+    top: 15pc;
+    font-size: 1.9pc;;
+    font-family: 'Fredoka One';
+    z-index: 5;
+}
+#text2 {
+    position: absolute;
+    left: 15pc;
+    top: 24pc;
+    font-size: 1.9pc;
+    font-family: 'Fredoka One';
+    z-index: 5;
+    line-height: 5.5pc;
+}
+#fundo1 {
+    width: 100vw;
+    height: 70vw;
+    position: absolute;
+    top: 0px;
+    left: -3px;
+    z-index: 1;
+}
+#fundo2 {
+    width: 50vw;
+    height: 50vw;
+    position: absolute;
+    top: 1000px;
+    left: 800px;
+    z-index: 1;
+}
+.beneficio-1-topico {
+    position: absolute;
+    top: 1230px;
+    left: 8pc;
+    z-index: 5;
+}
+.beneficio-1-descricao {
+    position: absolute;
+    top: 1290px;
+    left: 9pc;
+    z-index: 5;
+    font-weight: 100;
+}
+#posicao-icon1 {
+    position: absolute;
+    top: 1250px;
+    left: 48.5pc;
+    z-index: 5;
+}
+.beneficio-2-topico {
+    position: absolute;
+    top: 1450px;
+    left: 8pc;
+    z-index: 5;
+}
+.beneficio-2-descricao {
+    position: absolute;
+    top: 1510px;
+    left: 9pc;
+    z-index: 5;
+    font-weight: 100;
+}
+#posicao-icon2 {
+    position: absolute;
+    top: 1450px;
+    left: 47.4pc;
+    z-index: 5;
+}
+.beneficio-3-topico {
+    position: absolute;
+    top: 1670px;
+    left: 8pc;
+    z-index: 5;
+}
+.beneficio-3-descricao {
+    position: absolute;
+    top: 1730px;
+    left: 9pc;
+    z-index: 5;
+    font-weight: 100;
+}
+#posicao-icon3 {
+    position: absolute;
+    top: 1660px;
+    left: 47pc;
+    z-index: 5; 
+}
+.beneficio-4-topico {
+    position: absolute;
+    top: 1900px;
+    left: 8pc;
+    z-index: 5;
+}
+.beneficio-4-descricao {
+    position: absolute;
+    top: 1960px;
+    left: 8pc;
+    z-index: 5;
+}
+.fonte2-topico {   
+    font-family: 'Fredoka One';
+    font-size: 2pc;
+}
+.fonte2-descricao {   
+    font-family:sans-serif;
+    font-size: 25px;
+    font-weight: 100;
+}
+
+
+.posicao-beneficio4 {
+    position: absolute;
+    top: 2090px;
+    left: 9pc;
+    z-index: 5;
+}
+#posicao-icon4 {
+    position: absolute;
+    top: 1871px;
+    left: 46.9pc;
+    z-index: 5; 
+}
+.img1 {
+    position: absolute;
+    width: 309px;
+    height: 482px;
+    left: 976px;
+    top: 366px;
+    border-radius: 24px;
+    z-index: 2;
+}
+#fundo3 {
+    width: 100vw;
+    height: 53vw;
+    position: absolute;
+    top: 2400px;
+    left: 0px;
+    z-index: 1;
+}
+#cadastro2 {
+    position: absolute;
+    left: 35pc;
+    top: 2450px;
+    font-size: 2.5pc;
+    font-family: 'Fredoka One';
+    z-index: 5;
+}
+
+.texto4-posicao {
+    position: absolute;
+    left: 36pc;
+    top: 2510px;
+}
+.texto5-posicao {
+    position: absolute;
+    left: 36pc;
+    top: 2555px;
+}
+.fonte1 {
+    font-family: sans-serif;
+    font-size: 25px;
+    z-index: 5;
+    font-weight: 100;
+}
+.fonte2-topico {   
+    font-family: 'Fredoka One';
+    font-size: 2pc;
+}
+.fonte2-descricao {   
+    font-family:sans-serif;
+    font-size: 25px;
+    font-weight: 100;
+    z-index: 5;
+}
+.fonte3-exc {
+    font-family: sans-serif;
+    font-size: 27px;
+    z-index: 5;
+    font-weight: 300;
+}
+.entrada {
+    background-color: rgb(255, 255, 255);
+    z-index: 5;
+    width: 23vw;
+    height: 2vw;
+    border-color: rgb(0, 255, 64);
+    border-radius: 20px;
+    font-size: 20px;
+}
+.posicao-digite-seu-nome {
+    position: absolute;
+    left: 34pc;
+    top: 2595px;
+}
+.posicao-digite-seu-sobrenome {
+    position: absolute;
+    left: 34pc;
+    top: 2675px;
+}
+.posicao-digite-seu-email {
+    position: absolute;
+    left: 34pc;
+    top: 2755px;
+}
+.posicao-digite-sua-senha {
+    position: absolute;
+    left: 34pc;
+    top: 2835px;
+}
+.posicao-digite-seu-telefone {
+    position: absolute;
+    left: 34pc;
+    top: 2915px;
+}
+
+.entrada-posicao-nome {
+    position: absolute;
+    left: 34pc;
+    top: 2655px;
+}
+.entrada-posicao-sobrenome {
+    position: absolute;
+    left: 34pc;
+    top: 2735px;
+}
+.entrada-posicao-email {
+    position: absolute;
+    left: 34pc;
+    top: 2815px;
+}
+.entrada-posicao-senha {
+    position: absolute;
+    left: 34pc;
+    top: 2895px;
+}
+.entrada-posicao-telefone {
+    position: absolute;
+    left: 34pc;
+    top: 2975px;
+}
+.fonte-entrada {
+    font-family: sans-serif;
+    font-size: 27px;
+    z-index: 10;
+    font-weight: 300;
+}
+.posicao-ja-tenho-conta {
+    z-index: 10;
+    position: absolute;
+    left: 34pc;
+    top: 2997px;
+}
+.botao-cadastro2 {
+    z-index: 10;
+    position: absolute;
+    left: 38pc;
+    top: 3080px;
+    width: 15vw;
+    height: 3vw;
+    border-radius: 20px;
+    border-color: rgb(0, 255, 42);
+    background-color: rgb(0, 255, 42);
+    justify-content: space-evenly; /*espacamento entre os elementos da linha*/
+    align-items: center;
+    align-content: center;
+    flex-direction: row;
+    font-family: 'Fredoka One';
+    font-size: 1.5vw;
+}
+.posicao-ajude-a-divulgar-o-projeto {
+    z-index: 10;
+    position: absolute;
+    left: 10pc;
+    top: 3200px;
+    font-family: 'Fredoka One';
+    font-size: 2.2pc;
+}
+.posicao-ajude-a-divulgar-o-projeto-descricao {
+    z-index: 10;
+    position: absolute;
+    left: 10pc;
+    top: 3270px;
+}
+.posicao-desenvolvedores {
+    z-index: 10;
+    position: absolute;
+    left: 10pc;
+    top: 3490px;
+    font-family:'Fredoka One';
+    font-size: 3vw;; 
+    font-weight: 100;
+}
+.posicao-desenvolvedores-descriscao {
+    z-index: 10;
+    position: absolute;
+    left: 10pc;
+    top: 3560px;
+    line-height: 34px;
+}
+.fundo4-posicao-forma {
+    z-index: 1;
+    position: absolute;
+    left:0px;
+    top: 3400px;
+    
+    width: 100vw;
+    height: 65vw;
+}
+.imagem1 {
+    z-index: 10;
+    position: absolute;
+    left: 800px;
+    top: 285px;
+    width: 21vw;
+    height: 35vw;
+    border-radius: 20px;
+}
+
+.imagem2 {
+    z-index: 11;
+    position: absolute;
+    left: 70vw;
+    top: 26vw;
+    width: 21vw;
+    height: 35vw;
+    border-radius: 20px;
+}
