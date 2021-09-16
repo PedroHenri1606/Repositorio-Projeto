@@ -8,11 +8,12 @@
     top: 3vw;
     border-radius: 14px;
     position: absolute;
-    justify-content: space-evenly;
-    align-items: center;
+    justify-content: space-around;
+    align-items:center;
     align-content: center;
     flex-direction: row;
     z-index: 5;
+    color: black;
 }
 #baixe-app {
     display:flex;
@@ -52,27 +53,28 @@
     position: absolute;
     left: 17vw;
     top: 10vw;
-    font-size: 1.5vw;
+    font-size: 1.9vw;
     font-family: 'Fredoka One';
     z-index: 5;
 }
 #text1-part2 {
     position: absolute;
-    left: 15pc;
-    top: 15pc;
-    font-size: 1.9pc;;
+    left: 16vw;
+    top: 15vw;
+    font-size: 1.8vw;;
     font-family: 'Fredoka One';
     z-index: 5;
 }
 #text2 {
     position: absolute;
-    left: 15pc;
-    top: 24pc;
-    font-size: 1.9pc;
+    left: 15vw;
+    top: 25vw;
+    font-size: 2vw;
     font-family: 'Fredoka One';
     z-index: 5;
-    line-height: 5.5pc;
+    line-height: 5.5vw;
 }
+
 #fundo1 {
     width: 100vw;
     height: 70vw;
@@ -85,77 +87,83 @@
     width: 50vw;
     height: 50vw;
     position: absolute;
-    top: 1000px;
-    left: 800px;
+    top: 69vw;
+    left: 50vw;
     z-index: 1;
 }
 .beneficio-1-topico {
     position: absolute;
-    top: 1230px;
-    left: 8pc;
+    top: 81vw;
+    left: 8vw;
     z-index: 5;
 }
 .beneficio-1-descricao {
     position: absolute;
-    top: 1290px;
-    left: 9pc;
+    top: 84.5vw;
+    left: 9vw;
     z-index: 5;
     font-weight: 100;
 }
 #posicao-icon1 {
     position: absolute;
-    top: 1250px;
-    left: 48.5pc;
+    top: 82vw;
+    margin-left: 48vw;
     z-index: 5;
+    width: 7vw;
+    height: 7vw;
 }
 .beneficio-2-topico {
     position: absolute;
-    top: 1450px;
-    left: 8pc;
+    top: 95vw;
+    left: 8vw;
     z-index: 5;
 }
 .beneficio-2-descricao {
     position: absolute;
-    top: 1510px;
-    left: 9pc;
+    top: 98vw;
+    left: 9vw;
     z-index: 5;
     font-weight: 100;
 }
 #posicao-icon2 {
     position: absolute;
-    top: 1450px;
-    left: 47.4pc;
-    z-index: 5;
+    top: 95vw;
+    left: 48vw;
+    z-index: 10;
+    width: 7vw;
+    height: 7vw;
 }
 .beneficio-3-topico {
     position: absolute;
-    top: 1670px;
-    left: 8pc;
+    top: 109.5vw;
+    left: 8vw;
     z-index: 5;
 }
 .beneficio-3-descricao {
     position: absolute;
-    top: 1730px;
-    left: 9pc;
+    top: 112.5vw;
+    left: 9vw;
     z-index: 5;
     font-weight: 100;
 }
 #posicao-icon3 {
     position: absolute;
-    top: 1660px;
-    left: 47pc;
-    z-index: 5; 
+    top: 109.5vw;
+    left: 49vw;
+    z-index: 100; 
+    width: 7vw;
+    height: 7vw;
 }
 .beneficio-4-topico {
     position: absolute;
-    top: 1900px;
-    left: 8pc;
+    top: 124.5vw;
+    left: 8vw;
     z-index: 5;
 }
 .beneficio-4-descricao {
     position: absolute;
-    top: 1960px;
-    left: 8pc;
+    top: 129.5vw;
+    left: 9vw;
     z-index: 5;
 }
 .fonte2-topico {   
@@ -164,7 +172,7 @@
 }
 .fonte2-descricao {   
     font-family:sans-serif;
-    font-size: 25px;
+    font-size: 1.5vw;
     font-weight: 100;
 }
 
@@ -177,9 +185,11 @@
 }
 #posicao-icon4 {
     position: absolute;
-    top: 1871px;
-    left: 46.9pc;
-    z-index: 5; 
+    top: 121vw;
+    left: 49vw;
+    z-index: 5;
+    width: 7vw;
+    height: 7vw;
 }
 .img1 {
     position: absolute;
@@ -219,23 +229,23 @@
 }
 .fonte1 {
     font-family: sans-serif;
-    font-size: 25px;
+    font-size: 1.5vw;
     z-index: 5;
     font-weight: 100;
 }
 .fonte2-topico {   
     font-family: 'Fredoka One';
-    font-size: 2pc;
+    font-size: 2vw;
 }
 .fonte2-descricao {   
     font-family:sans-serif;
-    font-size: 25px;
+    font-size: 1.5vw;
     font-weight: 100;
     z-index: 5;
 }
 .fonte3-exc {
     font-family: sans-serif;
-    font-size: 27px;
+    font-size: 1.5vw;
     z-index: 5;
     font-weight: 300;
 }
@@ -246,7 +256,7 @@
     height: 2vw;
     border-color: rgb(0, 255, 64);
     border-radius: 20px;
-    font-size: 20px;
+    font-size: 1.3vw;
 }
 .posicao-digite-seu-nome {
     position: absolute;
@@ -370,8 +380,8 @@
 .imagem1 {
     z-index: 10;
     position: absolute;
-    left: 800px;
-    top: 285px;
+    left: 52.5vw;
+    top: 19vw;
     width: 21vw;
     height: 35vw;
     border-radius: 20px;
@@ -385,4 +395,51 @@
     width: 21vw;
     height: 35vw;
     border-radius: 20px;
+}
+.texto-acessibilidade-posicao{
+    z-index: 11;
+    position: absolute;
+    left: 10vw;
+    top: 253vw;
+    
+}
+.texto-termos-posicao{
+    z-index: 11;
+    position: absolute;
+    left: 10vw;
+    top: 259vw;
+}
+.texto-privacidade-posicao{
+    z-index: 11;
+    position: absolute;
+    left: 10vw;
+    top: 265vw;
+}
+
+.texto-redes-posicao{
+    z-index: 11;
+    position: absolute;
+    left: 10vw;
+    top: 271vw;
+}
+.uniflow2021 {
+    z-index: 11;
+    position: absolute;
+    left: 10vw;
+    top: 277vw; 
+}
+.portugues {
+    z-index: 11;
+    position: absolute;
+    left: 50vw;
+    top: 277vw; 
+}
+.text-color-white {
+    color: white;
+}
+.text-foz {
+    z-index: 11;
+    position: absolute;
+    left: 70vw;
+    top: 277vw; 
 }
