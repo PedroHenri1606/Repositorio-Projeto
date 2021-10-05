@@ -7,6 +7,17 @@ public class Passageiro {
     protected String ra;
     protected boolean login;
 
+    @Override
+    public String toString() {
+        return "Passageiro{" +
+                "nomeCompleto='" + nomeCompleto + '\'' +
+                ", senha='" + senha + '\'' +
+                ", curso='" + curso + '\'' +
+                ", ra='" + ra + '\'' +
+                ", login=" + login +
+                '}';
+    }
+
     public Passageiro(String nomeCompleto, String senha, String curso, String ra, boolean login) {
         this.nomeCompleto = nomeCompleto;
         this.senha = senha;

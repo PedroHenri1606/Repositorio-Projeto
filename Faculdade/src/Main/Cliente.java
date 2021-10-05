@@ -4,10 +4,23 @@ package Main;
         protected String nome;
         protected String email;
         protected String senha;
-        protected String dataNascimento;
+        protected String dataNascimento;//Instant
         protected boolean login;
-        protected String curso;
+        protected String curso;//crie uma classe
         protected String ra;
+
+        @Override
+        public String toString() {
+            return "Cliente{" +
+                    "nome='" + nome + '\'' +
+                    ", email='" + email + '\'' +
+                    ", senha='" + senha + '\'' +
+                    ", dataNascimento='" + dataNascimento + '\'' +
+                    ", login=" + login +
+                    ", curso='" + curso + '\'' +
+                    ", ra='" + ra + '\'' +
+                    '}';
+        }
 
         void status() {
             System.out.println("Usuario: " + this.nome);
@@ -42,7 +55,7 @@ package Main;
             System.out.println("]_________________________________");
         }
 
-        public Cliente() {
+        public Cliente() {//colocar os paramentros
             this.nome = nome;
             this.email = email;
             this.senha = senha;

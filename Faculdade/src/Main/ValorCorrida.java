@@ -1,11 +1,16 @@
-public class Combustivel {
+package Main;
+
+public class ValorCorrida{
 
     private double precoMedia;
     private double gastoPorLitro;
     private double valorTotal;
     private double valorPagarPassageiro;
 
-    public Combustivel(double precoMedia, double gastoPorLitro, double valorTotal, double valorPagarPassageiro) {
+    public ValorCorrida() {
+    }
+
+    public ValorCorrida(double precoMedia, double gastoPorLitro, double valorTotal, double valorPagarPassageiro) {
         this.precoMedia = precoMedia;
         this.gastoPorLitro = gastoPorLitro;
         this.valorTotal = valorTotal;
@@ -46,7 +51,7 @@ public class Combustivel {
 
     @Override
     public String toString() {
-        return "Combustivel{" +
+        return "ValorCorrida{" +
                 "precoMedia=" + precoMedia +
                 ", gastoPorLitro=" + gastoPorLitro +
                 ", valorTotal=" + valorTotal +

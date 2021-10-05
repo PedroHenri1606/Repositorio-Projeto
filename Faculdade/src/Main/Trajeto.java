@@ -1,8 +1,18 @@
 package Main;
 
 public class Trajeto {
-    String enderecoOrigem;
-    String enderecoDestino;
+    private String enderecoOrigem;
+    private String enderecoDestino;
+    private int id;
+    //criar um atributo codigo;
+
+    @Override
+    public String toString() {
+        return "Trajeto{" +
+                "enderecoOrigem='" + enderecoOrigem + '\'' +
+                ", enderecoDestino='" + enderecoDestino + '\'' +
+                '}';
+    }
 
     public Trajeto() {
 
@@ -11,6 +21,14 @@ public class Trajeto {
     public Trajeto(String enderecoOrigem, String enderecoDestino) {
         this.enderecoOrigem = enderecoOrigem;
         this.enderecoDestino = enderecoDestino;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getEnderecoOrigem() {

@@ -1,3 +1,4 @@
+package Main;
 public class Mensagens {
 
     private String mensagemEnviar;

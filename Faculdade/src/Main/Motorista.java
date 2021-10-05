@@ -1,86 +1,41 @@
 package Main;
-
+import java.util.ArrayList;
+import java.util.List;
 public class Motorista {
-    protected String nomeCompleto;
-    protected String senha;
-    protected String curso;
-    protected String nomeVeiculo;
-    protected String placaVeiculo;
-    protected String corVeiculo;
-    protected boolean login;
-    protected String ra;
+    private Cliente dados = new Cliente();
+    private Veiculo dadosVeiculo = new Veiculo();
+    private List<Mensagens> mens = new ArrayList<Mensagens>();
 
-    public Motorista(String nomeCompleto, String senha, String curso, String nomeVeiculo, String placaVeiculo, String corVeiculo, boolean login) {
-        this.nomeCompleto = nomeCompleto;
-        this.senha = senha;
-        this.curso = curso;
-        this.nomeVeiculo = nomeVeiculo;
-        this.placaVeiculo = placaVeiculo;
-        this.corVeiculo = corVeiculo;
-        this.login = login;
+    @Override
+    public String toString() {
+        return "Motorista{" +
+                "dados=" + dados +
+                ", dadosVeiculo=" + dadosVeiculo +
+                ", mens=" + mens +
+                '}';
     }
 
-    public String getNomeCompleto() {
-        return nomeCompleto;
+    public Cliente getDados() {
+        return dados;
     }
 
-    public void setNomeCompleto(String nomeCompleto) {
-        this.nomeCompleto = nomeCompleto;
+    public void setDados(Cliente dados) {
+        this.dados = dados;
     }
 
-    public String getSenha() {
-        return senha;
+    public Veiculo getDadosVeiculo() {
+        return dadosVeiculo;
     }
 
-    public void setSenha(String senha) {
-        this.senha = senha;
+    public void setDadosVeiculo(Veiculo dadosVeiculo) {
+        this.dadosVeiculo = dadosVeiculo;
     }
 
-    public String getCurso() {
-        return curso;
-        }
-
-    public void setCurso(String curso) {
-        this.curso = curso;
+    public List<Mensagens> getMens() {
+        return mens;
     }
 
-    public String getNomeVeiculo() {
-        return nomeVeiculo;
-    }
-
-    public void setNomeVeiculo(String nomeVeiculo) {
-        this.nomeVeiculo = nomeVeiculo;
-    }
-
-    public String getPlacaVeiculo() {
-        return placaVeiculo;
-    }
-
-    public void setPlacaVeiculo(String placaVeiculo) {
-        this.placaVeiculo = placaVeiculo;
-    }
-
-    public String getCorVeiculo() {
-        return corVeiculo;
-    }
-
-    public void setCorVeiculo(String corVeiculo) {
-        this.corVeiculo = corVeiculo;
-    }
-
-    public boolean isLogin() {
-        return login;
-    }
-
-    public void setLogin(boolean login) {
-        this.login = login;
-    }
-
-    public String getRa() {
-        return ra;
-    }
-
-    public void setRa(String ra) {
-        this.ra = ra;
+    public void setMens(List<Mensagens> mens) {
+        this.mens = mens;
     }
 }
