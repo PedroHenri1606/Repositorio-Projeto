@@ -1,0 +1,355 @@
+
+#flex{
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    width: 778px;
+    height: 63px;
+    position: absolute;
+    border-radius: 20px;
+    text-align: center;
+    align-items: center; 
+    align-content: center;
+    flex-direction: row;
+    left: 30px;
+    top: 44px;
+    justify-content: space-evenly ;
+    z-index: 1;
+    font-weight: 400px;
+
+    
+}
+
+.textoFlex{
+ font-size: 20px;
+ font-family: 'Montserrat', sans-serif;    
+ }
+
+.textoLink{
+    text-decoration: none;
+    color: black;
+}
+
+#Instalar{
+ display: flex;
+ background: linear-gradient(112.77deg, #00FF89 20.18%, #108C53 276.62%);
+
+ font-family: 'Fredoka One';
+ width: 198px;
+ height: 63px;
+ top: 25px;
+ left:80vw;
+ border-radius: 15px;
+ position: absolute;    
+ align-content: center;
+ align-items: center;
+ justify-content: space-evenly;
+ z-index: 2; 
+}
+
+.Titulo {
+    font-family: 'Fredoka One';
+    font-size: 64px;
+    width: 681px;
+    height: 83px;
+    left:80px;
+    line-height: 130%;
+    z-index: 3;
+    top:237px;
+    position: absolute;
+
+}
+
+.TituloMenor{
+    font-family: 'Fredoka One';
+    position: absolute;
+    font-size: 31px;
+    width: 283px;
+    height: 40px;
+    left: 90px;
+    top:360px;
+    z-index: 4;
+}
+
+#FundoFuncoes1{
+    position: absolute;
+    top: -10px;
+    left: -300px;
+    width: 1648px;
+
+}
+
+.TextoSimples{
+    font-family:'Montserrat';
+    font-size: 25px;
+    font-style: initial;
+    width: 599px;
+    height: 250px;
+    left: 64px;
+    top: 740px;
+    position: absolute;
+    z-index: 5;
+    font-weight:600;
+
+}
+
+#FundoFuncoes2{
+    position: absolute;
+    z-index: 6;
+    top: 1000px;
+    height: 824px;
+    left: -10px;    
+    
+}
+
+#FundoImagem1{
+     border-radius: 88px;
+     transform: rotate(-5.12deg);
+     position: absolute;
+     height: 528px;
+     width: 332px;
+     left: 900px;
+     top: 340px;
+     z-index: 6;
+}
+
+#IconeFundo1{
+    position: absolute;
+    height: 60px;
+    width: 60px;
+    left: 740px;
+    top: 1110px;
+}
+
+.TituloCarona{
+    font-size: 30px;
+    text-align: right;
+    font-family: 'Fredoka One';
+    position: absolute;
+    width: 550px;
+    height: 38px;
+    left: 790px;
+    top: 1090px;
+    font-style: normal;
+    font-weight: normal;
+    z-index: 6;
+
+}
+
+.TextoCarona{
+    font-size: 24px;
+    text-align: end;
+    font-family: 'Montserrat';
+    position:absolute;
+    font-weight: 600;
+    width:580px;
+    height:50px;
+    top: 1150px;
+    left: 750px;
+    z-index: 7;
+}
+
+#IconeFundo2 {
+    position: absolute;
+    width:74px;
+    height: 74px;
+    left: 784px;
+    top: 1331px;
+}
+
+.TituloTrajetos{
+    text-align: initial;
+    font-family: 'Fredoka One';
+    font-size: 30px;
+    position: absolute;
+    width: 420px;
+    height: 38px;
+    left: 910px;
+    top: 1320px;
+}
+
+.TextoTrajetos{
+    text-align:right ;
+    font-family: 'Montserrat';
+    font-size: 22px;
+    font-weight: 600;
+    position: absolute;
+    width: 420px;
+    height: 38px;
+    left: 900px;
+    top: 1400px;
+}
+
+#IconeFundo3{
+    position: absolute;
+    width: 64px;
+    height: 65px;
+    left: 900px;
+    top: 1600px;   
+}
+
+.TituloSegurança{
+    position: absolute;
+    font-family: 'Fredoka One';
+    font-size: 30px; 
+    width: 355px;
+    height: 38px;
+    top: 1585px;
+    left: 990px;
+}
+
+.TextoSegurança{
+    text-align: right;
+    position: absolute;
+    font-family: 'Montserrat';
+    font-size: 22px;
+    font-weight: 600;
+    width: 420px;
+    height: 38px;
+    left: 920px;
+    top: 1665px;
+}
+
+#ImagemFundo3{
+    top: 2100px;
+    position: absolute;
+    width: 1378px;
+    height: 500px;
+    left: -30px;
+    z-index: 1;
+}
+
+
+.TituloMotorista {
+    font-family: 'Fredoka One';
+    font-size: 64px;
+    width: 681px;
+    height: 83px;
+    left:80px;
+    line-height: 130%;
+    z-index: 3;
+    top:2250px;
+    position: absolute;
+    z-index: 2;
+}
+
+.TextoMotorista{
+    font-family: 'Fredoka One';
+    position: absolute;
+    font-size: 31px;
+    width: 283px;
+    height: 40px;
+    left: 90px;
+    top: 2350px;
+    z-index: 4; 
+}
+
+.TextoEstilo{
+    font-family: 'Fredoka One';
+    font-size: 31px;
+    height: 40px;
+}
+
+.Set1{
+    position:absolute;
+    top: 2650px;
+    left: 80px;
+}
+
+.TextoEstiloMenor{
+    text-align: initial;
+    font-family: 'Montserrat';
+    font-size: 25px;
+    font-weight: 600;   
+}
+
+.SetMenor1{
+    top: 2700px ;
+    left: 80px;
+    position: absolute;
+}
+
+#IconeFundo4{
+    position: absolute;
+    left: 800px;
+    top: 2665px;
+    width: 64px;
+    height: 65px;
+}
+
+#ImagemFundo4{
+    position:absolute;
+    border-radius: 195px;
+    transform: rotate(10.93deg);
+    top:2900px;
+    z-index: 2;
+    width: 696px;
+    height: 523px;
+    left: 896px;   
+}
+
+#ImagemFundo5{
+    position: absolute;
+    top: 3200px;
+    left: -30px;
+    width: 1378px;
+    height: 7   00px;
+    z-index: 1;   
+}
+
+.TextoFooter{
+    font-family: 'Montserrat';
+    z-index: 2;
+    position: absolute;
+    font-weight: 600;
+    font-size: 22px;
+    color: white;
+}
+
+.SetFooter1{
+    width: 204px;
+    height: 32px;
+    left: 100px;
+    top: 3300px;
+}
+
+.SetFooter2{
+    width: 204px;
+    height: 32px;
+    left: 100px;
+    top: 3400px;
+}
+
+.SetFooter3{
+    width: 204px;
+    height: 32px;
+    left: 100px;
+    top: 3500px;
+}
+
+.SetFooter4{
+    width: 204px;
+    height: 32px;
+    left: 100px;
+    top: 3600px;
+}
+
+.SetFooter5{
+    width: 400px;
+    height: 32px;
+    left: 100px;
+    top: 3700px;
+}
+
+.SetFooter6{
+    width: 400px;
+    height: 32px;
+    left: 600px;
+    top: 3700px;
+}
+
+.SetFooter7{
+    width: 400px;
+    height: 32px;
+    left: 950px;
+    top: 3700px;
+}
