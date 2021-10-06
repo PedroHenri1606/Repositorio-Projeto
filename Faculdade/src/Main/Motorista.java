@@ -5,7 +5,7 @@ public class Motorista {
     private Cliente dados = new Cliente();
     private Veiculo dadosVeiculo = new Veiculo();
     private List<Mensagens> mens = new ArrayList<Mensagens>();
-
+    private Mensagens mensagens = new Mensagens();
     @Override
     public String toString() {
         return "Motorista{" +

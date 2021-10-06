@@ -2,8 +2,8 @@
 #cadastro {
     display:flex;
     background-color: rgb(255, 255, 255);
-    width: 50vw;
-    height: 9vh;
+    width: 50%;
+    height: 9%;
     left: 13vw;
     top: 3vw;
     border-radius: 0.9114583333333334vw;
@@ -13,6 +13,16 @@
     align-content: center;
     flex-direction: row;
     z-index: 5;
+}
+.fundocadastro {
+    background-color: rgb(255, 255, 255);
+    width: 30%;
+    height: 90%;
+    position: absolute;
+    left: 31vw;
+    top:  161vw;
+    z-index: 5;
+    border-radius: 2vw;
 }
 #baixe-app {
     display:flex;
@@ -252,7 +262,7 @@
     z-index: 5;
     width: 23vw;
     height: 2vw;
-    border-color: rgb(0, 255, 64);
+    border-color: rgb(206, 206, 206);
     border-radius:  1.3020833333333333vw;
     font-size:  1.3020833333333333vw;
 }
@@ -393,4 +403,35 @@
     width: 21vw;
     height: 35vw;
     border-radius: 1.3020833333333333vw;
+}
+.final1 {
+    z-index: 5;
+    position: absolute;
+    left: 13vw;
+    top: 252vw;
+    width: 30%;
+    height: 55%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: white;
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight: 100;
+    font-size: 1vw
+    
+}
+.final2 {
+    z-index: 5;
+    position: absolute;
+    left: 50vw;
+    top: 274.7vw;
+    width: 40%;
+    height: 5%;
+    display: flex;
+    flex-direction:row;
+    justify-content: space-between;
+    color: white;
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight: 100;
+    font-size: 1vw
 }

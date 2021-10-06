@@ -4,6 +4,10 @@ public class Mensagens {
     private String mensagemEnviar;
     private String mensagemReceber;
 
+    public Mensagens() {
+
+    }
+
     public Mensagens(String mensagemEnviar, String mensagemReceber) {
         this.mensagemEnviar = mensagemEnviar;
         this.mensagemReceber = mensagemReceber;

@@ -5,6 +5,7 @@ public class Corrida {
     private String numeroPassageiro;
     private int id;
     Trajeto rota = new Trajeto();
+    ValorCorrida valor = new ValorCorrida();
 
     @Override
     public String toString() {

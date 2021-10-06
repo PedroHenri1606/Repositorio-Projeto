@@ -1,24 +1,28 @@
 package Main;
 
-public class Trajeto {
+public class Rota {
     private String enderecoOrigem;
     private String enderecoDestino;
+    private double custo;
     private int id;
     //criar um atributo codigo;
 
+
     @Override
     public String toString() {
-        return "Trajeto{" +
+        return "Rota{" +
                 "enderecoOrigem='" + enderecoOrigem + '\'' +
                 ", enderecoDestino='" + enderecoDestino + '\'' +
+                ", custo=" + custo +
+                ", id=" + id +
                 '}';
     }
 
-    public Trajeto() {
+    public Rota() {
 
     }
 
-    public Trajeto(String enderecoOrigem, String enderecoDestino) {
+    public Rota(String enderecoOrigem, String enderecoDestino) {
         this.enderecoOrigem = enderecoOrigem;
         this.enderecoDestino = enderecoDestino;
     }
