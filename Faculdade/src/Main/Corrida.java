@@ -1,11 +1,23 @@
 package Main;
-
+import java.util.ArrayList;
+import java.util.List;
 public class Corrida {
     private String horario;//Instant
     private String numeroPassageiro;
     private int id;
-    Trajeto rota = new Trajeto();
-    ValorCorrida valor = new ValorCorrida();
+    private List<Rota> trajetos = new ArrayList<Rota>();
+    private Pagemento valor = new Pagemento();
+
+    public Corrida() {
+    }
+
+    public Corrida(String horario, String numeroPassageiro, int id, List<Rota> trajetos, Pagemento valor) {
+        this.horario = horario;
+        this.numeroPassageiro = numeroPassageiro;
+        this.id = id;
+        this.trajetos = trajetos;
+        this.valor = valor;
+    }
 
     @Override
     public String toString() {
@@ -13,25 +25,17 @@ public class Corrida {
                 "horario='" + horario + '\'' +
                 ", numeroPassageiro='" + numeroPassageiro + '\'' +
                 ", id=" + id +
-                ", rota=" + rota +
+                ", trajetos=" + trajetos +
+                ", valor=" + valor +
                 '}';
     }
 
-    public Corrida() {
-
+    public Pagemento getValor() {
+        return valor;
     }
 
-    public Corrida(String horario, String numeroPassageiro) {
-        this.horario = horario;
-        this.numeroPassageiro = numeroPassageiro;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    public void setValor(Pagemento valor) {
+        this.valor = valor;
     }
 
     public String getHorario() {
@@ -48,5 +52,21 @@ public class Corrida {
 
     public void setNumeroPassageiro(String numeroPassageiro) {
         this.numeroPassageiro = numeroPassageiro;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public List<Rota> getTrajetos() {
+        return trajetos;
+    }
+
+    public void setTrajetos(List<Rota> trajetos) {
+        this.trajetos = trajetos;
     }
 }

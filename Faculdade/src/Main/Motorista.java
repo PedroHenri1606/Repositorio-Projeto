@@ -5,7 +5,6 @@ public class Motorista {
     private Cliente dados = new Cliente();
     private Veiculo dadosVeiculo = new Veiculo();
     private List<Mensagens> mens = new ArrayList<Mensagens>();
-    private Mensagens mensagens = new Mensagens();
     @Override
     public String toString() {
         return "Motorista{" +
@@ -13,6 +12,15 @@ public class Motorista {
                 ", dadosVeiculo=" + dadosVeiculo +
                 ", mens=" + mens +
                 '}';
+    }
+
+    public Motorista() {
+    }
+
+    public Motorista(Cliente dados, Veiculo dadosVeiculo, List<Mensagens> mens) {
+        this.dados = dados;
+        this.dadosVeiculo = dadosVeiculo;
+        this.mens = mens;
     }
 
     public Cliente getDados() {

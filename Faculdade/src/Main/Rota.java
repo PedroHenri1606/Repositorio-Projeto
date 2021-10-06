@@ -1,5 +1,4 @@
 package Main;
-
 public class Rota {
     private String enderecoOrigem;
     private String enderecoDestino;
