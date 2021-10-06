@@ -1,18 +1,24 @@
 package Main;
-
+import java.util.ArrayList;
+import java.util.List;
 public class Passageiro {
     protected String nomeCompleto;
     protected String senha;
     protected String curso;
     protected String ra;
     protected boolean login;
+    private List<Mensagens> mens = new ArrayList<Mensagens>();
 
-    public Passageiro(String nomeCompleto, String senha, String curso, String ra, boolean login) {
-        this.nomeCompleto = nomeCompleto;
-        this.senha = senha;
-        this.curso = curso;
-        this.ra = ra;
-        this.login = login;
+    @Override
+    public String toString() {
+        return "Passageiro{" +
+                "nomeCompleto='" + nomeCompleto + '\'' +
+                ", senha='" + senha + '\'' +
+                ", curso='" + curso + '\'' +
+                ", ra='" + ra + '\'' +
+                ", login=" + login +
+                ", mens=" + mens +
+                '}';
     }
 
     public String getNomeCompleto() {
@@ -53,5 +59,25 @@ public class Passageiro {
 
     public void setLogin(boolean login) {
         this.login = login;
+    }
+
+    public List<Mensagens> getMens() {
+        return mens;
+    }
+
+    public void setMens(List<Mensagens> mens) {
+        this.mens = mens;
+    }
+
+    public Passageiro() {
+    }
+
+    public Passageiro(String nomeCompleto, String senha, String curso, String ra, boolean login, List<Mensagens> mens) {
+        this.nomeCompleto = nomeCompleto;
+        this.senha = senha;
+        this.curso = curso;
+        this.ra = ra;
+        this.login = login;
+        this.mens = mens;
     }
 }

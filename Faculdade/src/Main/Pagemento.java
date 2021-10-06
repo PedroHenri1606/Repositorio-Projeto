@@ -2,18 +2,8 @@ package Main;
 
 public class Pagemento {
 
-    Double valorDaCorrida;
-
-    public Pagemento(Double valorDaCorrida) {
-        this.valorDaCorrida = valorDaCorrida;
-    }
-
-    public Double getValorDaCorrida() {
-        return valorDaCorrida;
-    }
-
-    public void setValorDaCorrida(Double valorDaCorrida) {
-        this.valorDaCorrida = valorDaCorrida;
+    public void valorTotal() {
+        //vai pegar o valor total do banco de dados
     }
 
     //-------------metodo de pagamento ---------------------------
