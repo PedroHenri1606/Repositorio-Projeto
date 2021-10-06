@@ -2,31 +2,32 @@
 #flex{
     background-color: rgb(255, 255, 255);
     display: flex;
-    width: 778px;
-    height: 63px;
+    width: 50vw;
+    height: 5vw;
     position: absolute;
-    border-radius: 20px;
+    border-radius: 1.4vw;
     text-align: center;
     align-items: center; 
     align-content: center;
     flex-direction: row;
-    left: 30px;
-    top: 44px;
+    left: 2.19vw;
+    top: 3.2vw;
     justify-content: space-evenly ;
     z-index: 1;
-    font-weight: 400px;
+    font-weight: 29vw;
 
     
 }
 
 .textoFlex{
- font-size: 20px;
+ font-size: 1.5vw;
  font-family: 'Montserrat', sans-serif;    
  }
 
 .textoLink{
     text-decoration: none;
     color: black;
+    font-size: 1.5vw;
 }
 
 #Instalar{
@@ -34,11 +35,11 @@
  background: linear-gradient(112.77deg, #00FF89 20.18%, #108C53 276.62%);
 
  font-family: 'Fredoka One';
- width: 198px;
- height: 63px;
- top: 25px;
- left:80vw;
- border-radius: 15px;
+ width: 14vw;
+ height: 5vw;
+ top: 1.8vw;
+ left: 80vw;
+ border-radius: 1vw;
  position: absolute;    
  align-content: center;
  align-items: center;
@@ -48,13 +49,13 @@
 
 .Titulo {
     font-family: 'Fredoka One';
-    font-size: 64px;
-    width: 681px;
-    height: 83px;
-    left:80px;
+    font-size: 5vw;
+    width: 60vw;
+    height: 0.3vw;
+    left:5.8vw;
     line-height: 130%;
     z-index: 3;
-    top:237px;
+    top:15vw;
     position: absolute;
 
 }
@@ -62,30 +63,30 @@
 .TituloMenor{
     font-family: 'Fredoka One';
     position: absolute;
-    font-size: 31px;
-    width: 283px;
-    height: 40px;
-    left: 90px;
-    top:360px;
+    font-size: 2.2vw;
+    width: 20.7vw;
+    height: 2.9vw;
+    left: 6.5vw;
+    top: 26.3vw;
     z-index: 4;
 }
 
 #FundoFuncoes1{
     position: absolute;
-    top: -10px;
-    left: -300px;
-    width: 1648px;
+    top: -0.7vw;
+    left: -21vw;
+    width: 119.3vw;
 
 }
 
 .TextoSimples{
     font-family:'Montserrat';
-    font-size: 25px;
+    font-size: 1.8vw;
     font-style: initial;
-    width: 599px;
-    height: 250px;
-    left: 64px;
-    top: 740px;
+    width: 43.8vw;
+    height: 18.3vw;
+    left: 4.6vw;
+    top: 54.1vw;
     position: absolute;
     z-index: 5;
     font-weight:600;
@@ -95,40 +96,40 @@
 #FundoFuncoes2{
     position: absolute;
     z-index: 6;
-    top: 1000px;
-    height: 824px;
-    left: -10px;    
+    top: 73.2vw;
+    height: 60.3vw;
+    left: -0.7vw;    
     
 }
 
 #FundoImagem1{
-     border-radius: 88px;
+     border-radius: 6.4vw;
      transform: rotate(-5.12deg);
      position: absolute;
-     height: 528px;
-     width: 332px;
-     left: 900px;
-     top: 340px;
+     height: 38vw;
+     width: 24vw;
+     left: 65vw;
+     top: 24.8vw;
      z-index: 6;
 }
 
 #IconeFundo1{
     position: absolute;
-    height: 60px;
-    width: 60px;
-    left: 740px;
-    top: 1110px;
+    height: 4.3vw;
+    width: 4.3vw;
+    left: 54.1vw;
+    top: 81.2vw;
 }
 
 .TituloCarona{
-    font-size: 30px;
+    font-size: 2.1vw;
     text-align: right;
     font-family: 'Fredoka One';
     position: absolute;
-    width: 550px;
-    height: 38px;
-    left: 790px;
-    top: 1090px;
+    width: 40.2vw;
+    height: 2.7vw;
+    left: 57.8vw;
+    top: 79.7vw;
     font-style: normal;
     font-weight: normal;
     z-index: 6;
@@ -136,98 +137,98 @@
 }
 
 .TextoCarona{
-    font-size: 24px;
+    font-size: 1.7vw;
     text-align: end;
     font-family: 'Montserrat';
     position:absolute;
     font-weight: 600;
-    width:580px;
-    height:50px;
-    top: 1150px;
-    left: 750px;
+    width: 42.4vw;
+    height: 3.6vw;
+    top: 84.1vw;
+    left: 54.9vw;
     z-index: 7;
 }
 
 #IconeFundo2 {
     position: absolute;
-    width:74px;
-    height: 74px;
-    left: 784px;
-    top: 1331px;
+    width: 5.4vw;
+    height: 5.4vw;
+    left: 57.3vw;
+    top: 97.4vw;
 }
 
 .TituloTrajetos{
     text-align: initial;
     font-family: 'Fredoka One';
-    font-size: 30px;
+    font-size: 2.1vw;
     position: absolute;
-    width: 420px;
-    height: 38px;
-    left: 910px;
-    top: 1320px;
+    width: 30.7vw;
+    height: 2.7vw;
+    left: 66.6vw;
+    top: 96.6vw;
 }
 
 .TextoTrajetos{
     text-align:right ;
     font-family: 'Montserrat';
-    font-size: 22px;
+    font-size: 1.6vw;
     font-weight: 600;
     position: absolute;
-    width: 420px;
-    height: 38px;
-    left: 900px;
-    top: 1400px;
+    width: 30.7vw;
+    height: 2.7vw;
+    left: 65.8vw;
+    top: 102.4vw;
 }
 
 #IconeFundo3{
     position: absolute;
-    width: 64px;
-    height: 65px;
-    left: 900px;
-    top: 1600px;   
+    width: 4.6vw;
+    height: 4.7vw;
+    left: 65.8vw;    
+    top: 117.1vw;   
 }
 
 .TituloSegurança{
     position: absolute;
     font-family: 'Fredoka One';
-    font-size: 30px; 
-    width: 355px;
-    height: 38px;
-    top: 1585px;
-    left: 990px;
+    font-size: 2.1vw; 
+    width: 25.9vw;
+    height: 2.7vw;
+    top: 116vw;
+    left: 72.4vw;
 }
 
 .TextoSegurança{
     text-align: right;
     position: absolute;
     font-family: 'Montserrat';
-    font-size: 22px;
+    font-size: 1.6vw;
     font-weight: 600;
-    width: 420px;
-    height: 38px;
-    left: 920px;
-    top: 1665px;
+    width: 30.7vw;
+    height: 2.7vw;
+    left: 67.3vw;
+    top: 121vw;
 }
 
 #ImagemFundo3{
-    top: 2100px;
+    top: 153.7vw;
     position: absolute;
-    width: 1378px;
-    height: 500px;
-    left: -30px;
+    width: 100%;
+    height: 36.6vw;
+    left: 0vw;
     z-index: 1;
 }
 
 
 .TituloMotorista {
     font-family: 'Fredoka One';
-    font-size: 64px;
-    width: 681px;
-    height: 83px;
-    left:80px;
+    font-size:4vw;
+    width: 49.8vw;
+    height: 6vw;
+    left:30vw;
     line-height: 130%;
     z-index: 3;
-    top:2250px;
+    top: 164.7vw;
     position: absolute;
     z-index: 2;
 }
@@ -235,64 +236,64 @@
 .TextoMotorista{
     font-family: 'Fredoka One';
     position: absolute;
-    font-size: 31px;
-    width: 283px;
-    height: 40px;
-    left: 90px;
-    top: 2350px;
+    font-size: 2.2vw;
+    width: 20.7vw;
+    height: 2.9vw;
+    left: 42vw;
+    top: 172vw;
     z-index: 4; 
 }
 
 .TextoEstilo{
     font-family: 'Fredoka One';
-    font-size: 31px;
-    height: 40px;
+    font-size: 2.9vw;
+    height: 5vw;
 }
 
 .Set1{
     position:absolute;
-    top: 2650px;
-    left: 80px;
+    top: 200.8vw;
+    left: 3.9vw;
 }
 
 .TextoEstiloMenor{
     text-align: initial;
     font-family: 'Montserrat';
-    font-size: 25px;
+    font-size: 2.2vw;
     font-weight: 600;   
 }
 
 .SetMenor1{
-    top: 2700px ;
-    left: 80px;
+    top: 207.2vw;
+    left: 6.5vw;
     position: absolute;
 }
 
 #IconeFundo4{
     position: absolute;
-    left: 800px;
-    top: 2665px;
-    width: 64px;
-    height: 65px;
+    left: 70vw;
+    top: 200.9vw;
+    width: 8.1vw;
+    height: 8.2vw;
 }
 
 #ImagemFundo4{
     position:absolute;
-    border-radius: 195px;
+    border-radius: 24.7vw;
     transform: rotate(10.93deg);
-    top:2900px;
+    top: 230vw;
     z-index: 2;
-    width: 696px;
-    height: 523px;
-    left: 896px;   
+    width: 60.2vw;
+    height: 40.2vw;
+    left: 34vw;   
 }
 
 #ImagemFundo5{
     position: absolute;
-    top: 3200px;
-    left: -30px;
-    width: 1378px;
-    height: 7   00px;
+    top: 250.5vw;
+    left: -3.8vw;
+    width: 102.1vw;
+    height: 40.7vw;
     z-index: 1;   
 }
 
@@ -301,55 +302,55 @@
     z-index: 2;
     position: absolute;
     font-weight: 600;
-    font-size: 22px;
+    font-size: 1.2vw;
     color: white;
 }
 
 .SetFooter1{
-    width: 204px;
-    height: 32px;
-    left: 100px;
-    top: 3300px;
+    width: 25.8vw;
+    height: 4vw;
+    left: 5.6vw;
+    top: 260.2vw;
 }
 
 .SetFooter2{
-    width: 204px;
-    height: 32px;
-    left: 100px;
-    top: 3400px;
+    width: 25.8vw;
+    height: 4vw;
+    left: 5.6vw;
+    top: 265.9vw;
 }
 
 .SetFooter3{
-    width: 204px;
-    height: 32px;
-    left: 100px;
-    top: 3500px;
+    width: 25.8vw;
+    height: 4vw;
+    left: 5.6vw;
+    top: 270.5vw;
 }
 
 .SetFooter4{
-    width: 204px;
-    height: 32px;
-    left: 100px;
-    top: 3600px;
+    width: 25.8vw;
+    height: 4vw;
+    left: 5.6vw;
+    top: 275.2vw;
 }
 
 .SetFooter5{
-    width: 400px;
-    height: 32px;
-    left: 100px;
-    top: 3700px;
+    width: 50.6vw;
+    height: 4vw;
+    left: 5.6vw;
+    top: 285.9vw;
 }
 
 .SetFooter6{
-    width: 400px;
-    height: 32px;
-    left: 600px;
-    top: 3700px;
+    width: 10.6vw;
+    height: 4vw;
+    left: 76vw;
+    top: 285.9vw;
 }
 
 .SetFooter7{
-    width: 400px;
-    height: 32px;
-    left: 950px;
-    top: 3700px;
+    width: 10.6vw;
+    height: 4vw;
+    left: 60.6vw;
+    top: 285.9vw;
 }
