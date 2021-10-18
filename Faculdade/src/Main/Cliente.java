@@ -1,6 +1,6 @@
 package Main;
 
-    public class Cliente {
+    public abstract class Cliente {
         protected String nome;
         protected String email;
         protected String senha;
@@ -9,61 +9,6 @@ package Main;
         protected String curso;//crie uma classe
         protected String ra;
 
-        @Override
-        public String toString() {
-            return "Cliente{" +
-                    "nome='" + nome + '\'' +
-                    ", email='" + email + '\'' +
-                    ", senha='" + senha + '\'' +
-                    ", dataNascimento='" + dataNascimento + '\'' +
-                    ", login=" + login +
-                    ", curso='" + curso + '\'' +
-                    ", ra='" + ra + '\'' +
-                    '}';
-        }
-
-        void status() {
-            System.out.println("Usuario: " + this.nome);
-            System.out.println("Esta logado? = " + this.login);
-            System.out.println(" ");
-            System.out.println("---Erro ao estabelecer conexão---");
-        }
-
-        void conexao() throws InterruptedException {
-            System.out.print("Tentando conexão: 192.168.10.2 ");
-            Thread.sleep(2000);
-            System.out.println("-ERRO");
-            System.out.print("Tentando conexão: 192.168.10.2 ");
-            Thread.sleep(2000);
-            System.out.println("-ERRO");
-            System.out.print("Tentando conexão: 192.168.10.2 ");
-            Thread.sleep(2000);
-            System.out.println("-Sucesso");
-            Thread.sleep(1400);
-        }
-
-        void teste(){
-            this.login = true;
-        }
-
-        void telaInicio(){
-            System.out.println("__________________________________");
-            System.out.println("]Email: " + this.email);
-            System.out.println("]Senha: ___________");
-            System.out.println("]");
-            System.out.println("]           [Login]    ");
-            System.out.println("]_________________________________");
-        }
-
-        public Cliente() {//colocar os paramentros
-            this.nome = nome;
-            this.email = email;
-            this.senha = senha;
-            this.dataNascimento = dataNascimento;
-            this.curso = curso;
-            this.ra = ra;
-            this.login = login;
-        }
 
         public String getNome() {
             return nome;
