@@ -1,30 +1,19 @@
 package Main;
 
-    public class Cliente {
+    public class Pessoa {
         protected String nome;
         protected String email;
         protected String senha;
         protected String dataNascimento;//Instant
-        protected boolean login;
-        protected String curso;//crie uma classe
+
+        protected Curso curso;//crie uma classe
         protected String ra;
 
-        @Override
-        public String toString() {
-            return "Cliente{" +
-                    "nome='" + nome + '\'' +
-                    ", email='" + email + '\'' +
-                    ", senha='" + senha + '\'' +
-                    ", dataNascimento='" + dataNascimento + '\'' +
-                    ", login=" + login +
-                    ", curso='" + curso + '\'' +
-                    ", ra='" + ra + '\'' +
-                    '}';
-        }
+
 
         void status() {
             System.out.println("Usuario: " + this.nome);
-            System.out.println("Esta logado? = " + this.login);
+
             System.out.println(" ");
             System.out.println("---Erro ao estabelecer conexão---");
         }
@@ -42,9 +31,7 @@ package Main;
             Thread.sleep(1400);
         }
 
-        void teste(){
-            this.login = true;
-        }
+
 
         void telaInicio(){
             System.out.println("__________________________________");
@@ -55,14 +42,27 @@ package Main;
             System.out.println("]_________________________________");
         }
 
-        public Cliente() {//colocar os paramentros
+        public Pessoa() {//colocar os paramentros
+            this.curso = new Curso();
+
+        }
+
+        public Pessoa(String nome, String email, String senha, String dataNascimento, String ra) {
+            this.nome = nome;
+            this.email = email;
+            this.senha = senha;
+            this.dataNascimento = dataNascimento;
+            this.ra = ra;
+            this.curso = new Curso();
+        }
+
+        public Pessoa(String nome, String email, String senha, String dataNascimento, Curso curso, String ra) {
             this.nome = nome;
             this.email = email;
             this.senha = senha;
             this.dataNascimento = dataNascimento;
             this.curso = curso;
             this.ra = ra;
-            this.login = login;
         }
 
         public String getNome() {
@@ -97,14 +97,6 @@ package Main;
             this.dataNascimento = idade;
         }
 
-        public String getCurso() {
-            return curso;
-        }
-
-        public void setCurso(String curso) {
-            this.curso = curso;
-        }
-
         public String getRa() {
             return ra;
         }
@@ -113,12 +105,5 @@ package Main;
             this.ra = ra;
         }
 
-        public boolean isLogin() {
-            return login;
-        }
-
-        public void setLogin(boolean login) {
-            this.login = login;
-        }
     }
 

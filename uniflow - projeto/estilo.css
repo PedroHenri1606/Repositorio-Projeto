@@ -1,4 +1,6 @@
-
+body {
+    scroll-behavior: smooth;
+}
 #cadastro {
     display:flex;
     background-color: rgb(255, 255, 255);
@@ -84,7 +86,7 @@
     line-height: 5.5vw;
 }
 #fundo1 {
-    width: 100vw;
+    width: 100%;
     height: 70vw;
     position: absolute;
     top: 0vw;
@@ -92,7 +94,7 @@
     z-index: 1;
 }
 #fundo2 {
-    width: 50vw;
+    width: 43.9vw;
     height: 50vw;
     position: absolute;
     top: 69vw;
@@ -209,7 +211,7 @@
     z-index: 2;
 }
 #fundo3 {
-    width: 100vw;
+    width: 100%;
     height: 53vw;
     position: absolute;
     top: 156.25vw;
@@ -382,7 +384,7 @@
     left:0vw;
     top: 221.35416666666666vw;
     
-    width: 100vw;
+    width: 100%;
     height: 65vw;
 }
 .imagem1 {

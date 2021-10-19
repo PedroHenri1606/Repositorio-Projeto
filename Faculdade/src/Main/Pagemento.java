@@ -1,13 +1,8 @@
 package Main;
 
-public class Pagemento {
+public class Pagemento implements interfacePagamento  {
 
-    public void valorTotal() {
-        //vai pegar o valor total do banco de dados
-    }
-
-    //-------------metodo de pagamento ---------------------------
-
+    Double valor = 0.0;
     public void pagarComCartao() {
 
     }
