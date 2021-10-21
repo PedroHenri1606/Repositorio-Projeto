@@ -1,3 +1,6 @@
-eduardo de souza magalhaes|123|vila c |uniamerica|magalhaeseduardo91@gmail.com
-jorge|123|vila c nova|uniamerica|jorge@gmail.com
-eduarda|123|vila c nova|uniamerica|eduarda@gmail.com
+eduardo|123|nova horizonte|uniamerica|eduardo@gmail.com
+pedro|456|centro|uniamerica|pedro@gmail.com
+jorge|123|vila c |uniamerica|eduardo@gmail.com
+edu|123|vila c |uniamerica|eduardo@gmail.com
+123|123|vila c |uniameica|pedro@gmail.com
+1|1|vila c |1|1

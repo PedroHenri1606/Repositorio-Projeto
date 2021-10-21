@@ -15,8 +15,6 @@ public class main {
             Scanner scan = new Scanner(System.in);
             System.out.println("cadastrar usuario usuario - 1");
             System.out.println("login - 2");
-            System.out.println("cadastrar bairro - 3");
-            System.out.println("visualizar bairro - 4");
             System.out.print("opcao: ");
             int escolha = Integer.parseInt(scan.nextLine());
             switch (escolha) {
@@ -26,13 +24,6 @@ public class main {
                 case 2:
                     vuser.realizarlogin();
                     break;
-                case 3:
-                    vbairro.cadastrarBairro();
-                    break;
-                case 4:
-                    vbairro.visualizar();
-                    break;
-
             }
         }
     }

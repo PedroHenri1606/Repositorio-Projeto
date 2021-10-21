@@ -26,10 +26,10 @@ public class BairroController {
     }
     public boolean verificar(String nome) {
         if(b.validar(nome)) {
-            System.out.println("valido");
+            //System.out.println("valido");
             return true;
         } else {
-            System.out.println("invalido");
+            //System.out.println("invalido");
             return false;
         }
     }

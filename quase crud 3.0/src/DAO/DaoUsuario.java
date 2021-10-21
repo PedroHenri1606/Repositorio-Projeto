@@ -77,6 +77,7 @@ public class DaoUsuario {
    public boolean verificarEmail(String email) {
         for (int i = 0; i<usuario.size();i++) {
             if(email.equals(emails.get(i))) {
+                System.out.println("invalido!");
                 return false;
             }
         }
