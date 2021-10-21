@@ -65,7 +65,6 @@ public class DaoUsuario {
     }
 
     public void adicionar(UsuarioModel user) {
-        boolean disponivel = true;
         usuario.add(user.getNome());
         senha.add(user.getSenha());
         bairro.add(user.getBairro());
@@ -74,16 +73,21 @@ public class DaoUsuario {
         this.salvar();
     }
 
-    public boolean validar(String email) { //verifica se ja existe alguem com esse email.
-        for (int i = 0; i < usuario.size(); i++) {
-            if (email.equals(emails.get(i))) {
+
+   public boolean verificarEmail(String email) {
+        for (int i = 0; i<usuario.size();i++) {
+            if(email.equals(emails.get(i))) {
                 return false;
             }
         }
         return true;
-    }
+   }
 
-    public void editar() {
+
+//-----------------------------------------------------
+
+
+    /*public void editar() {
         System.out.println("--------------------------------------");
         System.out.println("lista atual");
         for (int i = 0; i < usuario.size(); i++) {
@@ -108,9 +112,9 @@ public class DaoUsuario {
         }
         System.out.println("");
         this.salvar();
-    }
+    }*/
 
-    public void remover() {
+    /*public void remover() {
         System.out.println("--------------------------------------");
         System.out.println("lista atual");
         for (int i = 0; i < usuario.size(); i++) {
@@ -128,13 +132,16 @@ public class DaoUsuario {
         }
         System.out.println("");
         this.salvar();
-    }
+    }*/
+
+
+
 
     public void salvar() {
         try {
             BufferedWriter salvar = new BufferedWriter(new FileWriter("lista.txt"));
             for (int i = 0; i < usuario.size(); i++) {
-                salvar.write(usuario.get(i) + "|" + senha.get(i) + "|" + bairro.get(i) + "|" + destino.get(i));
+                salvar.write(usuario.get(i) + "|" + senha.get(i) + "|" + bairro.get(i) + "|" + destino.get(i) + "|" + emails.get(i));
                 salvar.newLine();
             }
             salvar.close();

@@ -2,10 +2,10 @@ package model;
 
 public class Bairro {
     private String nome;
-    private int id;
+    private String id;
 
 
-    public Bairro(String nome, int id) {
+    public Bairro(String nome, String id) {
         this.nome = nome;
         this.id = id;
     }
@@ -18,11 +18,11 @@ public class Bairro {
         this.nome = nome;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 }

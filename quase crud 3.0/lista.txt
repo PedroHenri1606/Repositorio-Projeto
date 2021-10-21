@@ -1,2 +1,3 @@
-eduardo|1|123|123
-edu|1|1|1
+eduardo de souza magalhaes|123|vila c |uniamerica|magalhaeseduardo91@gmail.com
+jorge|123|vila c nova|uniamerica|jorge@gmail.com
+eduarda|123|vila c nova|uniamerica|eduarda@gmail.com

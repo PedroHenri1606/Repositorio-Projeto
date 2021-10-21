@@ -1,0 +1,3 @@
+vila c |0
+vila c nova|1
+centro|2

@@ -14,8 +14,8 @@ public class UsuarioController {
     public boolean realizarLogin(String tmp1, String tmp2) {
         return user.login(tmp1, tmp2);
     }
-    public boolean validacao(String email) {//
-        if(user.validar(email)) {
+    public boolean verificar(String email) {
+        if(user.verificarEmail(email)) {
             return true;
         } else {
             return false;
