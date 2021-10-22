@@ -10,6 +10,7 @@ public class BairroController {
     public void carregar() {
         b.carregar();
     }
+
     public void cadastrar(Bairro aux) {
         if(this.verificar(aux.getNome())) {
             b.adicionar(aux);
@@ -24,6 +25,8 @@ public class BairroController {
     public String escolherBairro(int escolha) {
             return b.escolha(escolha);
     }
+
+
     public boolean verificar(String nome) {
         if(b.validar(nome)) {
             //System.out.println("valido");

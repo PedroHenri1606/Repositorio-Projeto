@@ -1,7 +1,6 @@
 package DAO;
 
 import model.Bairro;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +36,7 @@ public class DaoBairro {
 
     public void visualizar() {
         for (int i = 0; i < nomes.size(); i++) {
-            System.out.println(nomes.get(i) + " posicao: " + i);
+            System.out.println(nomes.get(i) + " Posicao: " + i);
         }
     }
     public void salvar() {
