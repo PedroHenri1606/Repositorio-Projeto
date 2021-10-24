@@ -14,6 +14,7 @@ public class DaoUsuario {
     static List<String> bairro = new ArrayList<String>();
     static List<String> destino = new ArrayList<String>();
     static List<String> emails = new ArrayList<String>();
+    static List<String> ids = new ArrayList<>();
     static int usuarioAtual;
     Scanner scan = new Scanner(System.in);
 
@@ -34,12 +35,29 @@ public class DaoUsuario {
         System.out.println("");
         System.out.println("usuarios que moram perto de vc: ");
         System.out.println(" ");
+        System.out.println("meu nome: " + usuario.get(usuarioAtual));
+
         for (int i = 0; i < usuario.size(); i++) {
-            if (bairro.get(i).equals(bairro.get(usuarioAtual)) && destino.get(i).equals(destino.get(usuarioAtual)) && usuario.get(i) != usuario.get(usuarioAtual)) {
-                System.out.println("usuario: " + usuario.get(i));
-            }
+           if(bairro.get(usuarioAtual).equals(bairro.get(i)) && usuario.get(usuarioAtual) != usuario.get(i)) {
+               System.out.println("usuarios: " + usuario.get(i));
+           }
         }
 
+    }
+
+    public String getMeuNome() {
+        return usuario.get(usuarioAtual);
+    }
+    public String getMeuID() {
+        return ids.get(usuarioAtual);
+    }
+    public void setMeuNome(String novoNome) {
+        usuario.set(usuarioAtual, novoNome);
+        this.salvar();
+    }
+
+    public String getMeuEmail() {
+        return emails.get(usuarioAtual);
     }
 
     public void carregar() {
@@ -56,6 +74,7 @@ public class DaoUsuario {
                     bairro.add(sepador.nextToken());
                     destino.add(sepador.nextToken());
                     emails.add(sepador.nextToken());
+                    ids.add(sepador.nextToken());
                 }
             }
             carregar.close();
@@ -70,6 +89,7 @@ public class DaoUsuario {
         bairro.add(user.getBairro());
         destino.add(user.getDestino());
         emails.add(user.getEmail());
+        ids.add(user.getId());
         this.salvar();
     }
 
@@ -142,12 +162,12 @@ public class DaoUsuario {
         try {
             BufferedWriter salvar = new BufferedWriter(new FileWriter("lista.txt"));
             for (int i = 0; i < usuario.size(); i++) {
-                salvar.write(usuario.get(i) + "|" + senha.get(i) + "|" + bairro.get(i) + "|" + destino.get(i) + "|" + emails.get(i));
+                salvar.write(usuario.get(i) + "|" + senha.get(i) + "|" + bairro.get(i) + "|" + destino.get(i) + "|" + emails.get(i) + "|" + ids.get(i));
                 salvar.newLine();
             }
             salvar.close();
             System.out.println("");
-            System.out.println("usuarios salvos com sucesso!!!");
+            System.out.println("dados salvos!!!");
             System.out.println("");
         } catch (IOException e) {
             e.printStackTrace();

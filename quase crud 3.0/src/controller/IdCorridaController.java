@@ -1,9 +1,9 @@
 package controller;
 
-import DAO.IdCursoDAO;
+import DAO.IdCorridaDAO;
 
-public class IdCursoController {
-    IdCursoDAO x = new IdCursoDAO();
+public class IdCorridaController {
+    IdCorridaDAO x = new IdCorridaDAO();
 
     public String determinarID(){
         String tmp1 = Integer.toString(x.determinarID());

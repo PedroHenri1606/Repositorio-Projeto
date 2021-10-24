@@ -21,6 +21,18 @@ public class UsuarioController {
             return false;
         }
     }
+    public String getMeuNome() {
+        return user.getMeuNome();
+    }
+    public String getMeuID() {
+        return user.getMeuID();
+    }
+    public void setMeuNome(String novoNome) {
+        user.setMeuNome(novoNome);
+    }
+    public String getmeuEmail() {
+        return user.getMeuEmail();
+    }
     public void visualizarUsuarios() {
         user.visualizarUsuariosProximos();
     }

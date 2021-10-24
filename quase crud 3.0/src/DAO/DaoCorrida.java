@@ -1,20 +1,20 @@
 package DAO;
 
-import model.Curso;
+import model.corrida;
 import java.io.*;
 import java.util.*;
 
-public class DaoCurso {
-   List<String> nomes = new ArrayList<String>();
-   List<String> ids = new ArrayList<String>();
-
+public class DaoCorrida {
+   static List<String> nomes = new ArrayList<String>();
+   static List<String> ids = new ArrayList<String>();
+   static List<String> idsUser = new ArrayList<String>();
    public String escolha(int opcao){
      return nomes.get(opcao);
    }
 
    public void carregar(){
        try{
-           BufferedReader carregar = new BufferedReader(new FileReader("Cursos.txt"));
+           BufferedReader carregar = new BufferedReader(new FileReader("corridas.txt"));
            while(true) {
                String linha = carregar.readLine();
                if (linha == null) {
@@ -23,6 +23,7 @@ public class DaoCurso {
                    StringTokenizer separador = new StringTokenizer(linha, "|");
                    nomes.add(separador.nextToken());
                    ids.add(separador.nextToken());
+                   idsUser.add(separador.nextToken());
                }
            }
            carregar.close();
@@ -33,25 +34,34 @@ public class DaoCurso {
 
    public void salvar(){
        try{
-           BufferedWriter salvar = new BufferedWriter(new FileWriter("Cursos.txt"));
+           BufferedWriter salvar = new BufferedWriter(new FileWriter("corridas.txt"));
            for(int i = 0;  i < nomes.size(); i++){
-               salvar.write(nomes.get(i) +  "|" + ids.get(i));
+               salvar.write(nomes.get(i) +  "|" + ids.get(i) + "|" + idsUser.get(i));
                salvar.newLine();
            }
+           salvar.close();
        } catch (IOException e){
            e.printStackTrace();
        }
    }
 
-   public void visualizar(){
-       for (int i = 0; i < nomes.size(); i++){
-           System.out.println(nomes.get(i) + "Posição: " + i);
+   public void visualizar(String idUser){
+       if(nomes.size() > 0 ) {
+           for (int i = 0; i < nomes.size(); i++){
+               if (idsUser.get(i).equals(idUser)) {
+                   System.out.println("suas corridas: " + nomes.get(i));
+               }
+           }
+       } else {
+           System.out.println("ainda nao existe corrida alguma");
        }
+
    }
 
-   public void adicionar(Curso aux){
+   public void adicionar(corrida aux){
        nomes.add(aux.getNome());
        ids.add(aux.getId());
+       idsUser.add(aux.getIdUser());
        this.salvar();
    }
 

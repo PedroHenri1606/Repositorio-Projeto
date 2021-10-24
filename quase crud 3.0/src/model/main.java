@@ -2,7 +2,7 @@ package model;
 
 import view.BairroView;
 import view.UsuarioView;
-import view.CursoView;
+import view.CorridaView;
 import java.util.Scanner;
 
 public class main {
@@ -11,7 +11,7 @@ public class main {
         //Objetos
         UsuarioView vuser = new UsuarioView();
         BairroView vbairro = new BairroView();
-        CursoView vCurso = new CursoView();
+        CorridaView vCurso = new CorridaView();
 
         //Inicialização
         vbairro.carregarDados();
@@ -29,10 +29,10 @@ public class main {
             int escolha = Integer.parseInt(scan.nextLine());
             switch (escolha) {
                 case 1:
-                    vuser.cadastroUsuario();
+                    vuser.realizarlogin();
                     break;
                 case 2:
-                    vuser.realizarlogin();
+                    vuser.cadastroUsuario();
                     break;
             }
         }

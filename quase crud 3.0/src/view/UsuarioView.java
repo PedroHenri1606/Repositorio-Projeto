@@ -2,6 +2,7 @@ package view;
 
 import controller.BairroController;
 import controller.UsuarioController;
+import controller.idUsuarioController;
 import model.UsuarioModel;
 
 import java.util.Scanner;
@@ -10,7 +11,8 @@ public class UsuarioView {
     UsuarioController cal = new UsuarioController();
     BairroController bairro = new BairroController();
     BairroView bairroView = new BairroView();
-
+    idUsuarioController idsuario = new idUsuarioController();
+    CorridaView corridaview = new CorridaView();
     public void carregarDados() {
         cal.carregar();
     }
@@ -25,6 +27,7 @@ public class UsuarioView {
             String email;
             String bairro1 = "";
             String destino;
+            String id = "";
             this.espaco();
             System.out.println("----------------------------------------------");
             System.out.println("\n   [Realizando Cadastro de usuario]\n");
@@ -40,6 +43,7 @@ public class UsuarioView {
                     bairroView.cadastrarBairro();
                 } else if (escolha == 2) {
                     System.out.println("----------------------------------------------");
+                    bairro.visualizar();
                     System.out.print("\n [Informe o bairro a partir da posição: ");
                     bairro1 = bairro.escolherBairro(Integer.parseInt(scan.nextLine()));
                     System.out.println("----------------------------------------------");
@@ -49,8 +53,8 @@ public class UsuarioView {
             System.out.println("----------------------------------------------");
             System.out.print(" [Destino do usuario: "); destino = scan.nextLine();
             System.out.println("----------------------------------------------");
-            UsuarioModel al = new UsuarioModel(nome, senha, bairro1, destino, email);
-
+            id = idsuario.usuarioID();
+            UsuarioModel al = new UsuarioModel(nome, senha, bairro1, destino, email, id);
             if(cal.verificar(email)){
                 cal.realizarCadastro(al);
                 break;
@@ -82,14 +86,47 @@ public class UsuarioView {
         System.out.print("senha: ");
         tmp2 = scan.nextLine();
         if (cal.realizarLogin(tmp1, tmp2)) {
-            cal.visualizarUsuarios();
+           this.menu();
+           return;
         } else {
             System.out.println("usuario ou senha incorreta!!:(");
         }
     }
 
+    public void menu() {
+        Scanner scan = new Scanner(System.in);
+
+        while (true) {
+            System.out.println("[ola usuario de nome: " + cal.getMeuNome() + "]\n");
+            System.out.println("[1] visualizar possiveis colegas de carona ");
+            System.out.println("[2] criar corrida");
+            System.out.println("[3] visualizar minhas corridas");
+            System.out.println("[4] sair");
+            int escolha = Integer.parseInt(scan.nextLine());
+
+            switch (escolha) {
+                case 1:
+                    cal.visualizarUsuarios();
+                    break;
+                case 2:
+                    corridaview.cadastrarCorrida(cal.getMeuID());
+                    break;
+                case 3:
+                    corridaview.visualizar(cal.getMeuID());
+                    break;
+                case 4:
+                    return;
+            }
+        }
+    }
+    public void configuracoes() {
+        //as opcoes de modificacao
+        //escolha o que vai modificar
+        //digite a senha
+        //
+    }
     public void espaco() {
-        for (int i = 0; i < 30; i++) {
+        for (int i = 0; i < 15; i++) {
             System.out.println("");
         }
     }

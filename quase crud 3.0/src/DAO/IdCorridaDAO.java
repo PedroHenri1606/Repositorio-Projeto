@@ -3,11 +3,11 @@ package DAO;
 import java.io.*;
 import java.util.StringTokenizer;
 
-public class IdCursoDAO {
+public class IdCorridaDAO {
     public int determinarID(){
         int aux = 0;
         try{
-            BufferedReader carregar = new BufferedReader(new FileReader("idCurso.txt"));
+            BufferedReader carregar = new BufferedReader(new FileReader("idCorrida.txt"));
             String linha = carregar.readLine();
             if(linha == null){
                 aux = 0;
@@ -25,7 +25,7 @@ public class IdCursoDAO {
 
     public void salvar(String tmp1){
         try{
-            BufferedWriter salvar = new BufferedWriter(new FileWriter("idCurso.txt"));
+            BufferedWriter salvar = new BufferedWriter(new FileWriter("idCorrida.txt"));
             salvar.write(tmp1);
             salvar.newLine();
             salvar.close();

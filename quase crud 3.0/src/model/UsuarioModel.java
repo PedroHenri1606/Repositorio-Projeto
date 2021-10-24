@@ -7,11 +7,11 @@ public class UsuarioModel {
     String destino;
     String email;
 
-
-    public UsuarioModel(String nome, String senha, String bairro, String destino, String email) {
+    public UsuarioModel(String nome, String senha, String bairro, String destino, String email, String id) {
         this.nome = nome;
         this.senha = senha;
         this.bairro = bairro;
+        this.id = id;
         this.destino = destino;
         this.email = email;
     }

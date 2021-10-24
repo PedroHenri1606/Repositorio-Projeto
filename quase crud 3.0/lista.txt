@@ -1,6 +1,4 @@
-eduardo|123|nova horizonte|uniamerica|eduardo@gmail.com
-pedro|456|centro|uniamerica|pedro@gmail.com
-jorge|123|vila c |uniamerica|eduardo@gmail.com
-edu|123|vila c |uniamerica|eduardo@gmail.com
-123|123|vila c |uniameica|pedro@gmail.com
-1|1|vila c |1|1
+eduardo|123|vila c |uniamerica|email|5
+jorge|123|centro|unioeste|jorge@gmail.com|6
+marilsa|marilsa123|vila c |uniamerica|marilsa@gmail.com|7
+marcos alvez|marcao|vila c |udc|marcos@gmail.com|8
