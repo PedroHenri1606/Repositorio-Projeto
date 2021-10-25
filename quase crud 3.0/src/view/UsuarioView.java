@@ -65,14 +65,18 @@ public class UsuarioView {
     public String escolhendoBairro() {
         Scanner scan = new Scanner(System.in);
         String bairro1 = "";
+        System.out.println("\n\n\n");
+        System.out.println("********[processo de escolha de bairro]**********");
         while (true) {
+            System.out.println("==============================================");
             bairroView.visualizar();
+            System.out.println("==============================================");
             System.out.println("==============================================");
             System.out.println("\n          [Escolha uma opção] \n");
             System.out.println("       [1] - Cadastrar novo bairro");
             System.out.println("       [2] - Escolher um Bairro");
             System.out.println("==============================================");
-            System.out.print(" Opção: ");
+            System.out.print(" [escolha uma duas opcoes acima!!!]: ");
             int escolha = Integer.parseInt(scan.nextLine());
             switch (escolha) {
                 case 1:
@@ -80,8 +84,9 @@ public class UsuarioView {
                     break;
                 case 2:
                     System.out.println("==============================================");
-                    System.out.print("\n [Informe o bairro a partir da posição: ");
+                    System.out.print("\n [Informe o bairro a partir da posição]: ");
                     bairro1 = bairroView.escolherBairro(Integer.parseInt(scan.nextLine()));
+                    System.out.println("\n\n");
                     return bairro1;
             }
         }
@@ -91,22 +96,26 @@ public class UsuarioView {
         Scanner scan = new Scanner(System.in);
         String curso = "";
         while (true) {
+            System.out.println("********[processo de escolha de curso]**********");
+            System.out.println("==============================================");
             cursoView.visualizar();
+            System.out.println("==============================================");
             System.out.println("==============================================");
             System.out.println("\n          [Escolha uma opção] \n");
             System.out.println("       [1] - Cadastrar novo curso");
-            System.out.println("       [2] - Escolher um curso");
+            System.out.println("       [2] - Escolher um curso\n");
             System.out.println("==============================================");
-            System.out.print(" Opção: ");
+            System.out.print(" [escolha uma duas opcoes acima!!!]: ");
             int escolha = Integer.parseInt(scan.nextLine());
             switch (escolha) {
                 case 1:
                     bairroView.cadastrarBairro();
                     break;
                 case 2:
-                    System.out.println("==============================================");
-                    System.out.print("\n [Informe o bairro a partir da posição: ");
+                    System.out.println("==============================================\n");
+                    System.out.print("[Informe o curso a partir da posição]: ");
                     curso = cursoView.escolherCurso(Integer.parseInt(scan.nextLine()));
+                    System.out.println("\n\n");
                     return curso;
             }
         }
