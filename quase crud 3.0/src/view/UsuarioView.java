@@ -121,7 +121,7 @@ public class UsuarioView {
         String tmp1, tmp2;
         System.out.println("============================================");
         System.out.println("           [Realizando Login]");
-        System.out.print(" [Nome]: ");
+        System.out.print(" [Email]: ");
         tmp1 = scan.nextLine();
         System.out.print(" [Senha]: ");
         tmp2 = scan.nextLine();

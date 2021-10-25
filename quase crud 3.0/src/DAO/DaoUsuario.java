@@ -21,7 +21,7 @@ public class DaoUsuario {
 
     public boolean login(String tmp1, String tmp2) {
         for (int i = 0; i < usuario.size(); i++) {
-            if (tmp1.equals(usuario.get(i)) && tmp2.equals(senha.get(i))) {
+            if (tmp1.equals(emails.get(i)) && tmp2.equals(senha.get(i))) {
                 System.out.println("login realizado com sucesso");
                 usuarioAtual = i;
                 return true;
