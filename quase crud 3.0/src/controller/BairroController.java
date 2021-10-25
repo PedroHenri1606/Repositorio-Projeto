@@ -7,15 +7,15 @@ import java.util.List;
 
 public class BairroController {
     DaoBairro b = new DaoBairro();
-    public void carregar() {
-        b.carregar();
-    }
+    public void carregar() {b.carregar();}
 
     public void cadastrar(Bairro aux) {
         if(this.verificar(aux.getNome())) {
             b.adicionar(aux);
         } else {
-            System.out.println("bairro invalido - ja existe");
+            System.out.println("\n==============================================");
+            System.out.println("       Bairro invalido - ja existe");
+            System.out.println("==============================================\n");
         }
     }
 
@@ -23,16 +23,14 @@ public class BairroController {
         b.visualizar();
     }
     public String escolherBairro(int escolha) {
-            return b.escolha(escolha);
+        return b.escolha(escolha);
     }
 
 
     public boolean verificar(String nome) {
         if(b.validar(nome)) {
-            //System.out.println("valido");
             return true;
         } else {
-            //System.out.println("invalido");
             return false;
         }
     }

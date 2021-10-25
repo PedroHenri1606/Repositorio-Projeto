@@ -2,10 +2,7 @@ package DAO;
 
 import model.Bairro;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.StringTokenizer;
-
+import java.util.*;
 
 public class DaoBairro {
     static List<String> nomes = new ArrayList<String>();
@@ -36,7 +33,7 @@ public class DaoBairro {
 
     public void visualizar() {
         for (int i = 0; i < nomes.size(); i++) {
-            System.out.println(nomes.get(i) + " Posicao: " + i);
+            System.out.println(nomes.get(i) + "|    " + " Posicao: " + i);
         }
     }
     public void salvar() {

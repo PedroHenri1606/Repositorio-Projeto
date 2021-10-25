@@ -7,7 +7,7 @@ public class IdBairroDAO {
     public int determinarID() {
         int aux = 0;
         try {
-            BufferedReader carregar = new BufferedReader(new FileReader("id.txt"));
+            BufferedReader carregar = new BufferedReader(new FileReader("idBairro.txt"));
             String linha = carregar.readLine();
             if(linha == null) {
                 aux = 0;
@@ -24,7 +24,7 @@ public class IdBairroDAO {
     }
     public void salvar(String tmp1) {
         try {
-            BufferedWriter salvar = new BufferedWriter(new FileWriter("id.txt"));
+            BufferedWriter salvar = new BufferedWriter(new FileWriter("idBairro.txt"));
             salvar.write(tmp1);
             salvar.newLine();
             salvar.close();
