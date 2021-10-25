@@ -20,6 +20,7 @@ public class CorridaView {
         x.cadastrar(aux);
     }
 
+
     public void visualizar(String userID) {
         x.visualizar(userID);
     }

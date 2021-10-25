@@ -16,12 +16,18 @@ public class CursoView {
         System.out.print("[nome do curso: ");
         String tmp1 = scan.nextLine();
         String tmp2 = id.determinarID();
-        Curso aux = new Curso(tmp1,tmp2);
+        Curso aux = new Curso(tmp1, tmp2);
         x.cadastrar(aux);
     }
+
+    public String escolherCurso(int escolha) {
+        return x.escolherCurso(escolha);
+    }
+
     public void visualizar() {
         x.visualizar();
     }
+
     public void carregarDados() {
         x.carregar();
     }

@@ -15,6 +15,7 @@ public class DaoUsuario {
     static List<String> destino = new ArrayList<String>();
     static List<String> emails = new ArrayList<String>();
     static List<String> ids = new ArrayList<>();
+    static List<String> cursos = new ArrayList<>();
     static int usuarioAtual;
     Scanner scan = new Scanner(System.in);
 
@@ -31,20 +32,14 @@ public class DaoUsuario {
     }
 
     public void visualizarUsuariosProximos() {
-        System.out.println("");
-        System.out.println("");
-        System.out.println("usuarios que moram perto de vc: ");
-        System.out.println(" ");
-        System.out.println("meu nome: " + usuario.get(usuarioAtual));
-
+        System.out.println("\n\n");
         for (int i = 0; i < usuario.size(); i++) {
            if(bairro.get(usuarioAtual).equals(bairro.get(i)) && usuario.get(usuarioAtual) != usuario.get(i)) {
-               System.out.println("usuarios: " + usuario.get(i));
+               System.out.println("[usuarios: " + usuario.get(i) + "]");
            }
         }
 
     }
-
     public String getMeuNome() {
         return usuario.get(usuarioAtual);
     }
@@ -55,7 +50,13 @@ public class DaoUsuario {
         usuario.set(usuarioAtual, novoNome);
         this.salvar();
     }
-
+    public String getMinhaSenha() {
+        return senha.get(usuarioAtual);
+    }
+    public void setMinhaSenha(String novaSenha) {
+        senha.set(usuarioAtual, novaSenha);
+        this.salvar();
+    }
     public String getMeuEmail() {
         return emails.get(usuarioAtual);
     }
@@ -75,6 +76,7 @@ public class DaoUsuario {
                     destino.add(sepador.nextToken());
                     emails.add(sepador.nextToken());
                     ids.add(sepador.nextToken());
+                    cursos.add(sepador.nextToken());
                 }
             }
             carregar.close();
@@ -90,79 +92,31 @@ public class DaoUsuario {
         destino.add(user.getDestino());
         emails.add(user.getEmail());
         ids.add(user.getId());
+        cursos.add(user.getCurso());
         this.salvar();
     }
 
 
    public boolean verificarEmail(String email) {
-        for (int i = 0; i<usuario.size();i++) {
-            if(email.equals(emails.get(i))) {
-                System.out.println("invalido!");
-                return false;
+        if (usuario.size() > 0) {
+            for (int i = 0; i<usuario.size();i++) {
+                if(email.equals(emails.get(i))) {
+                    System.out.println("invalido!");
+                    return false;
+                }
             }
+        } else {
+            return true;
         }
         return true;
    }
-
-
-//-----------------------------------------------------
-
-
-    /*public void editar() {
-        System.out.println("--------------------------------------");
-        System.out.println("lista atual");
-        for (int i = 0; i < usuario.size(); i++) {
-            System.out.println("usuario: " + usuario.get(i) + " senha: " + senha.get(i) + " bairro: " + bairro.get(i) + " destino: " + destino.get(i) + " posicao: " + i);
-        }
-        System.out.println("");
-        System.out.print("digite a posicao: ");
-        int posicao = Integer.parseInt(scan.nextLine());
-        System.out.print("digite 1 - usuario; 2 - senha: ");
-        int escolha = Integer.parseInt(scan.nextLine());
-        if (escolha == 1) {
-            System.out.print("digite o novo usuario: ");
-            usuario.set(posicao, scan.nextLine());
-        } else {
-            System.out.print("digite a nova senha: ");
-            senha.set(posicao, scan.nextLine());
-        }
-        System.out.println("--------------------------------------");
-        System.out.println("nova lista de usuario: ");
-        for (int i = 0; i < usuario.size(); i++) {
-            System.out.println("usuario: " + usuario.get(i) + " senha: " + senha.get(i) + " posicao: " + i);
-        }
-        System.out.println("");
-        this.salvar();
-    }*/
-
-    /*public void remover() {
-        System.out.println("--------------------------------------");
-        System.out.println("lista atual");
-        for (int i = 0; i < usuario.size(); i++) {
-            System.out.println("usuario: " + usuario.get(i) + " senha: " + senha.get(i) + " posicao: " + i);
-        }
-        System.out.println("");
-        System.out.print("digite a posicao a ser removida: ");
-        int posicao = Integer.parseInt(scan.nextLine());
-        usuario.remove(posicao);
-        senha.remove(posicao);
-        System.out.println("--------------------------------------");
-        System.out.println("nova lista de usuario: ");
-        for (int i = 0; i < usuario.size(); i++) {
-            System.out.println("usuario: " + usuario.get(i) + " senha: " + senha.get(i) + " posicao: " + i);
-        }
-        System.out.println("");
-        this.salvar();
-    }*/
-
-
 
 
     public void salvar() {
         try {
             BufferedWriter salvar = new BufferedWriter(new FileWriter("lista.txt"));
             for (int i = 0; i < usuario.size(); i++) {
-                salvar.write(usuario.get(i) + "|" + senha.get(i) + "|" + bairro.get(i) + "|" + destino.get(i) + "|" + emails.get(i) + "|" + ids.get(i));
+                salvar.write(usuario.get(i) + "|" + senha.get(i) + "|" + bairro.get(i) + "|" + destino.get(i) + "|" + emails.get(i) + "|" + ids.get(i) + "|" + cursos.get(i));
                 salvar.newLine();
             }
             salvar.close();

@@ -21,6 +21,10 @@ public class UsuarioController {
             return false;
         }
     }
+
+    public String getMinhaSenha() {
+        return user.getMinhaSenha();
+    }
     public String getMeuNome() {
         return user.getMeuNome();
     }
@@ -29,6 +33,9 @@ public class UsuarioController {
     }
     public void setMeuNome(String novoNome) {
         user.setMeuNome(novoNome);
+    }
+    public void setMinhaSenha(String novaSenha) {
+        user.setMinhaSenha(novaSenha);
     }
     public String getmeuEmail() {
         return user.getMeuEmail();
