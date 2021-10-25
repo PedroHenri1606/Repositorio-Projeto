@@ -34,7 +34,7 @@ public class DaoCurso {
 
     public void visualizar() {
         for (int i = 0; i < nome.size(); i++) {
-            System.out.println(nome.get(i) + "   |   " + " Posição: " + i);
+            System.out.println("[" + nome.get(i) + "]" + " " + " Posição: [" + i + "]");
         }
     }
 

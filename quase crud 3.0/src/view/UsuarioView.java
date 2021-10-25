@@ -29,27 +29,21 @@ public class UsuarioView {
         this.espaco();
         Scanner scan = new Scanner(System.in);
         while (true) {
-            String nome;
-            String senha;
-            String email;
-            String bairro1;
-            String curso1;
-            String destino;
-            String id;
+            String nome, senha, email, bairro1, curso1, destino, id;
             this.espaco();
             System.out.println("==============================================");
             System.out.println("\n   [Realizando Cadastro de usuario]\n");
             System.out.println("==============================================");
-            System.out.print(" Nome do usuario: ");
+            System.out.print(" [Nome do usuario]: ");
             nome = scan.nextLine();
-            System.out.print(" Senha do usuario: ");
+            System.out.print(" [Senha do usuario]: ");
             senha = scan.nextLine();
-            System.out.print(" Digite o seu email: ");
+            System.out.print(" [Digite o seu email]: ");
             email = scan.nextLine();
             System.out.println("==============================================");
             bairro1 = this.escolhendoBairro();
             curso1 = this.escolhendoCurso();
-            System.out.print(" Destino do usuario: ");
+            System.out.print(" [Destino do usuario]: ");
             destino = scan.nextLine();
             id = idsuario.usuarioID();
             UsuarioModel al = new UsuarioModel(nome, senha, bairro1, destino, email, id, curso1);
@@ -84,7 +78,7 @@ public class UsuarioView {
                     break;
                 case 2:
                     System.out.println("==============================================");
-                    System.out.print("\n [Informe o bairro a partir da posição]: ");
+                    System.out.print("\n [bairro escolhido]: ");
                     bairro1 = bairroView.escolherBairro(Integer.parseInt(scan.nextLine()));
                     System.out.println("\n\n");
                     return bairro1;
@@ -113,7 +107,7 @@ public class UsuarioView {
                     break;
                 case 2:
                     System.out.println("==============================================\n");
-                    System.out.print("[Informe o curso a partir da posição]: ");
+                    System.out.print("[curso escolhido]: ");
                     curso = cursoView.escolherCurso(Integer.parseInt(scan.nextLine()));
                     System.out.println("\n\n");
                     return curso;
@@ -124,8 +118,7 @@ public class UsuarioView {
     public void realizarlogin() {
         this.espaco();
         Scanner scan = new Scanner(System.in);
-        String tmp1;
-        String tmp2;
+        String tmp1, tmp2;
         System.out.println("============================================");
         System.out.println("           [Realizando Login]");
         System.out.print(" [Nome]: ");
@@ -145,15 +138,14 @@ public class UsuarioView {
 
     public void menu() {
         Scanner scan = new Scanner(System.in);
-
         while (true) {
             System.out.println("==============================================");
             System.out.println(" Ola: " + cal.getMeuNome() + "]\n");
             System.out.println(" [1] - Visualizar colegas de carona ");
             System.out.println(" [2] - Criar corrida");
             System.out.println(" [3] - Visualizar minhas corridas");
-            System.out.println(" [4] configuracoes");
-            System.out.println(" [5] sair");
+            System.out.println(" [4] - configuracoes");
+            System.out.println(" [5] - sair");
             int escolha = Integer.parseInt(scan.nextLine());
             System.out.println("==============================================");
 
@@ -177,7 +169,6 @@ public class UsuarioView {
     }
 
     public void configuracoes() {
-        //as opcoes de modificacao
         Scanner scanner = new Scanner(System.in);
         while (true) {
             System.out.println("[modificar dados]");

@@ -1,3 +1,4 @@
 eduardo|edu|vila c |uniamerica|eduardo@gmail.com|0|Engenharia de Software
 pedro|123|Morumbi 2|uniamerica|pedro@gmail.com|1|Engenharia de Software
 eduardo|jorge|centro|uniamercia|jorge@|2|Engenharia
+marilsa|123|vila c |uniamerica|marilsa|3|Engenharia Civil
