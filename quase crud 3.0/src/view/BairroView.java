@@ -27,5 +27,7 @@ public class BairroView {
     public void carregarDados() {
         x.carregar();
     }
-
+    public String escolherBairro(int escolha) {
+        return x.escolherBairro(escolha);
+    }
 }

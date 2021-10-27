@@ -6,14 +6,24 @@ public class UsuarioModel {
     String id;
     String destino;
     String email;
+    String curso;
 
-    public UsuarioModel(String nome, String senha, String bairro, String destino, String email, String id) {
+    public UsuarioModel(String nome, String senha, String bairro, String destino, String email, String id, String curso) {
         this.nome = nome;
         this.senha = senha;
         this.bairro = bairro;
         this.id = id;
         this.destino = destino;
         this.email = email;
+        this.curso = curso;
+    }
+
+    public String getCurso() {
+        return curso;
+    }
+
+    public void setCurso(String curso) {
+        this.curso = curso;
     }
 
     public String getNome() {

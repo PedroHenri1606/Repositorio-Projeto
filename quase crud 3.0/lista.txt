@@ -1,5 +1,4 @@
-eduardo|123|vila c |uniamerica|email|5
-jorge|123|centro|unioeste|jorge@gmail.com|6
-marilsa|marilsa123|vila c |uniamerica|marilsa@gmail.com|7
-marcos alvez|marcao|vila c |udc|marcos@gmail.com|8
-Pedro Henrique|pedro123|vila c |Faculdade|pedrohenri1606@gmail.com|9
+eduardo|edu|vila c |uniamerica|eduardo@gmail.com|0|Engenharia de Software
+pedro|123|Morumbi 2|uniamerica|pedro@gmail.com|1|Engenharia de Software
+eduardo|jorge|centro|uniamercia|jorge@|2|Engenharia
+marilsa|123|vila c |uniamerica|marilsa|3|Engenharia Civil
