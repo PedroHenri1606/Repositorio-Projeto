@@ -21,19 +21,8 @@ public class CursoController {
             System.out.println("\n==============================================");
         }
     }
-
-<<<<<<< HEAD
     public void visualizar() {a.visualizarCurso();}
-    public String escolherCursoText(int escolha) {return a.escolha(escolha);}
-=======
-    public void visualizar() {
-        a.visualizar();
-    }
-
-    public String escolherCurso(int escolha) {
-        return a.escolha(escolha);
-    }
->>>>>>> 26b594ed504e5880dfafb9dac68191890365a6d1
+    public String escolherCurso(int escolha) {return a.escolha(escolha);}
 
 
     public boolean verificar(String nome) {

@@ -41,40 +41,10 @@ public class UsuarioView {
             System.out.print(" [Digite o seu email]: ");
             email = scan.nextLine();
             System.out.println("==============================================");
-<<<<<<< HEAD
-            int escolha = 0;
-            while (escolha != 2) {
-                System.out.println("");
-                escolha = this.escolher(escolha);
-                if (escolha == 1) {
-                    bairroView.cadastrarBairro();
-                } else if (escolha == 2) {
-                    System.out.println("==============================================");
-                    bairro.visualizar();
-                    System.out.print("\n [Informe o bairro a partir da posição: ");
-                    bairro1 = bairro.escolherBairro(Integer.parseInt(scan.nextLine()));
-                    System.out.println("==============================================");
-                }
-                System.out.println("\n");
-                 if (escolha == 3){
-                    cursoView.cadastrarCurso();
-                } else if (escolha == 4){
-                    System.out.println("==============================================");
-                    bairro.visualizar();
-                    System.out.print("\n [Informe o curso a partir da posição: ");
-                    curso1 = curso.escolherCursoText(Integer.parseInt(scan.nextLine()));
-                    System.out.println("==============================================");
-                }
-            }
-
-            System.out.print(" [Destino do usuario: "); destino = scan.nextLine();
-
-=======
             bairro1 = this.escolhendoBairro();
             curso1 = this.escolhendoCurso();
             System.out.print(" [Destino do usuario]: ");
             destino = scan.nextLine();
->>>>>>> 26b594ed504e5880dfafb9dac68191890365a6d1
             id = idsuario.usuarioID();
             UsuarioModel al = new UsuarioModel(nome, senha, bairro1, destino, email, id, curso1);
             if (cal.verificar(email)) {
@@ -151,15 +121,9 @@ public class UsuarioView {
         String tmp1, tmp2;
         System.out.println("============================================");
         System.out.println("           [Realizando Login]");
-<<<<<<< HEAD
-        System.out.print  (" Nome: ");
-        tmp1 = scan.nextLine();
-        System.out.print  (" Senha: ");
-=======
         System.out.print(" [Email]: ");
         tmp1 = scan.nextLine();
         System.out.print(" [Senha]: ");
->>>>>>> 26b594ed504e5880dfafb9dac68191890365a6d1
         tmp2 = scan.nextLine();
         System.out.println("==============================================");
         if (cal.realizarLogin(tmp1, tmp2)) {
@@ -176,21 +140,12 @@ public class UsuarioView {
         Scanner scan = new Scanner(System.in);
         while (true) {
             System.out.println("==============================================");
-<<<<<<< HEAD
-            System.out.println("  Ola: " + cal.getMeuNome() +"\n");
-            System.out.println(" [1] - Visualizar colegas de carona ");
-            System.out.println(" [2] - Criar corrida");
-            System.out.println(" [3] - Visualizar minhas corridas");
-            System.out.println(" [4] - Sair");
-=======
             System.out.println(" Ola: " + cal.getMeuNome() + "]\n");
             System.out.println(" [1] - Visualizar colegas de carona ");
             System.out.println(" [2] - Criar corrida");
             System.out.println(" [3] - Visualizar minhas corridas");
             System.out.println(" [4] - configuracoes");
             System.out.println(" [5] - sair");
-            int escolha = Integer.parseInt(scan.nextLine());
->>>>>>> 26b594ed504e5880dfafb9dac68191890365a6d1
             System.out.println("==============================================");
             int escolha = Integer.parseInt(scan.nextLine());
 

@@ -21,17 +21,11 @@ public class DaoUsuario {
 
     public boolean login(String tmp1, String tmp2) {
         for (int i = 0; i < usuario.size(); i++) {
-<<<<<<< HEAD
-            if (tmp1.equals(usuario.get(i)) && tmp2.equals(senha.get(i))) {
+            if (tmp1.equals(emails.get(i)) && tmp2.equals(senha.get(i))) {
                 System.out.println("\n==============================================");
                 System.out.println("        Login realizado com sucesso           ");
                 System.out.println("==============================================\n");
-                    usuarioAtual = i;
-=======
-            if (tmp1.equals(emails.get(i)) && tmp2.equals(senha.get(i))) {
-                System.out.println("login realizado com sucesso");
                 usuarioAtual = i;
->>>>>>> 26b594ed504e5880dfafb9dac68191890365a6d1
                 return true;
             }
         }
@@ -40,20 +34,13 @@ public class DaoUsuario {
     }
 
     public void visualizarUsuariosProximos() {
-<<<<<<< HEAD
-        System.out.println("==============================================");
-        System.out.println("     Usuarios que moram perto de você         ");
-        System.out.println("==============================================");
-
-        for (int i = 0; i < usuario.size(); i++) {
-           if(bairro.get(usuarioAtual).equals(bairro.get(i)) && usuario.get(usuarioAtual) != usuario.get(i)) {
-               System.out.println("| Usuarios | " + usuario.get(i));
-=======
         System.out.println("\n\n");
+               System.out.println("==============================================");
+               System.out.println("     Usuarios que moram perto de você         ");
+               System.out.println("==============================================");
         for (int i = 0; i < usuario.size(); i++) {
            if(bairro.get(usuarioAtual).equals(bairro.get(i)) && usuario.get(usuarioAtual) != usuario.get(i)) {
                System.out.println("[usuarios: " + usuario.get(i) + "]");
->>>>>>> 26b594ed504e5880dfafb9dac68191890365a6d1
            }
         }
 
@@ -118,21 +105,14 @@ public class DaoUsuario {
 
 
    public boolean verificarEmail(String email) {
-<<<<<<< HEAD
-        for (int i = 0; i<usuario.size();i++) {
-            if(email.equals(emails.get(i))) {
-                System.out.println("==============================================");
-                System.out.println("     Email invalidou ou já em uso!");
-                System.out.println("==============================================\n");
-                return false;
-=======
         if (usuario.size() > 0) {
             for (int i = 0; i<usuario.size();i++) {
                 if(email.equals(emails.get(i))) {
-                    System.out.println("invalido!");
+                    System.out.println("==============================================");
+                    System.out.println("     Email invalidou ou já em uso!");
+                    System.out.println("==============================================\n");
                     return false;
                 }
->>>>>>> 26b594ed504e5880dfafb9dac68191890365a6d1
             }
         } else {
             return true;
