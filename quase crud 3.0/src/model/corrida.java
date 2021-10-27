@@ -3,15 +3,25 @@ package model;
 public class corrida {
     private String idUser;
     private String nome;
+    private String preco;
     private String id;
 
     public corrida() {
     }
 
-    public corrida(String nome, String id, String idUser) {
+    public corrida(String nome, String id, String idUser, String preco) {
         this.nome = nome;
         this.id = id;
         this.idUser = idUser;
+        this.preco = preco;
+    }
+
+    public String getPreco() {
+        return preco;
+    }
+
+    public void setPreco(String preco) {
+        this.preco = preco;
     }
 
     public String getIdUser() {

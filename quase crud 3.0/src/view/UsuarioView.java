@@ -58,7 +58,7 @@ public class UsuarioView {
 
     public String escolhendoBairro() {
         Scanner scan = new Scanner(System.in);
-        String bairro1 = "";
+        String bairro1;
         System.out.println("\n\n\n");
         System.out.println("********[processo de escolha de bairro]**********");
         while (true) {
@@ -73,22 +73,21 @@ public class UsuarioView {
             System.out.print(" [escolha uma duas opcoes acima!!!]: ");
             int escolha = Integer.parseInt(scan.nextLine());
             switch (escolha) {
-                case 1:
-                    bairroView.cadastrarBairro();
-                    break;
-                case 2:
+                case 1 -> bairroView.cadastrarBairro();
+                case 2 -> {
                     System.out.println("==============================================");
                     System.out.print("\n [bairro escolhido]: ");
                     bairro1 = bairroView.escolherBairro(Integer.parseInt(scan.nextLine()));
                     System.out.println("\n\n");
                     return bairro1;
+                }
             }
         }
     }
 
     public String escolhendoCurso() {
         Scanner scan = new Scanner(System.in);
-        String curso = "";
+        String curso;
         while (true) {
             System.out.println("********[processo de escolha de curso]**********");
             System.out.println("==============================================");
@@ -102,15 +101,14 @@ public class UsuarioView {
             System.out.print(" [escolha uma duas opcoes acima!!!]: ");
             int escolha = Integer.parseInt(scan.nextLine());
             switch (escolha) {
-                case 1:
-                    bairroView.cadastrarBairro();
-                    break;
-                case 2:
+                case 1 -> bairroView.cadastrarBairro();
+                case 2 -> {
                     System.out.println("==============================================\n");
                     System.out.print("[curso escolhido]: ");
                     curso = cursoView.escolherCurso(Integer.parseInt(scan.nextLine()));
                     System.out.println("\n\n");
                     return curso;
+                }
             }
         }
     }
@@ -128,7 +126,6 @@ public class UsuarioView {
         System.out.println("==============================================");
         if (cal.realizarLogin(tmp1, tmp2)) {
             this.menu();
-            return;
         } else {
             System.out.println("==============================================");
             System.out.println("      [Usuario ou senha incorreta!!:(]        ");
@@ -140,7 +137,7 @@ public class UsuarioView {
         Scanner scan = new Scanner(System.in);
         while (true) {
             System.out.println("==============================================");
-            System.out.println(" Ola: " + cal.getMeuNome() + "]\n");
+            System.out.println(" Ola: " + cal.getMeuNome() + "\n");
             System.out.println(" [1] - Visualizar colegas de carona ");
             System.out.println(" [2] - Criar corrida");
             System.out.println(" [3] - Visualizar minhas corridas");
@@ -221,7 +218,7 @@ public class UsuarioView {
 
     public void espaco() {
         for (int i = 0; i < 15; i++) {
-            System.out.println("");
+            System.out.println();
         }
     }
 

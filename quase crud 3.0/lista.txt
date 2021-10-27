@@ -1,1 +1,2 @@
 eduardo de souza magalhaes|123|vila c |uniamerica|eduardo@|0|Engenharia de Software
+pedro|123|vila c |uniamerica|pedro@|1|Engenharia de Software
