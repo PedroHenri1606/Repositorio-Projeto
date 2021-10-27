@@ -17,7 +17,9 @@ public class IdBairroDAO {
             }
             carregar.close();
         } catch (Exception e) {
-            System.out.println("arquivo ainda nao existe ou nao foi encontrado");
+            System.out.println("==============================================");
+            System.out.println("   Arquivo não existe ou não foi encontrado   ");
+            System.out.println("==============================================");
         }
         this.salvar(Integer.toString(aux));
         return aux;

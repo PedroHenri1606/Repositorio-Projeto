@@ -28,7 +28,9 @@ public class DaoCorrida {
            }
            carregar.close();
        } catch (Exception e){
-           System.out.println("Erro ao abrir o arquivo!");
+           System.out.println("==============================================");
+           System.out.println("         Erro ao abrir o arquivo!             ");
+           System.out.println("==============================================");
        }
    }
 
@@ -47,13 +49,17 @@ public class DaoCorrida {
 
    public void visualizar(String idUser){
        if(nomes.size() > 0 ) {
+           System.out.println("==============================================");
            for (int i = 0; i < nomes.size(); i++){
                if (idsUser.get(i).equals(idUser)) {
-                   System.out.println("suas corridas: " + nomes.get(i));
+                   System.out.print  ("   Suas corridas: " + "|" + nomes.get(i)+ "| \n");
                }
            }
+           System.out.println("==============================================");
        } else {
-           System.out.println("ainda nao existe corrida alguma");
+           System.out.println("==============================================");
+           System.out.println("     Ainda nao existe corrida alguma!         ");
+           System.out.println("==============================================");
        }
 
    }

@@ -21,8 +21,10 @@ public class DaoUsuario {
     public boolean login(String tmp1, String tmp2) {
         for (int i = 0; i < usuario.size(); i++) {
             if (tmp1.equals(usuario.get(i)) && tmp2.equals(senha.get(i))) {
-                System.out.println("login realizado com sucesso");
-                usuarioAtual = i;
+                System.out.println("\n==============================================");
+                System.out.println("        Login realizado com sucesso           ");
+                System.out.println("==============================================\n");
+                    usuarioAtual = i;
                 return true;
             }
         }
@@ -31,15 +33,13 @@ public class DaoUsuario {
     }
 
     public void visualizarUsuariosProximos() {
-        System.out.println("");
-        System.out.println("");
-        System.out.println("usuarios que moram perto de vc: ");
-        System.out.println(" ");
-        System.out.println("meu nome: " + usuario.get(usuarioAtual));
+        System.out.println("==============================================");
+        System.out.println("     Usuarios que moram perto de você         ");
+        System.out.println("==============================================");
 
         for (int i = 0; i < usuario.size(); i++) {
            if(bairro.get(usuarioAtual).equals(bairro.get(i)) && usuario.get(usuarioAtual) != usuario.get(i)) {
-               System.out.println("usuarios: " + usuario.get(i));
+               System.out.println("| Usuarios | " + usuario.get(i));
            }
         }
 
@@ -79,7 +79,9 @@ public class DaoUsuario {
             }
             carregar.close();
         } catch (Exception e) {
-            System.out.println("arquivo ainda nao existe ou nao foi encontrado");
+            System.out.println("==============================================");
+            System.out.println(" Arquivo não existe - não foi encontrado ");
+            System.out.println("==============================================\n");
         }
     }
 
@@ -97,7 +99,9 @@ public class DaoUsuario {
    public boolean verificarEmail(String email) {
         for (int i = 0; i<usuario.size();i++) {
             if(email.equals(emails.get(i))) {
-                System.out.println("invalido!");
+                System.out.println("==============================================");
+                System.out.println("     Email invalidou ou já em uso!");
+                System.out.println("==============================================\n");
                 return false;
             }
         }
@@ -166,9 +170,9 @@ public class DaoUsuario {
                 salvar.newLine();
             }
             salvar.close();
-            System.out.println("");
-            System.out.println("dados salvos!!!");
-            System.out.println("");
+            System.out.println("\n==============================================");
+            System.out.println("         Dados salvos com sucesso!           \n");
+            System.out.println("==============================================");
         } catch (IOException e) {
             e.printStackTrace();
         }

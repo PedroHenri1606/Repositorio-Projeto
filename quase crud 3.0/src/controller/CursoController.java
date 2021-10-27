@@ -1,4 +1,4 @@
-package controller;
+    package controller;
 
 import DAO.DaoCurso;
 import model.Curso;
@@ -13,12 +13,14 @@ public class CursoController {
         if (this.verificar(aux.getNome())) {
             a.adicionar(aux);
         } else {
-            System.out.println("Curso invalido ou já existente");
+            System.out.println("\n==============================================");
+            System.out.println("         Curso invalido ou ja existe");
+            System.out.println("\n==============================================");
         }
     }
 
-    public void visualizar() {a.visualizar();}
-    public String escolherCurso(int escolha) {return a.escolha(escolha);}
+    public void visualizar() {a.visualizarCurso();}
+    public String escolherCursoText(int escolha) {return a.escolha(escolha);}
 
 
     public boolean verificar(String nome) {

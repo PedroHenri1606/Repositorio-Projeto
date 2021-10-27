@@ -5,10 +5,10 @@ import java.util.*;
 import java.io.*;
 
 public class DaoCurso {
-    static List<String> nome = new ArrayList<String>();
+    static List<String> nomes = new ArrayList<String>();
     static List<String> ids = new ArrayList<String>();
 
-    public String escolha(int opcao){return nome.get(opcao);}
+    public String escolha(int opcao){return nomes.get(opcao);}
 
     public void carregar(){
         try{
@@ -19,27 +19,29 @@ public class DaoCurso {
                     break;
                 } else {
                     StringTokenizer separador = new StringTokenizer(linha,"|");
-                    nome.add(separador.nextToken());
+                    nomes.add(separador.nextToken());
                     ids.add(separador.nextToken());
                 }
             }
             carregar.close();
         } catch (Exception e){
-            System.out.println("Arquivo ainda não existe ou não encontrado");
+            System.out.println("==============================================");
+            System.out.println("     Arquivo não existe ou não encontrado     ");
+            System.out.println("==============================================");
         }
     }
 
-    public void visualizar(){
-        for (int i = 0; i < nome.size(); i++){
-            System.out.println(nome.get(i) +"   |   " + " Posição: " + i);
+    public void visualizarCurso(){
+        for (int i = 0; i < nomes.size(); i++){
+            System.out.println(nomes.get(i) +"   |   " + " Posição: " + i);
         }
     }
 
     public void salvar(){
         try{
             BufferedWriter salvar = new BufferedWriter(new FileWriter("cursos.txt"));
-            for (int i= 0 ;i < nome.size(); i++){
-                salvar.write(nome.get(i) + "|" + ids.get(i));
+            for (int i= 0 ;i < nomes.size(); i++){
+                salvar.write(nomes.get(i) + "|" + ids.get(i));
                 salvar.newLine();
             }
             salvar.close();
@@ -49,14 +51,14 @@ public class DaoCurso {
     }
 
     public void adicionar (Curso aux){
-        nome.add(aux.getNome());
+        nomes.add(aux.getNome());
         ids.add(aux.getId());
         this.salvar();
     }
 
-    public boolean validar(String nome1){
-        for(int i = 0; i < nome.size(); i++){
-            if (nome.equals(nome.get(i))){
+    public boolean validar(String nome){
+        for(int i = 0; i < nomes.size(); i++){
+            if (nome.equals(nomes.get(i))){
                 return false;
             }
         }

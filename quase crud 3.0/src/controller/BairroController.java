@@ -14,7 +14,7 @@ public class BairroController {
             b.adicionar(aux);
         } else {
             System.out.println("\n==============================================");
-            System.out.println("       Bairro invalido - ja existe");
+            System.out.println("       Bairro invalido ou ja existe");
             System.out.println("==============================================\n");
         }
     }

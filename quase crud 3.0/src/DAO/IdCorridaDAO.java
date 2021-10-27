@@ -17,7 +17,9 @@ public class IdCorridaDAO {
             }
             carregar.close();
         } catch (Exception e){
-            System.out.println("Arquivo ainda não existe ou não foi encontrado!");
+            System.out.println("==============================================");
+            System.out.println("   Arquivo não existe ou não foi encontrado   ");
+            System.out.println("==============================================");
         }
         this.salvar(Integer.toString(aux));
         return aux;

@@ -60,12 +60,11 @@ public class UsuarioView {
                 System.out.println("\n");
                  if (escolha == 3){
                     cursoView.cadastrarCurso();
-                }
-                 if (escolha == 4){
+                } else if (escolha == 4){
                     System.out.println("==============================================");
                     bairro.visualizar();
                     System.out.print("\n [Informe o curso a partir da posição: ");
-                    curso1 = curso.escolherCurso(Integer.parseInt(scan.nextLine()));
+                    curso1 = curso.escolherCursoText(Integer.parseInt(scan.nextLine()));
                     System.out.println("==============================================");
                 }
             }
@@ -104,9 +103,9 @@ public class UsuarioView {
         String tmp2;
         System.out.println("============================================");
         System.out.println("           [Realizando Login]");
-        System.out.print  (" [Nome: ");
+        System.out.print  (" Nome: ");
         tmp1 = scan.nextLine();
-        System.out.print  (" [Senha: ");
+        System.out.print  (" Senha: ");
         tmp2 = scan.nextLine();
         System.out.println("==============================================");
         if (cal.realizarLogin(tmp1, tmp2)) {
@@ -124,13 +123,13 @@ public class UsuarioView {
 
         while (true) {
             System.out.println("==============================================");
-            System.out.println("  Ola: " + cal.getMeuNome() + "]\n");
+            System.out.println("  Ola: " + cal.getMeuNome() +"\n");
             System.out.println(" [1] - Visualizar colegas de carona ");
             System.out.println(" [2] - Criar corrida");
             System.out.println(" [3] - Visualizar minhas corridas");
             System.out.println(" [4] - Sair");
-            int escolha = Integer.parseInt(scan.nextLine());
             System.out.println("==============================================");
+            int escolha = Integer.parseInt(scan.nextLine());
 
             switch (escolha) {
                 case 1:

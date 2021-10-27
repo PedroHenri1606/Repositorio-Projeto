@@ -13,8 +13,10 @@ public class CorridaView {
 
     public void cadastrarCorrida(String idUser) {
         Scanner scan = new Scanner(System.in);
-        System.out.println("horario da corrida: ");
+        System.out.println("==============================================");
+        System.out.print  (" Horario da corrida: ");
         String tmp1 = scan.nextLine();
+        System.out.println("==============================================\n");
         String tmp2 = id.determinarID();
         corrida aux = new corrida(tmp1, tmp2, idUser);
         x.cadastrar(aux);

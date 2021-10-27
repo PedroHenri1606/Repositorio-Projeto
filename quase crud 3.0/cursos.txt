@@ -1,3 +1,4 @@
 Engenharia de Software|0
 Engenharia Civil|2
 Engenharia|3
+Pecuaria|4

@@ -13,7 +13,9 @@ public class CursoView {
 
     public void cadastrarCurso() {
         Scanner scan = new Scanner(System.in);
-        System.out.print("[nome do curso: ");
+        System.out.println("==============================================");
+        System.out.print  (" Nome do curso: ");
+        System.out.println("==============================================\n");
         String tmp1 = scan.nextLine();
         String tmp2 = id.determinarID();
         Curso aux = new Curso(tmp1,tmp2);

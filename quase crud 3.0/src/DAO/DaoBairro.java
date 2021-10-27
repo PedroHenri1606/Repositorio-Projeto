@@ -1,4 +1,4 @@
-package DAO;
+    package DAO;
 
 import model.Bairro;
 import java.io.*;
@@ -27,7 +27,9 @@ public class DaoBairro {
             }
             carregar.close();
         } catch (Exception e) {
-            System.out.println("arquivo ainda nao existe ou nao foi encontrado");
+            System.out.println("==============================================");
+            System.out.println("  Arquivo não existe ou não foi encontrado    ");
+            System.out.println("==============================================");
         }
     }
 

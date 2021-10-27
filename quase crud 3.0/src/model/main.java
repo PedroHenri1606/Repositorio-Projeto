@@ -23,7 +23,7 @@ public class main {
 
         while(true) {
             Scanner scan = new Scanner(System.in);
-            System.out.println("==============================================");
+                System.out.println("==============================================");
             System.out.println("          [Escolha uma opção] \n");
             System.out.println("     [1]- Realizar Login ");
             System.out.println("     [2]- Cadastrar novo Usuario\n");
