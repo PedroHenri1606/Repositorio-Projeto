@@ -12,8 +12,10 @@ public class CursoView {
     CursoController x = new CursoController();
 
     public void cadastrarCurso() {
+        System.out.println("==============================================");
         Scanner scan = new Scanner(System.in);
-        System.out.print("[nome do curso: ");
+        System.out.print(" nome do curso: ");
+        System.out.println("==============================================");
         String tmp1 = scan.nextLine();
         String tmp2 = id.determinarID();
         Curso aux = new Curso(tmp1, tmp2);

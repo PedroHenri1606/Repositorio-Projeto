@@ -140,7 +140,7 @@ public class UsuarioView {
         Scanner scan = new Scanner(System.in);
         while (true) {
             System.out.println("==============================================");
-            System.out.println(" Ola: " + cal.getMeuNome() + "]\n");
+            System.out.println(" Ola: " + cal.getMeuNome() + "\n");
             System.out.println(" [1] - Visualizar colegas de carona ");
             System.out.println(" [2] - Criar corrida");
             System.out.println(" [3] - Visualizar minhas corridas");

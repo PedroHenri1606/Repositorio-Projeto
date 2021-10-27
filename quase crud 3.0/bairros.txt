@@ -4,3 +4,4 @@ centro|2
 nova horizonte|3
 Morumbi 3|6
 Morumbi 2|7
+Sao Roque|0

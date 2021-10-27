@@ -1,4 +1,6 @@
-eduardo|edu|vila c |uniamerica|eduardo@gmail.com|0|Engenharia de Software
-pedro|123|Morumbi 2|uniamerica|pedro@gmail.com|1|Engenharia de Software
-eduardo|jorge|centro|uniamercia|jorge@|2|Engenharia
-marilsa|123|vila c |uniamerica|marilsa|3|Engenharia Civil
+pedro costa|edu|vila c |uniamerica|eduardo@gmail.com|0|Engenharia de Software
+pedro|pedro123|Morumbi 2|uniamerica|pedro@gmail.com|1|Engenharia de Software
+jessica|123|vila c |uniamerica|marilsa|3|Engenharia Civil
+fabiano|testesenha|vila c |testedestino|teste@gmail.com|5|Engenharia de Software
+fidelis|123|centro|uniamerica|111|6|Engenharia de Software
+vithor|vithor123|Sao Roque|uniamerica|vithor@gmail.com|7|Engenharia de Software

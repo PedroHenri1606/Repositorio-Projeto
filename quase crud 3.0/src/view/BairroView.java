@@ -12,8 +12,11 @@ public class BairroView {
     BairroController x = new BairroController();
 
     public void cadastrarBairro() {
+
         Scanner scan = new Scanner(System.  in);
+        System.out.println("==============================================");
         System.out.print("nome do bairro: ");
+        System.out.println("==============================================");
         String tmp1 = scan.nextLine();
         String tmp2 = id.determinarID();
         Bairro aux = new Bairro(tmp1,tmp2);
