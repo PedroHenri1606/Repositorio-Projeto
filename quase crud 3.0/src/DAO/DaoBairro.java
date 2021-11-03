@@ -1,15 +1,16 @@
-    package DAO;
+package DAO;
 
 import model.Bairro;
+
 import java.io.*;
 import java.util.*;
 
 public class DaoBairro {
-    static List<String> nomes = new ArrayList<String>();
-    static List<String> ids = new ArrayList<String>();
+    static List<Bairro> bairros = new ArrayList<>();
+
 
     public String escolha(int opcao) {
-        return nomes.get(opcao);
+        return bairros.get(opcao).getNome();
     }
 
     public void carregar() {
@@ -20,9 +21,11 @@ public class DaoBairro {
                 if (linha == null) {
                     break;
                 } else {
-                    StringTokenizer sepador = new StringTokenizer(linha, "|");
-                    nomes.add(sepador.nextToken());
-                    ids.add(sepador.nextToken());
+                    StringTokenizer stringTokenizer = new StringTokenizer(linha, "|");
+                    Bairro bairro = new Bairro();
+                    bairro.setNome(stringTokenizer.nextToken());
+                    bairro.setId(stringTokenizer.nextToken());
+                    bairros.add(bairro);
                 }
             }
             carregar.close();
@@ -33,16 +36,15 @@ public class DaoBairro {
         }
     }
 
-    public void visualizar() {
-        for (int i = 0; i < nomes.size(); i++) {
-            System.out.println("[" + nomes.get(i) +"]" + " " + " Posicao: [" + i + "]");
-        }
+    public List<Bairro> visualizar() {
+        return bairros;
     }
+
     public void salvar() {
         try {
             BufferedWriter salvar = new BufferedWriter(new FileWriter("bairros.txt"));
-            for (int i = 0; i < nomes.size(); i++) {
-                salvar.write(nomes.get(i) + "|" + ids.get(i));
+            for (Bairro bairro : bairros) {
+                salvar.write(bairro.getNome() + "|" + bairro.getId());
                 salvar.newLine();
             }
             salvar.close();
@@ -52,13 +54,13 @@ public class DaoBairro {
     }
 
     public void adicionar(Bairro aux) {
-        nomes.add(aux.getNome());
-        ids.add(aux.getId());
+        bairros.add(aux);
         this.salvar();
     }
+
     public boolean validar(String nome) {
-        for (int i = 0; i < nomes.size(); i++) {
-            if (nome.equals(nomes.get(i))) {
+        for (Bairro bairro : bairros) {
+            if (nome.equals(bairro.getNome())) {
                 return false;
             }
         }

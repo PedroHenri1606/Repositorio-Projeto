@@ -1,9 +1,10 @@
-    package controller;
+package controller;
 
 import DAO.DaoCurso;
 import model.Curso;
 
 import java.util.List;
+
 
 public class CursoController {
     DaoCurso a = new DaoCurso();
@@ -21,15 +22,17 @@ public class CursoController {
             System.out.println("\n==============================================");
         }
     }
-    public void visualizar() {a.visualizarCurso();}
-    public String escolherCurso(int escolha) {return a.escolha(escolha);}
+
+    public List<Curso> visualizar() {
+        return a.visualizarCurso();
+    }
+
+    public String escolherCurso(int escolha) {
+        return a.escolha(escolha);
+    }
 
 
     public boolean verificar(String nome) {
-        if (a.validar(nome)) {
-            return true;
-        } else {
-            return false;
-        }
+        return a.validar(nome);
     }
 }

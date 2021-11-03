@@ -10,6 +10,10 @@ public class Bairro {
         this.id = id;
     }
 
+    public Bairro() {
+
+    }
+
     public String getNome() {
         return nome;
     }

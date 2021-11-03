@@ -3,19 +3,25 @@ package controller;
 import DAO.DaoUsuario;
 import model.UsuarioModel;
 
+import java.util.List;
+
 public class UsuarioController {
     DaoUsuario user = new DaoUsuario();
+
     public void carregar() {
         user.carregar();
     }
+
     public void realizarCadastro(UsuarioModel al) {
         user.adicionar(al);
     }
+
     public boolean realizarLogin(String tmp1, String tmp2) {
         return user.login(tmp1, tmp2);
     }
+
     public boolean verificar(String email) {
-        if(user.verificarEmail(email)) {
+        if (user.verificarEmail(email)) {
             return true;
         } else {
             return false;
@@ -25,22 +31,28 @@ public class UsuarioController {
     public String getMinhaSenha() {
         return user.getMinhaSenha();
     }
+
     public String getMeuNome() {
         return user.getMeuNome();
     }
+
     public String getMeuID() {
         return user.getMeuID();
     }
+
     public void setMeuNome(String novoNome) {
         user.setMeuNome(novoNome);
     }
+
     public void setMinhaSenha(String novaSenha) {
         user.setMinhaSenha(novaSenha);
     }
+
     public String getmeuEmail() {
         return user.getMeuEmail();
     }
-    public void visualizarUsuarios() {
-        user.visualizarUsuariosProximos();
+
+    public List<UsuarioModel> visualizarUsuarios() {
+        return user.visualizarUsuariosProximos();
     }
 }

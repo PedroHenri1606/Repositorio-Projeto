@@ -18,6 +18,9 @@ public class UsuarioModel {
         this.curso = curso;
     }
 
+    public UsuarioModel() {
+    }
+
     public String getCurso() {
         return curso;
     }

@@ -1,27 +1,27 @@
 package controller;
 
 import DAO.DaoCorrida;
-import model.corrida;
+import model.Corrida;
 
 import java.util.List;
 
 public class CorridaController {
-    DaoCorrida c = new DaoCorrida();
+    DaoCorrida daoCorrida = new DaoCorrida();
 
     public void carregar() {
-        c.carregar();
+        daoCorrida.carregar();
     }
 
-    public void cadastrar(corrida aux){
-        c.adicionar(aux);
+    public void cadastrar(Corrida aux) {
+        daoCorrida.adicionar(aux);
     }
 
-    public List<String> visualizar(String idUser){
-       return c.visualizar(idUser);
+    public List<Corrida> visualizar(String idUser) {
+        return daoCorrida.visualizar(idUser);
     }
 
-    public String escolherCurso(int escolha){
-        return c.escolha(escolha);
+    public void determinarCorridaAtual(String idEscolhido) {
+        daoCorrida.determinarCorridaAtual(idEscolhido);
     }
 
 }

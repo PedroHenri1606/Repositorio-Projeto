@@ -6,10 +6,12 @@ import java.util.*;
 import java.io.*;
 
 public class DaoCurso {
-    static List<String> nomes = new ArrayList<String>();
-    static List<String> ids = new ArrayList<String>();
 
-    public String escolha(int opcao){return nomes.get(opcao);}
+    static List<Curso> cursos = new ArrayList<>();
+
+    public String escolha(int opcao) {
+        return cursos.get(opcao).getNome();
+    }
 
 
     public void carregar() {
@@ -20,10 +22,11 @@ public class DaoCurso {
                 if (linha == null) {
                     break;
                 } else {
-                    StringTokenizer separador = new StringTokenizer(linha,"|");
-                    nomes.add(separador.nextToken());
-
-                    ids.add(separador.nextToken());
+                    StringTokenizer separador = new StringTokenizer(linha, "|");
+                    Curso curso = new Curso();
+                    curso.setNome(separador.nextToken());
+                    curso.setId(separador.nextToken());
+                    cursos.add(curso);
                 }
             }
             carregar.close();
@@ -34,17 +37,15 @@ public class DaoCurso {
         }
     }
 
-    public void visualizarCurso() {
-        for (int i = 0; i < nomes.size(); i++) {
-            System.out.println("[" + nomes.get(i) + "]" + " " + " Posição: [" + i + "]");
-        }
+    public List<Curso> visualizarCurso() {
+        return cursos;
     }
 
     public void salvar() {
         try {
             BufferedWriter salvar = new BufferedWriter(new FileWriter("cursos.txt"));
-            for (int i= 0 ;i < nomes.size(); i++){
-                salvar.write(nomes.get(i) + "|" + ids.get(i));
+            for (Curso curso : cursos) {
+                salvar.write(curso.getNome() + "|" + curso.getId());
                 salvar.newLine();
             }
             salvar.close();
@@ -54,14 +55,14 @@ public class DaoCurso {
     }
 
 
-    public void adicionar (Curso aux){
-        nomes.add(aux.getNome());
-        ids.add(aux.getId());
+    public void adicionar(Curso aux) {
+        cursos.add(aux);
         this.salvar();
     }
-    public boolean validar(String nome){
-        for(int i = 0; i < nomes.size(); i++){
-            if (nome.equals(nomes.get(i))){
+
+    public boolean validar(String nome) {
+        for (Curso curso : cursos) {
+            if (nome.equals(curso.getNome())) {
                 return false;
             }
         }

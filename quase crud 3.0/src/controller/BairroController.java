@@ -19,8 +19,8 @@ public class BairroController {
         }
     }
 
-    public void visualizar() {
-        b.visualizar();
+    public List<Bairro> visualizar() {
+       return b.visualizar();
     }
     public String escolherBairro(int escolha) {
         return b.escolha(escolha);
@@ -28,10 +28,6 @@ public class BairroController {
 
 
     public boolean verificar(String nome) {
-        if(b.validar(nome)) {
-            return true;
-        } else {
-            return false;
-        }
+        return b.validar(nome);
     }
 }

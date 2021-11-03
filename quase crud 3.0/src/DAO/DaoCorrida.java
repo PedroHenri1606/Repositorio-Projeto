@@ -1,19 +1,13 @@
 package DAO;
 
-import model.corrida;
+import model.Corrida;
 
 import java.io.*;
 import java.util.*;
 
 public class DaoCorrida {
-    static List<String> nomes = new ArrayList<>();
-    static List<String> ids = new ArrayList<>();
-    static List<String> idsUser = new ArrayList<>();
-    static List<String> precos = new ArrayList<>();
-
-    public String escolha(int opcao) {
-        return nomes.get(opcao);
-    }
+    static List<Corrida> corridas = new ArrayList<>();
+    static int posicaoCorridaAtual;
 
     public void carregar() {
         try {
@@ -24,10 +18,12 @@ public class DaoCorrida {
                     break;
                 } else {
                     StringTokenizer separador = new StringTokenizer(linha, "|");
-                    nomes.add(separador.nextToken());
-                    ids.add(separador.nextToken());
-                    idsUser.add(separador.nextToken());
-                    precos.add(separador.nextToken());
+                    Corrida corrida = new Corrida();
+                    corrida.setNome(separador.nextToken());
+                    corrida.setId(separador.nextToken());
+                    corrida.setIdUser(separador.nextToken());
+                    corrida.setPreco(separador.nextToken());
+                    corridas.add(corrida);
                 }
             }
             carregar.close();
@@ -41,8 +37,8 @@ public class DaoCorrida {
     public void salvar() {
         try {
             BufferedWriter salvar = new BufferedWriter(new FileWriter("corridas.txt"));
-            for (int i = 0; i < nomes.size(); i++) {
-                salvar.write(nomes.get(i) + "|" + ids.get(i) + "|" + idsUser.get(i) + "|" + precos.get(i));
+            for (int i = 0; i < corridas.size(); i++) {
+                salvar.write(corridas.get(i).getNome() + "|" + corridas.get(i).getId() + "|" + corridas.get(i).getIdUser() + "|" + corridas.get(i).getPreco());
                 salvar.newLine();
             }
             salvar.close();
@@ -51,16 +47,22 @@ public class DaoCorrida {
         }
     }
 
-    public List<String> visualizar(String idUser) {
-        List<String> aux = new ArrayList<>();
-        if (nomes.size() > 0) {
-            System.out.println("==============================================");
-            for (int i = 0; i < nomes.size(); i++) {
-                if (idsUser.get(i).equals(idUser)) {
-                    aux.add(nomes.get(i) + " " + precos.get(i));
+    public void determinarCorridaAtual(String idEscolhido) {
+        for (int i = 0; i < corridas.size(); i++) {
+            if (corridas.get(i).getId().equals(idEscolhido)) {
+                posicaoCorridaAtual = i;
+            }
+        }
+    }
+
+    public List<Corrida> visualizar(String idUser) {
+        List<Corrida> aux = new ArrayList<>();
+        if (corridas.size() > 0) {
+            for (int i = 0; i < corridas.size(); i++) {
+                if (corridas.get(i).getIdUser().equals(idUser)) {
+                    aux.add(corridas.get(i));
                 }
             }
-            System.out.println("==============================================");
         } else {
             System.out.println("==============================================");
             System.out.println("     Ainda nao existe corrida alguma!         ");
@@ -69,21 +71,9 @@ public class DaoCorrida {
         return aux;
     }
 
-    public void adicionar(corrida aux) {
-        nomes.add(aux.getNome());
-        ids.add(aux.getId());
-        idsUser.add(aux.getIdUser());
-        precos.add(aux.getPreco());
+    public void adicionar(Corrida aux) {
+        corridas.add(aux);
         this.salvar();
     }
 
-    public boolean validar(String nome) {
-        for(String aux : nomes) {
-            if (nome.equals(aux)) {
-                return false;
-            }
-        }
-
-        return true;
-    }
 }

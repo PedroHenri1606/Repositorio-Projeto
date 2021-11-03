@@ -1,24 +1,18 @@
 package view;
 
-import controller.BairroController;
 import controller.UsuarioController;
 import controller.idUsuarioController;
-import controller.CursoController;
-
 import model.UsuarioModel;
 
+
+import java.util.List;
 import java.util.Scanner;
 
 public class UsuarioView {
     UsuarioController cal = new UsuarioController();
     idUsuarioController idsuario = new idUsuarioController();
-
-    BairroController bairroController = new BairroController();
     BairroView bairroView = new BairroView();
-
-    CursoController cursoController = new CursoController();
     CursoView cursoView = new CursoView();
-
     CorridaView corridaview = new CorridaView();
 
     public void carregarDados() {
@@ -29,26 +23,26 @@ public class UsuarioView {
         this.espaco();
         Scanner scan = new Scanner(System.in);
         while (true) {
-            String nome, senha, email, bairro1, curso1, destino, id;
+            UsuarioModel usuarioModel = new UsuarioModel();
             this.espaco();
             System.out.println("==============================================");
             System.out.println("\n   [Realizando Cadastro de usuario]\n");
             System.out.println("==============================================");
             System.out.print(" [Nome do usuario]: ");
-            nome = scan.nextLine();
+            usuarioModel.setNome(scan.nextLine());
+
             System.out.print(" [Senha do usuario]: ");
-            senha = scan.nextLine();
+            usuarioModel.setSenha(scan.nextLine());
             System.out.print(" [Digite o seu email]: ");
-            email = scan.nextLine();
+            usuarioModel.setEmail(scan.nextLine());
             System.out.println("==============================================");
-            bairro1 = this.escolhendoBairro();
-            curso1 = this.escolhendoCurso();
+            usuarioModel.setBairro(this.escolhendoBairro());
+            usuarioModel.setCurso(this.escolhendoCurso());
             System.out.print(" [Destino do usuario]: ");
-            destino = scan.nextLine();
-            id = idsuario.usuarioID();
-            UsuarioModel al = new UsuarioModel(nome, senha, bairro1, destino, email, id, curso1);
-            if (cal.verificar(email)) {
-                cal.realizarCadastro(al);
+            usuarioModel.setDestino(scan.nextLine());
+            usuarioModel.setId(idsuario.usuarioID());
+            if (cal.verificar(usuarioModel.getEmail())) {
+                cal.realizarCadastro(usuarioModel);
                 break;
             }
         }
@@ -101,7 +95,7 @@ public class UsuarioView {
             System.out.print(" [escolha uma duas opcoes acima!!!]: ");
             int escolha = Integer.parseInt(scan.nextLine());
             switch (escolha) {
-                case 1 -> bairroView.cadastrarBairro();
+                case 1 -> cursoView.cadastrarCurso();
                 case 2 -> {
                     System.out.println("==============================================\n");
                     System.out.print("[curso escolhido]: ");
@@ -148,7 +142,7 @@ public class UsuarioView {
 
             switch (escolha) {
                 case 1:
-                    cal.visualizarUsuarios();
+                    this.visualizarUsuariosProximos();
                     break;
                 case 2:
                     corridaview.cadastrarCorrida(cal.getMeuID());
@@ -163,6 +157,15 @@ public class UsuarioView {
                     return;
             }
         }
+    }
+
+    public void visualizarUsuariosProximos() {
+        List<UsuarioModel> aux = cal.visualizarUsuarios();
+        for (UsuarioModel usuarioModel : aux) {
+            System.out.println("Nome: " + usuarioModel.getNome());
+        }
+
+
     }
 
     public void configuracoes() {
@@ -220,9 +223,5 @@ public class UsuarioView {
         for (int i = 0; i < 15; i++) {
             System.out.println();
         }
-    }
-
-    public void verificar(String email) {
-
     }
 }

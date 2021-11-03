@@ -10,6 +10,9 @@ public class Curso {
         this.id = id;
     }
 
+    public Curso() {
+    }
+
     public String getNome() {
         return nome;
     }

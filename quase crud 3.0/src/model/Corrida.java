@@ -1,15 +1,15 @@
 package model;
 
-public class corrida {
+public class Corrida {
     private String idUser;
     private String nome;
     private String preco;
     private String id;
 
-    public corrida() {
+    public Corrida() {
     }
 
-    public corrida(String nome, String id, String idUser, String preco) {
+    public Corrida(String nome, String id, String idUser, String preco) {
         this.nome = nome;
         this.id = id;
         this.idUser = idUser;

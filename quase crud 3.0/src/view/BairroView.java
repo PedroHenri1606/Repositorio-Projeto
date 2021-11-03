@@ -4,30 +4,38 @@ import controller.BairroController;
 import controller.IdBairroController;
 import model.Bairro;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class BairroView {
 
-    IdBairroController id = new IdBairroController();
-    BairroController x = new BairroController();
-
+    IdBairroController idBairroController = new IdBairroController();
+    BairroController bairroController = new BairroController();
+    Scanner scan = new Scanner(System.in);
     public void cadastrarBairro() {
-        Scanner scan = new Scanner(System.  in);
+        Bairro bairro = new Bairro();
         System.out.println("==============================================");
-        System.out.print  (" Nome do bairro: ");
+        System.out.print(" Nome do bairro: ");
+        bairro.setNome(scan.nextLine());
         System.out.println("==============================================\n");
-        String tmp1 = scan.nextLine();
-        String tmp2 = id.determinarID();
-        Bairro aux = new Bairro(tmp1,tmp2);
-        x.cadastrar(aux);
+        bairro.setId(idBairroController.determinarID());
+        bairroController.cadastrar(bairro);
     }
+
     public void visualizar() {
-        x.visualizar();
+        List<Bairro> bairros = bairroController.visualizar();
+        int i = 0;
+        for (Bairro bairro : bairros) {
+            System.out.println("[" + i + "] " + bairro.getNome());
+            i++;
+        }
     }
+
     public void carregarDados() {
-        x.carregar();
+        bairroController.carregar();
     }
+
     public String escolherBairro(int escolha) {
-        return x.escolherBairro(escolha);
+        return bairroController.escolherBairro(escolha);
     }
 }

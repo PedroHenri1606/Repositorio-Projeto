@@ -1,2 +1,5 @@
-eduardo de souza magalhaes|123|vila c |uniamerica|eduardo@|0|Engenharia de Software
-pedro|123|vila c |uniamerica|pedro@|1|Engenharia de Software
+jorge|123|vila c |uniamerica|eduardo@|4|Engenharia de Software
+marilsa|123|vila c |uniamerica|marilsa@|5|Medicina
+israel|123|vila c |uniamerica|israel@|6|Medicina
+lucas|123|porto meira|uniamerica|lucas@|7|Engenharia de Software
+debora|123|desconhecido|uniamerica|debora@|8|Medicina
