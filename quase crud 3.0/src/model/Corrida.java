@@ -1,50 +1,83 @@
 package model;
 
 public class Corrida {
-    private String idUser;
-    private String nome;
-    private String preco;
-    private String id;
+    private long idUser;
+    private String hora;
+    private int dia;
+    private int mes;
+    private int ano;
+    private double preco;
+    private long idCorrida;
 
     public Corrida() {
     }
 
-    public Corrida(String nome, String id, String idUser, String preco) {
-        this.nome = nome;
-        this.id = id;
-        this.idUser = idUser;
-        this.preco = preco;
+    @Override
+    public String toString() {
+        return "Corrida{" +
+                "idUser=" + idUser +
+                ", hora='" + hora + '\'' +
+                ", dia=" + dia +
+                ", mes=" + mes +
+                ", ano=" + ano +
+                ", preco=" + preco +
+                ", idCorrida=" + idCorrida +
+                '}';
     }
 
-    public String getPreco() {
-        return preco;
-    }
-
-    public void setPreco(String preco) {
-        this.preco = preco;
-    }
-
-    public String getIdUser() {
+    public long getIdUser() {
         return idUser;
     }
 
-    public void setIdUser(String idUser) {
+    public void setIdUser(long idUser) {
         this.idUser = idUser;
     }
 
-    public String getNome() {
-        return nome;
+    public String getHora() {
+        return hora;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setHora(String hora) {
+        this.hora = hora;
     }
 
-    public String getId() {
-        return id;
+    public int getDia() {
+        return dia;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setDia(int dia) {
+        this.dia = dia;
+    }
+
+    public int getMes() {
+        return mes;
+    }
+
+    public void setMes(int mes) {
+        this.mes = mes;
+    }
+
+    public int getAno() {
+        return ano;
+    }
+
+    public void setAno(int ano) {
+        this.ano = ano;
+    }
+
+    public double getPreco() {
+        return preco;
+    }
+
+    public void setPreco(double preco) {
+        this.preco = preco;
+    }
+
+    public long getIdCorrida() {
+        return idCorrida;
+    }
+
+    public void setIdCorrida(long idCorrida) {
+        this.idCorrida = idCorrida;
     }
 }

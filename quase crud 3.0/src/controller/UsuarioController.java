@@ -1,58 +1,37 @@
 package controller;
 
 import DAO.DaoUsuario;
-import model.UsuarioModel;
+import model.Usuario;
 
 import java.util.List;
 
 public class UsuarioController {
-    DaoUsuario user = new DaoUsuario();
+    DaoUsuario daoUsuario = new DaoUsuario();
 
-    public void carregar() {
-        user.carregar();
+    public void CriarTabela() {
+        daoUsuario.criarTabelaUsuario();
     }
 
-    public void realizarCadastro(UsuarioModel al) {
-        user.adicionar(al);
+    public void realizarCadastro(Usuario al) {
+        daoUsuario.adicionar(al);
     }
 
     public boolean realizarLogin(String tmp1, String tmp2) {
-        return user.login(tmp1, tmp2);
+        return daoUsuario.login(tmp1, tmp2);
     }
 
-    public boolean verificar(String email) {
-        if (user.verificarEmail(email)) {
-            return true;
-        } else {
-            return false;
-        }
+    public Usuario determinarUsuario(String email, String senha) {
+        return daoUsuario.determinarUsuarioAtual(email, senha);
     }
 
-    public String getMinhaSenha() {
-        return user.getMinhaSenha();
+
+
+    public void editarDados(Usuario usuario) {
+        daoUsuario.editar(usuario);
     }
 
-    public String getMeuNome() {
-        return user.getMeuNome();
-    }
 
-    public String getMeuID() {
-        return user.getMeuID();
-    }
-
-    public void setMeuNome(String novoNome) {
-        user.setMeuNome(novoNome);
-    }
-
-    public void setMinhaSenha(String novaSenha) {
-        user.setMinhaSenha(novaSenha);
-    }
-
-    public String getmeuEmail() {
-        return user.getMeuEmail();
-    }
-
-    public List<UsuarioModel> visualizarUsuarios() {
-        return user.visualizarUsuariosProximos();
+    public List<Usuario> visualizarUsuarios(Usuario usuario) {
+       return daoUsuario.visualizarUsuariosProximos(usuario);
     }
 }

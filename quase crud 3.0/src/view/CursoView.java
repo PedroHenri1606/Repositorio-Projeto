@@ -23,16 +23,14 @@ public class CursoView {
         cursoController.cadastrar(aux);
     }
 
-    public String escolherCurso(int escolha) {
-        return cursoController.escolherCurso(escolha);
+    public String escolherCurso(int idcurso) {
+        return cursoController.escolherCurso(idcurso);
     }
 
     public void visualizar() {
         List<Curso> cursos = cursoController.visualizar();
-        int i = 0;
         for (Curso curso : cursos) {
-            System.out.println(curso.getNome() + "[" + i + "]");
-            i++;
+            System.out.println("id curso: " + curso.getId() + " nome do curso: " + curso.getNome());
         }
     }
 

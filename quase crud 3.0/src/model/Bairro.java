@@ -5,11 +5,6 @@ public class Bairro {
     private String id;
 
 
-    public Bairro(String nome, String id) {
-        this.nome = nome;
-        this.id = id;
-    }
-
     public Bairro() {
 
     }

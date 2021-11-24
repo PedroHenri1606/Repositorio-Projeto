@@ -1,87 +1,80 @@
 package view;
 
 import controller.UsuarioController;
-import controller.idUsuarioController;
-import model.UsuarioModel;
+import model.Usuario;
 
 
 import java.util.List;
 import java.util.Scanner;
 
 public class UsuarioView {
-    UsuarioController cal = new UsuarioController();
-    idUsuarioController idsuario = new idUsuarioController();
+    UsuarioController usuarioController = new UsuarioController();
     BairroView bairroView = new BairroView();
     CursoView cursoView = new CursoView();
     CorridaView corridaview = new CorridaView();
+    Scanner scan = new Scanner(System.in);
 
-    public void carregarDados() {
-        cal.carregar();
-    }
 
     public void cadastroUsuario() {
         this.espaco();
         Scanner scan = new Scanner(System.in);
         while (true) {
-            UsuarioModel usuarioModel = new UsuarioModel();
+            Usuario usuarioModel = new Usuario();
             this.espaco();
             System.out.println("==============================================");
             System.out.println("\n   [Realizando Cadastro de usuario]\n");
             System.out.println("==============================================");
+
             System.out.print(" [Nome do usuario]: ");
             usuarioModel.setNome(scan.nextLine());
-
+            System.out.print("[sobrenome]: ");
+            usuarioModel.setSobrenome(scan.nextLine());
             System.out.print(" [Senha do usuario]: ");
             usuarioModel.setSenha(scan.nextLine());
             System.out.print(" [Digite o seu email]: ");
             usuarioModel.setEmail(scan.nextLine());
-            System.out.println("==============================================");
-            usuarioModel.setBairro(this.escolhendoBairro());
-            usuarioModel.setCurso(this.escolhendoCurso());
-            System.out.print(" [Destino do usuario]: ");
+            usuarioModel.setIdbairro(this.escolhendoBairro());
+            usuarioModel.setIdcurso(this.escolhendoCurso());
+            System.out.print("[Destino do usuario]: ");
             usuarioModel.setDestino(scan.nextLine());
-            usuarioModel.setId(idsuario.usuarioID());
-            if (cal.verificar(usuarioModel.getEmail())) {
-                cal.realizarCadastro(usuarioModel);
-                break;
-            }
+            usuarioController.realizarCadastro(usuarioModel);
+            break;
         }
 
     }
 
 
-    public String escolhendoBairro() {
-        Scanner scan = new Scanner(System.in);
-        String bairro1;
-        System.out.println("\n\n\n");
-        System.out.println("********[processo de escolha de bairro]**********");
+    public long escolhendoBairro() {
+        long idBairro;
         while (true) {
+            System.out.println("\n\n\n");
+            System.out.println("********[processo de escolha de bairro]**********");
             System.out.println("==============================================");
             bairroView.visualizar();
             System.out.println("==============================================");
+
             System.out.println("==============================================");
             System.out.println("\n          [Escolha uma opção] \n");
             System.out.println("       [1] - Cadastrar novo bairro");
             System.out.println("       [2] - Escolher um Bairro");
             System.out.println("==============================================");
             System.out.print(" [escolha uma duas opcoes acima!!!]: ");
+
             int escolha = Integer.parseInt(scan.nextLine());
             switch (escolha) {
                 case 1 -> bairroView.cadastrarBairro();
                 case 2 -> {
                     System.out.println("==============================================");
                     System.out.print("\n [bairro escolhido]: ");
-                    bairro1 = bairroView.escolherBairro(Integer.parseInt(scan.nextLine()));
+                    idBairro = Integer.parseInt(scan.nextLine());
                     System.out.println("\n\n");
-                    return bairro1;
+                    return idBairro;
                 }
             }
         }
     }
 
-    public String escolhendoCurso() {
-        Scanner scan = new Scanner(System.in);
-        String curso;
+    public long escolhendoCurso() {
         while (true) {
             System.out.println("********[processo de escolha de curso]**********");
             System.out.println("==============================================");
@@ -97,14 +90,19 @@ public class UsuarioView {
             switch (escolha) {
                 case 1 -> cursoView.cadastrarCurso();
                 case 2 -> {
-                    System.out.println("==============================================\n");
-                    System.out.print("[curso escolhido]: ");
-                    curso = cursoView.escolherCurso(Integer.parseInt(scan.nextLine()));
-                    System.out.println("\n\n");
-                    return curso;
+                    return this.escolherCurso();
                 }
             }
         }
+    }
+
+    public long escolherCurso() {
+        long idCurso;
+        System.out.println("==============================================\n");
+        System.out.print("[digite o id do curso escolhido]: ");
+        idCurso = Long.parseLong(scan.nextLine());
+        System.out.println("\n\n");
+        return idCurso;
     }
 
     public void realizarlogin() {
@@ -118,8 +116,9 @@ public class UsuarioView {
         System.out.print(" [Senha]: ");
         tmp2 = scan.nextLine();
         System.out.println("==============================================");
-        if (cal.realizarLogin(tmp1, tmp2)) {
-            this.menu();
+        if (usuarioController.realizarLogin(tmp1, tmp2)) {
+            Usuario usuarioAtual = usuarioController.determinarUsuario(tmp1, tmp2);
+            this.menu(usuarioAtual);
         } else {
             System.out.println("==============================================");
             System.out.println("      [Usuario ou senha incorreta!!:(]        ");
@@ -127,96 +126,109 @@ public class UsuarioView {
         }
     }
 
-    public void menu() {
+    public void menu(Usuario userAtual) {
         Scanner scan = new Scanner(System.in);
         while (true) {
             System.out.println("==============================================");
-            System.out.println(" Ola: " + cal.getMeuNome() + "\n");
+            System.out.println("usuario atual: " + userAtual.getNome());
             System.out.println(" [1] - Visualizar colegas de carona ");
             System.out.println(" [2] - Criar corrida");
             System.out.println(" [3] - Visualizar minhas corridas");
-            System.out.println(" [4] - configuracoes");
-            System.out.println(" [5] - sair");
+            System.out.println(" [4] - selecionar Corrida");
+            System.out.println(" [5] - configuracoes");
+            System.out.println(" [6] - sair");
             System.out.println("==============================================");
             int escolha = Integer.parseInt(scan.nextLine());
-
             switch (escolha) {
                 case 1:
-                    this.visualizarUsuariosProximos();
+                    this.visualizarUsuariosProximos(userAtual);
                     break;
                 case 2:
-                    corridaview.cadastrarCorrida(cal.getMeuID());
+                    corridaview.cadastrarCorrida(userAtual);
                     break;
                 case 3:
-                    corridaview.visualizar(cal.getMeuID());
+                    corridaview.visualizarCorrida(userAtual);
                     break;
                 case 4:
-                    this.configuracoes();
+                    corridaview.escolherCorrida(userAtual);
                     break;
                 case 5:
+                    this.configuracoes(userAtual);
+                    break;
+                case 6:
                     return;
             }
         }
     }
 
-    public void visualizarUsuariosProximos() {
-        List<UsuarioModel> aux = cal.visualizarUsuarios();
-        for (UsuarioModel usuarioModel : aux) {
-            System.out.println("Nome: " + usuarioModel.getNome());
+    public void visualizarUsuariosProximos(Usuario usuario) {
+        List<Usuario> usuarios = usuarioController.visualizarUsuarios(usuario);
+        for (Usuario usuario1 : usuarios) {
+            System.out.println("nome: " + usuario1.getNome() + " email: " + usuario1.getEmail());
         }
-
-
     }
 
-    public void configuracoes() {
+    public void linhaDupla() {
+        System.out.println("==============================================");
+    }
+
+    public void configuracoes(Usuario usuarioAtual) {
         Scanner scanner = new Scanner(System.in);
         while (true) {
+            this.linhaDupla();
+           // System.out.println(usuarioAtual.toString());
             System.out.println("[modificar dados]");
             System.out.println("[1] nome de usuario");
             System.out.println("[2] senha");
             System.out.println("[3] sair");
+            System.out.print("digite: ");
             int escolha = Integer.parseInt(scanner.nextLine());
+            this.linhaDupla();
             switch (escolha) {
-                case 1:
-                    this.modificarNome();
-                    break;
-                case 2:
-                    this.modificarSenha();
-                    break;
-                case 3:
+                case 1 -> {
+                    usuarioAtual = this.modificarnome(usuarioAtual);
+                    this.salvarAlteracoes(usuarioAtual);
+                }
+                case 2 -> {
+                    usuarioAtual = this.modificarSenha(usuarioAtual);
+                    this.salvarAlteracoes(usuarioAtual);
+                }
+                case 3 -> {
                     return;
+                }
             }
         }
     }
 
-    public void modificarNome() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("[senha atual]: ");
-        String senhaAtual = scanner.nextLine();
-        if (senhaAtual.equals(cal.getMinhaSenha())) {
-            System.out.println("\n\n");
-            System.out.println("[senha correta ]");
-            System.out.print("[novo nome] = ");
-            cal.setMeuNome(scanner.nextLine());
-        } else {
-            System.out.println("[senha incorreta]");
-        }
-
+    public void salvarAlteracoes(Usuario usuario) {
+        usuarioController.editarDados(usuario);
     }
 
-    public void modificarSenha() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("senha atual: ");
-        String senhaAtual = scanner.nextLine();
-        if (senhaAtual.equals(cal.getMinhaSenha())) {
-            System.out.println("\n\n");
-            System.out.println("[senha correta]");
-            System.out.print("[nova senha] = ");
-            cal.setMinhaSenha(scanner.nextLine());
-        } else {
-            System.out.println("[senha incorreta]");
+    public Usuario modificarSenha(Usuario usuarioAtual) {
+        if (validar(usuarioAtual)) {
+            System.out.println("digite uma nova senha: ");
+            usuarioAtual.setSenha(scan.nextLine());
         }
+        return usuarioAtual;
+    }
 
+    public Usuario modificarnome(Usuario usuarioAtual) {
+        if (validar(usuarioAtual)) {
+            System.out.println("digite um novo nome: ");
+            usuarioAtual.setNome(scan.nextLine());
+        }
+        return usuarioAtual;
+    }
+
+    public boolean validar(Usuario usuarioAtual) {
+        System.out.println("digite a senha atual: ");
+        String senha = scan.nextLine();
+        if (usuarioAtual.getSenha().equals(senha)) {
+            return usuarioAtual.getSenha().equals(senha);
+        } else {
+            System.out.println("tente novamente");
+            return usuarioAtual.getSenha().equals(senha);
+        }
     }
 
     public void espaco() {

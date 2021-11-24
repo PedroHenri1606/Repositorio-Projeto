@@ -24,10 +24,9 @@ public class BairroView {
 
     public void visualizar() {
         List<Bairro> bairros = bairroController.visualizar();
-        int i = 0;
+
         for (Bairro bairro : bairros) {
-            System.out.println("[" + i + "] " + bairro.getNome());
-            i++;
+            System.out.println("id bairro: " + bairro.getId() + " nome do bairro: " + bairro.getNome());
         }
     }
 

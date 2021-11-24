@@ -1,135 +1,151 @@
 package DAO;
 
-import model.UsuarioModel;
+import fabrica.Factory;
+import model.Usuario;
 
-import java.io.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
-import java.util.StringTokenizer;
 
 public class DaoUsuario {
-    static List<UsuarioModel> usuarios = new ArrayList<>();
-    static int usuarioAtual;
-    Scanner scan = new Scanner(System.in);
-    public boolean login(String tmp1, String tmp2) {
-        for (int i = 0; i < usuarios.size(); i++) {
-            if (tmp1.equals(usuarios.get(i).getEmail()) && tmp2.equals(usuarios.get(i).getSenha())) {
-                System.out.println("\n==============================================");
-                System.out.println("        Login realizado com sucesso           ");
-                System.out.println("==============================================\n");
-                usuarioAtual = i;
-                return true;
-            }
-        }
-        return false;
 
-    }
-
-    public List<UsuarioModel> visualizarUsuariosProximos() {
-        List<UsuarioModel> aux = new ArrayList<>();
-        System.out.println("\n\n");
-        System.out.println("==============================================");
-        System.out.println("     Usuarios que moram perto de você         ");
-        System.out.println("==============================================");
-        for (int i = 0; i < usuarios.size(); i++) {
-            if (usuarios.get(usuarioAtual).getBairro().equals(usuarios.get(i).getBairro()) && usuarios.get(usuarioAtual).getNome() != usuarios.get(i).getNome()) {
-                aux.add(usuarios.get(i));
-            }
-        }
-        return aux;
-    }
-
-    public String getMeuNome() {
-        return usuarios.get(usuarioAtual).getNome();
-    }
-
-    public String getMeuID() {
-        return usuarios.get(usuarioAtual).getId();
-    }
-
-    public void setMeuNome(String novoNome) {
-        usuarios.get(usuarioAtual).setNome(novoNome);
-        this.salvar();
-    }
-
-    public String getMinhaSenha() {
-        return usuarios.get(usuarioAtual).getSenha();
-    }
-
-    public void setMinhaSenha(String novaSenha) {
-        usuarios.get(usuarioAtual).setSenha(novaSenha);
-        this.salvar();
-    }
-
-    public String getMeuEmail() {
-        return usuarios.get(usuarioAtual).getEmail();
-    }
-
-    public void carregar() {
+    public boolean login(String email, String senha) {
+        boolean status;
+        String sql = "select * from uniflow.usuario where (email = ? AND senha = ?);";
         try {
-            BufferedReader carregar = new BufferedReader(new FileReader("lista.txt"));
-            while (true) {
-                String linha = carregar.readLine();
-                if (linha == null) {
-                    break;
-                } else {
-                    StringTokenizer sepador = new StringTokenizer(linha, "|");
-                    UsuarioModel usuarioModel = new UsuarioModel();
-                    usuarioModel.setNome(sepador.nextToken());
-                    usuarioModel.setSenha(sepador.nextToken());
-                    usuarioModel.setBairro(sepador.nextToken());
-                    usuarioModel.setDestino(sepador.nextToken());
-                    usuarioModel.setEmail(sepador.nextToken());
-                    usuarioModel.setId(sepador.nextToken());
-                    usuarioModel.setCurso(sepador.nextToken());
-                    usuarios.add(usuarioModel);
-                }
-            }
-            carregar.close();
-        } catch (Exception e) {
-            System.out.println("==============================================");
-            System.out.println(" Arquivo não existe - não foi encontrado ");
-            System.out.println("==============================================\n");
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, email);
+            statement.setString(2, senha);
+            ResultSet resultSet = statement.executeQuery();
+            status = resultSet.next();
+            statement.close();
+            return status;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public void adicionar(UsuarioModel user) {
-        usuarios.add(user);
-        this.salvar();
-    }
-
-
-    public boolean verificarEmail(String email) {
-        if (usuarios.size() > 0) {
-            for (int i = 0; i < usuarios.size(); i++) {
-                if (email.equals(usuarios.get(i).getEmail())) {
-                    System.out.println("==============================================");
-                    System.out.println("     Email invalidou ou já em uso!");
-                    System.out.println("==============================================\n");
-                    return false;
-                }
-            }
-        } else {
-            return true;
-        }
-        return true;
-    }
-
-
-    public void salvar() {
+    public Usuario determinarUsuarioAtual(String email, String senha) {
+        boolean status;
+        String sql = "select * from uniflow.usuario where (email = ? AND senha = ?);";
         try {
-            BufferedWriter salvar = new BufferedWriter(new FileWriter("lista.txt"));
-            for (int i = 0; i < usuarios.size(); i++) {
-                salvar.write(usuarios.get(i).getNome() + "|" + usuarios.get(i).getSenha() + "|" + usuarios.get(i).getBairro() + "|" + usuarios.get(i).getDestino() + "|" + usuarios.get(i).getEmail() + "|" + usuarios.get(i).getId() + "|" + usuarios.get(i).getCurso());
-                salvar.newLine();
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, email);
+            statement.setString(2, senha);
+            ResultSet resultSet = statement.executeQuery();
+            status = resultSet.next();
+            Usuario tmp = new Usuario();
+            if (status) {
+                tmp.setIdUsuario(resultSet.getLong("id_usuario"));
+                tmp.setNome(resultSet.getString("nome"));
+                tmp.setSobrenome(resultSet.getString("sobrenome"));
+                tmp.setEmail(resultSet.getString("email"));
+                tmp.setDestino(resultSet.getString("destino"));
+                tmp.setIdcurso(resultSet.getLong("id_curso"));
+                tmp.setIdbairro(resultSet.getLong("id_bairro"));
+                tmp.setSenha(resultSet.getString("senha"));
             }
-            salvar.close();
-            System.out.println("\n==============================================");
-            System.out.println("         Dados salvos com sucesso!           \n");
-            System.out.println("==============================================");
-        } catch (IOException e) {
-            e.printStackTrace();
+            statement.close();
+            return tmp;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
+
+    public List<Usuario> visualizarUsuariosProximos(Usuario usuarioAtual) {
+        List<Usuario> usuariosProximos = new ArrayList<>();
+        String sql = "SELECT * FROM uniflow.usuario where (id_bairro = ? and id_usuario <> ?);";
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setLong(1, usuarioAtual.getIdbairro());
+            statement.setLong(2, usuarioAtual.getIdUsuario());
+            ResultSet resultSet = statement.executeQuery();
+            Usuario usuario;
+            while (resultSet.next()) {
+                usuario = new Usuario();
+                usuario.setIdUsuario(resultSet.getLong("id_usuario"));
+                usuario.setNome(resultSet.getString("nome"));
+                usuario.setSobrenome(resultSet.getString("sobrenome"));
+                usuario.setEmail(resultSet.getString("email"));
+                usuario.setSenha(resultSet.getString("senha"));
+                usuario.setDestino(resultSet.getString("destino"));
+                usuario.setIdcurso(resultSet.getLong("id_curso"));
+                usuario.setIdbairro(resultSet.getLong("id_bairro"));
+                usuariosProximos.add(usuario);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return usuariosProximos;
+    }
+
+    Connection connection = null;
+
+    public DaoUsuario() {
+        this.connection = new Factory().getConection();
+    }
+
+    public void criarTabelaUsuario() {
+        String sql = "CREATE TABLE IF NOT EXISTS usuario(" +
+                "id_usuario bigint primary key auto_increment," +
+                "nome VARCHAR(50)," +
+                "sobrenome VARCHAR(50)," +
+                "email VARCHAR(100) UNIQUE," +
+                "senha VARCHAR (50)," +
+                "destino VARCHAR (50), " +
+                "id_curso bigint, " +
+                "id_bairro bigint); ";
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.execute();
+            statement.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public Usuario editar(Usuario usuario) {
+        String sql = "update uniflow.usuario set nome = ?, sobrenome = ?, email = ?, senha = ?, destino = ?, id_curso = ?, id_bairro = ? where id_usuario = ?;";
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, usuario.getNome());
+            statement.setString(2, usuario.getSobrenome());
+            statement.setString(3, usuario.getEmail());
+            statement.setString(4, usuario.getSenha());
+            statement.setString(5, usuario.getDestino());
+            statement.setLong(6, usuario.getIdcurso());
+            statement.setLong(7, usuario.getIdbairro());
+            statement.setLong(8, usuario.getIdUsuario());
+            statement.execute();
+            statement.close();
+            return usuario;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+
+    public void adicionar(Usuario user) {
+        String sql = "INSERT INTO uniflow.usuario(nome, sobrenome, email, senha, destino, id_curso, id_bairro) value(?,?,?,?,?,?,?)";
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, user.getNome());
+            statement.setString(2, user.getSobrenome());
+            statement.setString(3, user.getEmail());
+            statement.setString(4, user.getSenha());
+            statement.setString(5, user.getDestino());
+            statement.setLong(6, user.getIdcurso());
+            statement.setLong(7, user.getIdbairro());
+            statement.execute();
+            statement.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
 }
