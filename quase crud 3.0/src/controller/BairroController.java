@@ -18,7 +18,6 @@ public class BairroController {
             System.out.println("==============================================\n");
         }
     }
-
     public List<Bairro> visualizar() {
        return b.visualizar();
     }

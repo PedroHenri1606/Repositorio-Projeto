@@ -1,7 +1,8 @@
 package model;
 
 public class Corrida {
-    private long idUser;
+
+    private Usuario user;
     private String hora;
     private int dia;
     private int mes;
@@ -12,10 +13,11 @@ public class Corrida {
     public Corrida() {
     }
 
+
     @Override
     public String toString() {
         return "Corrida{" +
-                "idUser=" + idUser +
+                "user=" + user +
                 ", hora='" + hora + '\'' +
                 ", dia=" + dia +
                 ", mes=" + mes +
@@ -25,13 +27,14 @@ public class Corrida {
                 '}';
     }
 
-    public long getIdUser() {
-        return idUser;
+    public Usuario getUser() {
+        return user;
     }
 
-    public void setIdUser(long idUser) {
-        this.idUser = idUser;
+    public void setUser(Usuario user) {
+        this.user = user;
     }
+
 
     public String getHora() {
         return hora;

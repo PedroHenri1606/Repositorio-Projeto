@@ -9,8 +9,8 @@ import java.util.List;
 public class CorridaController {
     DaoCorrida daoCorrida = new DaoCorrida();
 
-    public void cadastrar(Corrida aux) {
-        this.daoCorrida.adicionar(aux);
+    public void salvarAlteracoes(Corrida corridaAtual) {
+        daoCorrida.salvarAlteracoes(corridaAtual);
     }
 
     public void criarTabelaCorrida() {

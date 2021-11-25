@@ -22,12 +22,12 @@ public class BairroView {
         bairroController.cadastrar(bairro);
     }
 
-    public void visualizar() {
+    public List<Bairro> visualizar() {
         List<Bairro> bairros = bairroController.visualizar();
-
         for (Bairro bairro : bairros) {
             System.out.println("id bairro: " + bairro.getId() + " nome do bairro: " + bairro.getNome());
         }
+        return bairros;
     }
 
     public void carregarDados() {

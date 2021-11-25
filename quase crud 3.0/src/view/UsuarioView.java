@@ -1,6 +1,8 @@
 package view;
 
 import controller.UsuarioController;
+import model.Bairro;
+import model.Curso;
 import model.Usuario;
 
 
@@ -33,8 +35,8 @@ public class UsuarioView {
             usuarioModel.setSenha(scan.nextLine());
             System.out.print(" [Digite o seu email]: ");
             usuarioModel.setEmail(scan.nextLine());
-            usuarioModel.setIdbairro(this.escolhendoBairro());
-            usuarioModel.setIdcurso(this.escolhendoCurso());
+            usuarioModel.setBairro(this.escolhendoBairro());
+            usuarioModel.setCurso(this.escolhendoCurso());
             System.out.print("[Destino do usuario]: ");
             usuarioModel.setDestino(scan.nextLine());
             usuarioController.realizarCadastro(usuarioModel);
@@ -44,7 +46,7 @@ public class UsuarioView {
     }
 
 
-    public long escolhendoBairro() {
+    public Bairro escolhendoBairro() {
         long idBairro;
         while (true) {
             System.out.println("\n\n\n");
@@ -64,21 +66,29 @@ public class UsuarioView {
             switch (escolha) {
                 case 1 -> bairroView.cadastrarBairro();
                 case 2 -> {
-                    System.out.println("==============================================");
-                    System.out.print("\n [bairro escolhido]: ");
-                    idBairro = Integer.parseInt(scan.nextLine());
-                    System.out.println("\n\n");
-                    return idBairro;
+                    return this.escolherBairro();
                 }
             }
         }
     }
-
-    public long escolhendoCurso() {
+    public Bairro escolherBairro() {
+        long idCurso;
+        List<Bairro> bairros = bairroView.visualizar();
+        System.out.println("==============================================\n");
+        System.out.print("[digite o id do bairro escolhido]: ");
+        idCurso = Long.parseLong(scan.nextLine());
+        for (int i = 0; i< bairros.size(); i++) {
+            if (Long.parseLong(bairros.get(i).getId()) == idCurso) {
+                return bairros.get(i);
+            }
+        }
+        System.out.println("\n\n");
+        return null;
+    }
+    public Curso escolhendoCurso() {
         while (true) {
             System.out.println("********[processo de escolha de curso]**********");
             System.out.println("==============================================");
-            cursoView.visualizar();
             System.out.println("==============================================");
             System.out.println("==============================================");
             System.out.println("\n          [Escolha uma opção] \n");
@@ -96,13 +106,19 @@ public class UsuarioView {
         }
     }
 
-    public long escolherCurso() {
+    public Curso escolherCurso() {
         long idCurso;
+        List<Curso> cursos = cursoView.visualizar();
         System.out.println("==============================================\n");
         System.out.print("[digite o id do curso escolhido]: ");
         idCurso = Long.parseLong(scan.nextLine());
+        for (int i = 0; i< cursos.size(); i++) {
+            if (Long.parseLong(cursos.get(i).getId()) == idCurso) {
+                return cursos.get(i);
+            }
+        }
         System.out.println("\n\n");
-        return idCurso;
+        return null;
     }
 
     public void realizarlogin() {

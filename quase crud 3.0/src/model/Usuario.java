@@ -1,25 +1,26 @@
 package model;
 public class Usuario {
+    long idUsuario;
     String nome;
     String sobrenome;
     String senha;
     String email;
-    long idbairro;
-    long idUsuario;
+
+    Bairro bairro;
+    Curso curso;
     String destino;
-    Long idcurso;
 
     @Override
     public String toString() {
         return "Usuario{" +
-                "nome='" + nome + '\'' +
+                "idUsuario=" + idUsuario +
+                ", nome='" + nome + '\'' +
                 ", sobrenome='" + sobrenome + '\'' +
                 ", senha='" + senha + '\'' +
                 ", email='" + email + '\'' +
-                ", idbairro=" + idbairro +
-                ", idUsuario=" + idUsuario +
+                ", bairro=" + bairro +
+                ", curso=" + curso +
                 ", destino='" + destino + '\'' +
-                ", idcurso=" + idcurso +
                 '}';
     }
 
@@ -66,12 +67,20 @@ public class Usuario {
         this.email = email;
     }
 
-    public long getIdbairro() {
-        return idbairro;
+    public Bairro getBairro() {
+        return bairro;
     }
 
-    public void setIdbairro(long idbairro) {
-        this.idbairro = idbairro;
+    public void setBairro(Bairro bairro) {
+        this.bairro = bairro;
+    }
+
+    public Curso getCurso() {
+        return curso;
+    }
+
+    public void setCurso(Curso curso) {
+        this.curso = curso;
     }
 
     public String getDestino() {
@@ -80,13 +89,5 @@ public class Usuario {
 
     public void setDestino(String destino) {
         this.destino = destino;
-    }
-
-    public Long getIdcurso() {
-        return idcurso;
-    }
-
-    public void setIdcurso(Long idcurso) {
-        this.idcurso = idcurso;
     }
 }

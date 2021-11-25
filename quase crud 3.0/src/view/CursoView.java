@@ -27,11 +27,12 @@ public class CursoView {
         return cursoController.escolherCurso(idcurso);
     }
 
-    public void visualizar() {
+    public List<Curso> visualizar() {
         List<Curso> cursos = cursoController.visualizar();
         for (Curso curso : cursos) {
             System.out.println("id curso: " + curso.getId() + " nome do curso: " + curso.getNome());
         }
+        return cursos;
     }
 
     public void carregarDados() {

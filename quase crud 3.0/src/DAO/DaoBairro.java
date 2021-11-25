@@ -13,6 +13,15 @@ public class DaoBairro {
         return bairros.get(opcao).getNome();
     }
 
+    public Bairro retornarDados(long idBairro) {
+        for (int i = 0; i< bairros.size(); i++) {
+            if (Long.parseLong(bairros.get(i).getId()) == idBairro) {
+                return bairros.get(i);
+            }
+        }
+        return null;
+    }
+
     public void carregar() {
         try {
             BufferedReader carregar = new BufferedReader(new FileReader("bairros.txt"));

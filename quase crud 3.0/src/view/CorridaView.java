@@ -23,7 +23,6 @@ public class CorridaView {
     public void cadastrarCorrida(Usuario usuario) {
         Corrida corrida = new Corrida();
         System.out.println("==============================================");
-
         System.out.print("horario da corrida: ");
         corrida.setHora(scan.nextLine());
         System.out.print("dia da corrida: ");
@@ -34,7 +33,7 @@ public class CorridaView {
         corrida.setAno(Integer.parseInt(scan.nextLine()));
         System.out.print("preco da corrida: ");
         corrida.setPreco(Double.parseDouble(scan.nextLine()));
-        corrida.setIdUser(usuario.getIdUsuario());
+        corrida.setUser(usuario);
         System.out.println("==============================================\n");
         corridaController.cadastrarCorrida(corrida);
     }
@@ -49,14 +48,20 @@ public class CorridaView {
         this.menuCorrida(corridaAtual, usuario);
     }
     public void menuCorrida(Corrida corridaAtual, Usuario usuario) {
-        System.out.println("==========================");
-        System.out.println("[1] visualizar informacoes ");
-        System.out.println("[2] editar informacoes ");
-        System.out.println("[3] sair");
+        while (true) {
+            System.out.println("==========================");
+            System.out.println("[1] visualizar informacoes ");
+            System.out.println("[2] editar informacoes ");
+            System.out.println("[3] sair");
 
-        int opcaoEscolhida = Integer.parseInt(scan.nextLine());
-        switch (opcaoEscolhida) {
-            case 1 -> this.visualizarInformacoesCorridaAtual(corridaAtual, usuario);
+            int opcaoEscolhida = Integer.parseInt(scan.nextLine());
+            switch (opcaoEscolhida) {
+                case 1 -> this.visualizarInformacoesCorridaAtual(corridaAtual, usuario);
+                case 2 -> corridaAtual = this.editarCorridaAtual(corridaAtual, usuario);
+                case 3 -> {
+                    return;
+                }
+            }
         }
     }
 
@@ -70,36 +75,42 @@ public class CorridaView {
         System.out.println("preco da corrida: " + corridaAtual.getPreco());
     }
 
-    public void editarCorridaAtual(Corrida corridaAtual, Usuario usuario) {
-        Corrida tmp = corridaAtual;
-        System.out.println("===============================");
-        System.out.println("[1] editar hora");
-        System.out.println("[2] editar dia");
-        System.out.println("[3] editar mes");
-        System.out.println("[4] editar ano");
-        System.out.println("[5] editar preco");
-        System.out.println("[6] salvar alteracoes");
-        System.out.println("[7] sair");
-        int escolha = Integer.parseInt(scan.nextLine());
-        switch (escolha) {
-            case 1 -> tmp = this.editarHora(tmp);
-            case 2 -> tmp = this.editarDia(tmp);
-            case 3 ->tmp = this.editarMes(tmp);
-            case 4 ->tmp = this.editarAno(tmp);
-            case 5 ->tmp = this.editarPreco(tmp);
-            case 6 ->{
-                System.out.print("digite a senha atual para salvar: ");
-                String senha = scan.nextLine();
-                if (usuario.getSenha().equals(senha)) {
-                    System.out.println("senha correta!!");
-                    corridaAtual = tmp;
-                    this.salvarAlteracoes(corridaAtual);
+    public Corrida editarCorridaAtual(Corrida corridaAtual, Usuario usuario) {
+        while (true) {
+
+            Corrida tmp = corridaAtual;
+            System.out.println("===============================");
+            System.out.println("[1] editar hora");
+            System.out.println("[2] editar dia");
+            System.out.println("[3] editar mes");
+            System.out.println("[4] editar ano");
+            System.out.println("[5] editar preco");
+            System.out.println("[6] salvar alteracoes");
+            System.out.println("[7] sair");
+            int escolha = Integer.parseInt(scan.nextLine());
+            switch (escolha) {
+                case 1 -> tmp = this.editarHora(tmp);
+                case 2 -> tmp = this.editarDia(tmp);
+                case 3 -> tmp = this.editarMes(tmp);
+                case 4 -> tmp = this.editarAno(tmp);
+                case 5 -> tmp = this.editarPreco(tmp);
+                case 6 -> {
+                    System.out.print("digite a senha atual para salvar: ");
+                    String senha = scan.nextLine();
+                    if (usuario.getSenha().equals(senha)) {
+                        System.out.println("senha correta!!");
+                        corridaAtual = tmp;
+                        this.salvarAlteracoes(corridaAtual);
+                    }
+                }
+                case 7 -> {
+                    return corridaAtual;
                 }
             }
         }
     }
     public void salvarAlteracoes(Corrida corridaAtual) {
-
+            this.corridaController.salvarAlteracoes(corridaAtual);
     }
     public Corrida editarHora(Corrida corrida) {
         System.out.println("================");

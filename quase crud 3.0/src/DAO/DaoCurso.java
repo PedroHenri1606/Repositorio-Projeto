@@ -13,6 +13,14 @@ public class DaoCurso {
         return cursos.get(opcao).getNome();
     }
 
+    public Curso retornarDados(long idCurso) {//temporaria
+        for (int i = 0; i< cursos.size(); i++) {
+            if (Long.parseLong(cursos.get(i).getId()) == idCurso) {
+                return cursos.get(i);
+            }
+        }
+        return null;
+    }
 
     public void carregar() {
         try {

@@ -1,5 +1,7 @@
 package DAO;
 
+import controller.BairroController;
+import controller.CursoController;
 import fabrica.Factory;
 import model.Usuario;
 
@@ -12,6 +14,8 @@ import java.util.List;
 
 public class DaoUsuario {
 
+    DaoBairro daoBairro = new DaoBairro();
+    DaoCurso daoCurso = new DaoCurso();
     public boolean login(String email, String senha) {
         boolean status;
         String sql = "select * from uniflow.usuario where (email = ? AND senha = ?);";
@@ -44,8 +48,8 @@ public class DaoUsuario {
                 tmp.setSobrenome(resultSet.getString("sobrenome"));
                 tmp.setEmail(resultSet.getString("email"));
                 tmp.setDestino(resultSet.getString("destino"));
-                tmp.setIdcurso(resultSet.getLong("id_curso"));
-                tmp.setIdbairro(resultSet.getLong("id_bairro"));
+                tmp.setCurso(daoCurso.retornarDados(resultSet.getLong("id_curso")));
+                tmp.setBairro(daoBairro.retornarDados(resultSet.getLong("id_bairro")));
                 tmp.setSenha(resultSet.getString("senha"));
             }
             statement.close();
@@ -60,7 +64,7 @@ public class DaoUsuario {
         String sql = "SELECT * FROM uniflow.usuario where (id_bairro = ? and id_usuario <> ?);";
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setLong(1, usuarioAtual.getIdbairro());
+            statement.setLong(1, Long.parseLong(usuarioAtual.getBairro().getId()));
             statement.setLong(2, usuarioAtual.getIdUsuario());
             ResultSet resultSet = statement.executeQuery();
             Usuario usuario;
@@ -72,8 +76,8 @@ public class DaoUsuario {
                 usuario.setEmail(resultSet.getString("email"));
                 usuario.setSenha(resultSet.getString("senha"));
                 usuario.setDestino(resultSet.getString("destino"));
-                usuario.setIdcurso(resultSet.getLong("id_curso"));
-                usuario.setIdbairro(resultSet.getLong("id_bairro"));
+                usuario.setCurso(this.daoCurso.retornarDados(resultSet.getLong("id_curso")));
+                usuario.setBairro(this.daoBairro.retornarDados(resultSet.getLong("id_bairro")));
                 usuariosProximos.add(usuario);
             }
         } catch (SQLException e) {
@@ -116,8 +120,8 @@ public class DaoUsuario {
             statement.setString(3, usuario.getEmail());
             statement.setString(4, usuario.getSenha());
             statement.setString(5, usuario.getDestino());
-            statement.setLong(6, usuario.getIdcurso());
-            statement.setLong(7, usuario.getIdbairro());
+            statement.setLong(6, Long.parseLong(usuario.getCurso().getId()));//temporario
+            statement.setLong(7, Long.parseLong(usuario.getBairro().getId()));
             statement.setLong(8, usuario.getIdUsuario());
             statement.execute();
             statement.close();
@@ -138,8 +142,8 @@ public class DaoUsuario {
             statement.setString(3, user.getEmail());
             statement.setString(4, user.getSenha());
             statement.setString(5, user.getDestino());
-            statement.setLong(6, user.getIdcurso());
-            statement.setLong(7, user.getIdbairro());
+            statement.setLong(6, Long.parseLong(user.getCurso().getId()));
+            statement.setLong(7, Long.parseLong(user.getBairro().getId()));
             statement.execute();
             statement.close();
         } catch (SQLException e) {
