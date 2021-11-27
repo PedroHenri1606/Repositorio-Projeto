@@ -87,7 +87,7 @@ public class DaoBairro {
             ResultSet resultSet = statement.executeQuery();
 
             while(resultSet.next()){
-                idBairro = resultSet.getLong("nome_bairro");
+                idBairro = resultSet.getLong("id_bairro");
             }
             statement.execute();
             statement.close();

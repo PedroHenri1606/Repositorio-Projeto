@@ -52,8 +52,8 @@ public class UsuarioView {
             System.out.println("==============================================");
             System.out.print("Nome: ");      usuarioModel.setNome(scan.nextLine());
             System.out.print("Sobrenome: "); usuarioModel.setSobrenome(scan.nextLine());
-            System.out.print("Senha: ");     usuarioModel.setSenha(scan.nextLine());
             System.out.print("Email: ");     usuarioModel.setEmail(scan.nextLine());
+            System.out.print("Senha: ");     usuarioModel.setSenha(scan.nextLine());
             usuarioModel.setBairro(this.escolhendoBairro());
             usuarioModel.setCurso(this.escolhendoCurso());
             System.out.print("Destino: ");   usuarioModel.setDestino(scan.nextLine());
