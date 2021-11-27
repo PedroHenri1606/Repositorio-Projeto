@@ -6,27 +6,16 @@ import model.Bairro;
 import java.util.List;
 
 public class BairroController {
-    DaoBairro b = new DaoBairro();
-    public void carregar() {b.carregar();}
 
-    public void cadastrar(Bairro aux) {
-        if(this.verificar(aux.getNome())) {
-            b.adicionar(aux);
-        } else {
-            System.out.println("\n==============================================");
-            System.out.println("       Bairro invalido ou ja existe");
-            System.out.println("==============================================\n");
-        }
-    }
-    public List<Bairro> visualizar() {
-       return b.visualizar();
-    }
-    public String escolherBairro(int escolha) {
-        return b.escolha(escolha);
-    }
+    DaoBairro daoBairro = new DaoBairro();
 
+    public void criarTabelaBairro(){ this.daoBairro.criaTabelaBairro();}
+    public Bairro adicionar(Bairro bairro){ return this.daoBairro.adicionar(bairro);}
+    public Bairro editar(Bairro bairro){ return this.daoBairro.editar(bairro);}
+    public String escolherBairro(int id){ return this.daoBairro.escolherBairro(id);}
+    public List<Bairro> listar(){ return this.daoBairro.listar();}
+    public Bairro retornarDados(long id){ return this.daoBairro.retornarDados(id);}
+    public String escolherBairro(long id){ return this.daoBairro.escolherBairro(id);}
+    public long escolherbairroID(long id){ return this.daoBairro.escolherBairroID(id);}
 
-    public boolean verificar(String nome) {
-        return b.validar(nome);
-    }
 }

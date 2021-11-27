@@ -3,9 +3,9 @@ package model;
 public class Curso {
 
     private String nome;
-    private String id;
+    private long id;
 
-    public Curso(String nome, String id) {
+    public Curso(String nome, long id) {
         this.nome = nome;
         this.id = id;
     }
@@ -21,11 +21,11 @@ public class Curso {
         this.nome = nome;
     }
 
-    public String getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
     }
 }

@@ -1,7 +1,6 @@
 package view;
 
 import controller.CursoController;
-import controller.IdCursoController;
 import model.Curso;
 
 import java.util.List;
@@ -9,34 +8,27 @@ import java.util.Scanner;
 
 public class CursoView {
 
-    IdCursoController id = new IdCursoController();
     CursoController cursoController = new CursoController();
 
     public void cadastrarCurso() {
+
+        Curso curso = new Curso();
         Scanner scan = new Scanner(System.in);
+
         System.out.println("==============================================");
-        System.out.print  (" Nome do curso: ");
-        String tmp1 = scan.nextLine();
+        System.out.print  (" Nome do curso: "); curso.setNome(scan.nextLine());
         System.out.println("==============================================\n");
-        String tmp2 = id.determinarID();
-        Curso aux = new Curso(tmp1, tmp2);
-        cursoController.cadastrar(aux);
+        this.cursoController.adicionar(curso);
     }
 
-    public String escolherCurso(int idcurso) {
-        return cursoController.escolherCurso(idcurso);
+    public String escolherCurso(int id) {
+        return cursoController.escolherCurso(id);
     }
 
-    public List<Curso> visualizar() {
-        List<Curso> cursos = cursoController.visualizar();
+    public void listar() {
+        List<Curso> cursos = cursoController.listar();
         for (Curso curso : cursos) {
-            System.out.println("id curso: " + curso.getId() + " nome do curso: " + curso.getNome());
+            System.out.println("|Id: " + curso.getId() + " |Curso: " + curso.getNome());
         }
-        return cursos;
     }
-
-    public void carregarDados() {
-        cursoController.carregar();
-    }
-
 }

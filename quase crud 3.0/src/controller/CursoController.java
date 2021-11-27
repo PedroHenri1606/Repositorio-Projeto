@@ -7,32 +7,14 @@ import java.util.List;
 
 
 public class CursoController {
-    DaoCurso a = new DaoCurso();
+    DaoCurso daoCurso = new DaoCurso();
 
-    public void carregar() {
-        a.carregar();
-    }
-
-    public void cadastrar(Curso aux) {
-        if (this.verificar(aux.getNome())) {
-            a.adicionar(aux);
-        } else {
-            System.out.println("\n==============================================");
-            System.out.println("         Curso invalido ou ja existe");
-            System.out.println("\n==============================================");
-        }
-    }
-
-    public List<Curso> visualizar() {
-        return a.visualizarCurso();
-    }
-
-    public String escolherCurso(int escolha) {
-        return a.escolha(escolha);
-    }
-
-
-    public boolean verificar(String nome) {
-        return a.validar(nome);
-    }
+    public void criarTabelaCurso(){ this.daoCurso.criarTabelaCurso();}
+    public Curso adicionar(Curso curso){ return this.daoCurso.adicionar(curso);}
+    public Curso editar(Curso curso){ return this.daoCurso.editar(curso);}
+    public String escolherCurso(int id){ return this.daoCurso.escolherCurso(id);}
+    public List<Curso> listar(){ return this.daoCurso.listar();}
+    public Curso retornarDados(long id){ return daoCurso.retornarDados(id);}
+    public long escolherCursoID(long id) { return daoCurso.escolherCursoID(id);}
+    public String escolherCurso(long id){ return daoCurso.escolherCurso(id);}
 }

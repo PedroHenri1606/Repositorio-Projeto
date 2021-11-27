@@ -1,79 +1,149 @@
 package DAO;
 
+import fabrica.Factory;
 import model.Curso;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.*;
-import java.io.*;
 
 public class DaoCurso {
 
-    static List<Curso> cursos = new ArrayList<>();
+    Connection connection = null;
 
-    public String escolha(int opcao) {
-        return cursos.get(opcao).getNome();
+    public DaoCurso() {
+        this.connection = new Factory().getConection();
     }
 
-    public Curso retornarDados(long idCurso) {//temporaria
-        for (int i = 0; i< cursos.size(); i++) {
-            if (Long.parseLong(cursos.get(i).getId()) == idCurso) {
-                return cursos.get(i);
-            }
-        }
-        return null;
-    }
-
-    public void carregar() {
+    public void criarTabelaCurso() {
+        String sql = "CREATE TABLE IF NOT EXISTS curso(" +
+                "id_curso bigint primary key auto_increment," +
+                "nome_curso VARCHAR(45));";
         try {
-            BufferedReader carregar = new BufferedReader(new FileReader("cursos.txt"));
-            while (true) {
-                String linha = carregar.readLine();
-                if (linha == null) {
-                    break;
-                } else {
-                    StringTokenizer separador = new StringTokenizer(linha, "|");
-                    Curso curso = new Curso();
-                    curso.setNome(separador.nextToken());
-                    curso.setId(separador.nextToken());
-                    cursos.add(curso);
-                }
-            }
-            carregar.close();
-        } catch (Exception e) {
-            System.out.println("==============================================");
-            System.out.println("     Arquivo não existe ou não encontrado     ");
-            System.out.println("==============================================");
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.execute();
+            statement.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public List<Curso> visualizarCurso() {
-        return cursos;
-    }
+    public Curso adicionar(Curso curso) {
 
-    public void salvar() {
+        String sql = "INSERT INTO uniflow.curso  (nome_curso) value(?)";
         try {
-            BufferedWriter salvar = new BufferedWriter(new FileWriter("cursos.txt"));
-            for (Curso curso : cursos) {
-                salvar.write(curso.getNome() + "|" + curso.getId());
-                salvar.newLine();
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, curso.getNome());
+            statement.execute();
+            statement.close();
+            return curso;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public Curso editar(Curso curso) {
+        String sql = "UPDATE uniflow.curso set nome_curso = ?;";
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, curso.getNome());
+            statement.execute();
+            statement.close();
+            return curso;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public String escolherCurso(long id) {
+
+        String sql = "SELECT nome_curso from curso where id_curso = " + id;
+
+        String nomeCurso = "";
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                nomeCurso = resultSet.getString("nome_curso");
             }
-            salvar.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+            statement.execute();
+            statement.close();
+
+            return nomeCurso;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public long escolherCursoID(long id) {
+
+        String sql = "SELECT id_curso from curso where id_curso = " + id;
+
+        long nomeCurso = 0;
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                nomeCurso = resultSet.getLong("id_curso");
+            }
+            statement.execute();
+            statement.close();
+
+            return nomeCurso;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public List<Curso> listar() {
+
+
+        String sql = "select * from uniflow.curso";
+
+        try {
+            PreparedStatement statement = this.connection.prepareStatement(sql);
+            ResultSet resultSet = statement.executeQuery();
+            ArrayList cursos = new ArrayList();
+
+            while (resultSet.next()) {
+                Curso curso = new Curso();
+                curso.setId(resultSet.getInt("id_curso"));
+                curso.setNome(resultSet.getString("nome_curso"));
+                cursos.add(curso);
+            }
+            return cursos;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 
 
-    public void adicionar(Curso aux) {
-        cursos.add(aux);
-        this.salvar();
-    }
+    public Curso retornarDados(long id) {
 
-    public boolean validar(String nome) {
-        for (Curso curso : cursos) {
-            if (nome.equals(curso.getNome())) {
-                return false;
+        String sql = "SELECT id_curso from curso where id_curso = " + id;
+
+        List<Curso> cursos = new ArrayList();
+        Curso curso = new Curso();
+
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                curso.setId(resultSet.getInt("id_curso"));
+                cursos.add(curso);
             }
+            statement.execute();
+            statement.close();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
-        return true;
+        return curso;
     }
 }
+
+

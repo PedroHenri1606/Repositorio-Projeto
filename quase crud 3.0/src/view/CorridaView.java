@@ -47,7 +47,9 @@ public class CorridaView {
         Corrida corridaAtual = corridaController.determinarCorridaAtual(idCorrida, usuario);
         this.menuCorrida(corridaAtual, usuario);
     }
+
     public void menuCorrida(Corrida corridaAtual, Usuario usuario) {
+        UsuarioView usuarioView = new UsuarioView();
         while (true) {
             System.out.println("==========================");
             System.out.println("[1] visualizar informacoes ");
@@ -56,8 +58,12 @@ public class CorridaView {
 
             int opcaoEscolhida = Integer.parseInt(scan.nextLine());
             switch (opcaoEscolhida) {
-                case 1 -> this.visualizarInformacoesCorridaAtual(corridaAtual, usuario);
-                case 2 -> corridaAtual = this.editarCorridaAtual(corridaAtual, usuario);
+                case 1 -> {
+                    this.visualizarInformacoesCorridaAtual(corridaAtual, usuario);
+                }
+                case 2 -> {
+                    corridaAtual = this.editarCorridaAtual(corridaAtual, usuario);
+                }
                 case 3 -> {
                     return;
                 }
@@ -110,7 +116,7 @@ public class CorridaView {
         }
     }
     public void salvarAlteracoes(Corrida corridaAtual) {
-            this.corridaController.salvarAlteracoes(corridaAtual);
+        this.corridaController.salvarAlteracoes(corridaAtual);
     }
     public Corrida editarHora(Corrida corrida) {
         System.out.println("================");
@@ -148,7 +154,4 @@ public class CorridaView {
         return tmp;
     }
 
-    public void linha() {
-        System.out.println("--------------------------------");
-    }
 }

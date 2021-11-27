@@ -2,7 +2,7 @@ package model;
 
 public class Bairro {
     private String nome;
-    private String id;
+    private long id;
 
 
     public Bairro() {
@@ -17,11 +17,11 @@ public class Bairro {
         this.nome = nome;
     }
 
-    public String getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
     }
 }

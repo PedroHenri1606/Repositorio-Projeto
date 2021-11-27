@@ -12,10 +12,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DaoUsuario {
+public class    DaoUsuario {
 
-    DaoBairro daoBairro = new DaoBairro();
-    DaoCurso daoCurso = new DaoCurso();
+    CursoController cursoController = new CursoController();
+    BairroController bairroController = new BairroController();
     public boolean login(String email, String senha) {
         boolean status;
         String sql = "select * from uniflow.usuario where (email = ? AND senha = ?);";
@@ -48,8 +48,8 @@ public class DaoUsuario {
                 tmp.setSobrenome(resultSet.getString("sobrenome"));
                 tmp.setEmail(resultSet.getString("email"));
                 tmp.setDestino(resultSet.getString("destino"));
-                tmp.setCurso(daoCurso.retornarDados(resultSet.getLong("id_curso")));
-                tmp.setBairro(daoBairro.retornarDados(resultSet.getLong("id_bairro")));
+                tmp.setCurso(cursoController.retornarDados(resultSet.getLong("id_curso")));
+                tmp.setBairro(bairroController.retornarDados(resultSet.getLong("id_bairro")));
                 tmp.setSenha(resultSet.getString("senha"));
             }
             statement.close();
@@ -64,7 +64,7 @@ public class DaoUsuario {
         String sql = "SELECT * FROM uniflow.usuario where (id_bairro = ? and id_usuario <> ?);";
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setLong(1, Long.parseLong(usuarioAtual.getBairro().getId()));
+            statement.setLong(1, usuarioAtual.getBairro().getId());
             statement.setLong(2, usuarioAtual.getIdUsuario());
             ResultSet resultSet = statement.executeQuery();
             Usuario usuario;
@@ -76,8 +76,8 @@ public class DaoUsuario {
                 usuario.setEmail(resultSet.getString("email"));
                 usuario.setSenha(resultSet.getString("senha"));
                 usuario.setDestino(resultSet.getString("destino"));
-                usuario.setCurso(this.daoCurso.retornarDados(resultSet.getLong("id_curso")));
-                usuario.setBairro(this.daoBairro.retornarDados(resultSet.getLong("id_bairro")));
+                usuario.setCurso(this.cursoController.retornarDados(resultSet.getLong("id_curso")));
+                usuario.setBairro(this.bairroController.retornarDados(resultSet.getLong("id_bairro")));
                 usuariosProximos.add(usuario);
             }
         } catch (SQLException e) {
@@ -120,8 +120,8 @@ public class DaoUsuario {
             statement.setString(3, usuario.getEmail());
             statement.setString(4, usuario.getSenha());
             statement.setString(5, usuario.getDestino());
-            statement.setLong(6, Long.parseLong(usuario.getCurso().getId()));//temporario
-            statement.setLong(7, Long.parseLong(usuario.getBairro().getId()));
+            statement.setLong(6, usuario.getCurso().getId());//temporario
+            statement.setLong(7, usuario.getBairro().getId());
             statement.setLong(8, usuario.getIdUsuario());
             statement.execute();
             statement.close();
@@ -134,6 +134,7 @@ public class DaoUsuario {
 
 
     public void adicionar(Usuario user) {
+
         String sql = "INSERT INTO uniflow.usuario(nome, sobrenome, email, senha, destino, id_curso, id_bairro) value(?,?,?,?,?,?,?)";
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
@@ -142,14 +143,13 @@ public class DaoUsuario {
             statement.setString(3, user.getEmail());
             statement.setString(4, user.getSenha());
             statement.setString(5, user.getDestino());
-            statement.setLong(6, Long.parseLong(user.getCurso().getId()));
-            statement.setLong(7, Long.parseLong(user.getBairro().getId()));
+            statement.setLong(6, user.getCurso().getId());
+            statement.setLong(7, user.getBairro().getId());
             statement.execute();
             statement.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
-
 
 }
