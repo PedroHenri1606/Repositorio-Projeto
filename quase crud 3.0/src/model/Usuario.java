@@ -8,7 +8,7 @@ public class Usuario {
 
     Bairro bairro;
     Curso curso;
-    String destino;
+    Faculdade destino;
 
     @Override
     public String toString() {
@@ -83,11 +83,11 @@ public class Usuario {
         this.curso = curso;
     }
 
-    public String getDestino() {
+    public Faculdade getDestino() {
         return destino;
     }
 
-    public void setDestino(String destino) {
+    public void setDestino(Faculdade destino) {
         this.destino = destino;
     }
 }

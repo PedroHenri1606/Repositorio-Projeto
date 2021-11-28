@@ -3,6 +3,7 @@ package DAO;
 import controller.BairroController;
 import controller.CursoController;
 import fabrica.Factory;
+import model.Faculdade;
 import model.Usuario;
 
 import java.sql.Connection;
@@ -47,7 +48,11 @@ public class    DaoUsuario {
                 tmp.setNome(resultSet.getString("nome"));
                 tmp.setSobrenome(resultSet.getString("sobrenome"));
                 tmp.setEmail(resultSet.getString("email"));
-                tmp.setDestino(resultSet.getString("destino"));
+
+                DAOFaculdade daoFaculdade = new DAOFaculdade();
+                Faculdade faculdade = daoFaculdade.selecionarPorId(resultSet.getLong("idFaculdade"));
+                tmp.setDestino(faculdade);
+
                 tmp.setCurso(cursoController.retornarDados(resultSet.getLong("id_curso")));
                 tmp.setBairro(bairroController.retornarDados(resultSet.getLong("id_bairro")));
                 tmp.setSenha(resultSet.getString("senha"));
@@ -75,7 +80,11 @@ public class    DaoUsuario {
                 usuario.setSobrenome(resultSet.getString("sobrenome"));
                 usuario.setEmail(resultSet.getString("email"));
                 usuario.setSenha(resultSet.getString("senha"));
-                usuario.setDestino(resultSet.getString("destino"));
+
+                DAOFaculdade daoFaculdade = new DAOFaculdade();
+                Faculdade faculdade = daoFaculdade.selecionarPorId(resultSet.getLong("idFaculdade"));
+                usuario.setDestino(faculdade);
+
                 usuario.setCurso(this.cursoController.retornarDados(resultSet.getLong("id_curso")));
                 usuario.setBairro(this.bairroController.retornarDados(resultSet.getLong("id_bairro")));
                 usuariosProximos.add(usuario);
@@ -99,7 +108,7 @@ public class    DaoUsuario {
                 "sobrenome VARCHAR(50)," +
                 "email VARCHAR(100) UNIQUE," +
                 "senha VARCHAR (50)," +
-                "destino VARCHAR (50), " +
+                "idFaculdade bigint, " +
                 "id_curso bigint, " +
                 "id_bairro bigint); ";
         try {
@@ -112,14 +121,14 @@ public class    DaoUsuario {
     }
 
     public Usuario editar(Usuario usuario) {
-        String sql = "update uniflow.usuario set nome = ?, sobrenome = ?, email = ?, senha = ?, destino = ?, id_curso = ?, id_bairro = ? where id_usuario = ?;";
+        String sql = "update uniflow.usuario set nome = ?, sobrenome = ?, email = ?, senha = ?, idFaculdade = ?, id_curso = ?, id_bairro = ? where id_usuario = ?;";
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, usuario.getNome());
             statement.setString(2, usuario.getSobrenome());
             statement.setString(3, usuario.getEmail());
             statement.setString(4, usuario.getSenha());
-            statement.setString(5, usuario.getDestino());
+            statement.setLong(5, usuario.getDestino().getIdFaculdade());
             statement.setLong(6, usuario.getCurso().getId());//temporario
             statement.setLong(7, usuario.getBairro().getId());
             statement.setLong(8, usuario.getIdUsuario());
@@ -135,14 +144,14 @@ public class    DaoUsuario {
 
     public void adicionar(Usuario user) {
 
-        String sql = "INSERT INTO uniflow.usuario(nome, sobrenome, email, senha, destino, id_curso, id_bairro) value(?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO uniflow.usuario(nome, sobrenome, email, senha, idFaculdade, id_curso, id_bairro) value(?,?,?,?,?,?,?)";
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, user.getNome());
             statement.setString(2, user.getSobrenome());
             statement.setString(3, user.getEmail());
             statement.setString(4, user.getSenha());
-            statement.setString(5, user.getDestino());
+            statement.setLong(5, user.getDestino().getIdFaculdade());
             statement.setLong(6, user.getCurso().getId());
             statement.setLong(7, user.getBairro().getId());
             statement.execute();
