@@ -109,8 +109,9 @@ public class    DaoUsuario {
                 "email VARCHAR(100) UNIQUE," +
                 "senha VARCHAR (50)," +
                 "idFaculdade bigint, " +
+                "escolha VARCHAR(45)," +
                 "id_curso bigint, " +
-                "id_bairro bigint); ";
+                "id_bairro bigint);";
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.execute();
@@ -144,7 +145,7 @@ public class    DaoUsuario {
 
     public void adicionar(Usuario user) {
 
-        String sql = "INSERT INTO uniflow.usuario(nome, sobrenome, email, senha, idFaculdade, id_curso, id_bairro) value(?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO uniflow.usuario(nome, sobrenome, email, senha, idFaculdade, escolha , id_curso, id_bairro) value(?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, user.getNome());
@@ -152,8 +153,9 @@ public class    DaoUsuario {
             statement.setString(3, user.getEmail());
             statement.setString(4, user.getSenha());
             statement.setLong(5, user.getDestino().getIdFaculdade());
-            statement.setLong(6, user.getCurso().getId());
-            statement.setLong(7, user.getBairro().getId());
+            statement.setString(6,user.getEscolha());
+            statement.setLong(7, user.getCurso().getId());
+            statement.setLong(8, user.getBairro().getId());
             statement.execute();
             statement.close();
         } catch (SQLException e) {

@@ -13,4 +13,5 @@ public class FaculdadeController {
     public List<Faculdade> listarFaculdade() {
         return daoFaculdade.listarFaculdade();
     }
+    public void criarTabelaFaculdade(){  daoFaculdade.criarTabelaFaculdade();}
 }

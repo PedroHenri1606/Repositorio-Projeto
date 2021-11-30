@@ -1,13 +1,9 @@
 package model;
 
-import controller.BairroController;
-import controller.CorridaController;
-import controller.CursoController;
-import controller.UsuarioController;
+import controller.*;
 import view.UsuarioView;
 
-public class
-Principal {
+public class Principal {
 
     public static void main(String[] args) {
 
@@ -16,11 +12,13 @@ Principal {
         CorridaController corridaController = new CorridaController();
         UsuarioController usuarioController = new UsuarioController();
         CursoController cursoController = new CursoController();
+        FaculdadeController faculdadeController = new FaculdadeController();
 
         corridaController.criarTabelaCorrida();
         cursoController.criarTabelaCurso();
         usuarioController.CriarTabelaUsuario();
         bairroController.criarTabelaBairro();
+        faculdadeController.criarTabelaFaculdade();
 
         usuarioView.menuInicio();
     }

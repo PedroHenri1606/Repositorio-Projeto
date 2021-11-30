@@ -1,8 +1,0 @@
-Engenharia de Software|0
-Engenharia Civil|2
-Engenharia|3
-Pecuaria|4
-engenharia eletrica|5
-Medicina|6
-enfermagem|7
-ciencia da computacao|8

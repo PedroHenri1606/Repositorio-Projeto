@@ -5,9 +5,9 @@ public class Usuario {
     String sobrenome;
     String senha;
     String email;
-
     Bairro bairro;
     Curso curso;
+    String escolha;
     Faculdade destino;
 
     @Override
@@ -20,6 +20,7 @@ public class Usuario {
                 ", email='" + email + '\'' +
                 ", bairro=" + bairro +
                 ", curso=" + curso +
+                ", escolha=" + escolha +
                 ", destino='" + destino + '\'' +
                 '}';
     }
@@ -81,6 +82,12 @@ public class Usuario {
 
     public void setCurso(Curso curso) {
         this.curso = curso;
+    }
+
+    public String getEscolha() {return escolha;}
+
+    public void setEscolha(String escolha) {
+        this.escolha = escolha;
     }
 
     public Faculdade getDestino() {

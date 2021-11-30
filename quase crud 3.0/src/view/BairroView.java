@@ -16,17 +16,19 @@ public class BairroView {
         Scanner scan = new Scanner(System.in);
 
         System.out.println("==============================================");
-        System.out.print(" Nome do bairro: "); bairro.setNome(scan.nextLine());
+        System.out.print  (" Nome do bairro: "); bairro.setNome(scan.nextLine());
         System.out.println("==============================================\n");
         this.bairroController.adicionar(bairro);
     }
 
     public List<Bairro> visualizar() {
         List<Bairro> bairros = bairroController.listar();
+
         for (Bairro bairro : bairros) {
-            System.out.println("id bairro: " + bairro.getId() + " nome do bairro: " + bairro.getNome());
+            System.out.println("|Id: " + bairro.getId() + "| Bairro: " + bairro.getNome());
         }
         return bairros;
+
     }
 
     public String escolherBairro(int escolha) {
