@@ -26,6 +26,7 @@ public class FaculdadeView {
             for (int i = 0; i<faculdades.size(); i++) {
                 System.out.println(faculdades.get(i).toString());
             }
+            System.out.println("==============================================");
             System.out.print  ("Selecione o id: ");  long tmp = Long.parseLong(scanner.nextLine());
             System.out.println("==============================================");
             for (int i = 0; i< faculdades.size(); i++) {
@@ -36,5 +37,13 @@ public class FaculdadeView {
             System.out.println("         Nenhuma Opçao valida");
             System.out.println("==============================================");
         }
+    }
+
+    public List<Faculdade> listarFaculdades(){
+        List<Faculdade> faculdades = faculdadeController.listarFaculdade();
+        for (Faculdade faculdade: faculdades){
+            System.out.println("|Id: " + faculdade.getIdFaculdade() + " | Faculdade: " + faculdade.getNome());
+        }
+        return faculdades;
     }
 }

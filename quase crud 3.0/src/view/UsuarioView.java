@@ -60,12 +60,15 @@ public class UsuarioView {
     public Faculdade escolhendoFaculdade() {
         while (true) {
             System.out.println("==============================================");
-            System.out.println("       [1] Selecionar Faculdade");
-            System.out.println("       [2] Cadastrar Faculdade");
+            faculdadeView.listarFaculdades();
+            System.out.println("==============================================");
+            System.out.println("              Escolha uma opção             \n");
+            System.out.println("       [1] Cadastrar Faculdade");
+            System.out.println("       [2] Selecionar Faculdade");
             System.out.println("==============================================");
             switch (Integer.parseInt(scan.nextLine())) {
-                case 1 ->{ return faculdadeView.selecionarFaculdade();}
-                case 2 -> faculdadeView.cadastrar();
+                case 1 -> faculdadeView.cadastrar();
+                case 2 ->{ return faculdadeView.selecionarFaculdade();}
             }
         }
     }
@@ -81,6 +84,7 @@ public class UsuarioView {
             System.out.println("       [2] - Escolher um Bairro");
             System.out.println("==============================================");
             System.out.print  ("Opção: "); int escolha = Integer.parseInt(scan.nextLine());
+            System.out.println("==============================================");
             switch (escolha) {
                 case 1 -> bairroView.cadastrarBairro();
                 case 2 -> {return this.escolherBairro();}
@@ -89,19 +93,16 @@ public class UsuarioView {
     }
 
     public Bairro escolherBairro() {
-        long idCurso;
+        long idBairro;
         List<Bairro> bairros = bairroView.visualizar();
-        System.out.println("==============================================\n");
-        System.out.print  ("Informe bairro escolhido: "); idCurso = Long.parseLong(scan.nextLine());
         System.out.println("==============================================");
+        System.out.print  ("Informe bairro escolhido: "); idBairro = Long.parseLong(scan.nextLine());
 
         for (int i = 0; i< bairros.size(); i++) {
-            if (bairros.get(i).getId() == idCurso) {
+            if (bairros.get(i).getId() == idBairro) {
                 return bairros.get(i);
             }
         }
-
-        System.out.println("\n\n");
         return null;
     }
 
@@ -119,9 +120,7 @@ public class UsuarioView {
             System.out.println("==============================================");
             switch (escolha) {
                 case 1 -> cursoView.cadastrarCurso();
-                case 2 -> {
-                    return this.escolherCurso();
-                }
+                case 2 -> {return this.escolherCurso();}
             }
         }
     }
@@ -130,15 +129,14 @@ public class UsuarioView {
 
         long idCurso;
         List<Curso> cursos = cursoView.listar();
-        System.out.println("==============================================\n");
-        System.out.print  ("Informe o Id: "); idCurso = Long.parseLong(scan.nextLine());
         System.out.println("==============================================");
+        System.out.print  ("Informe o Id: "); idCurso = Long.parseLong(scan.nextLine());
+
         for (int i = 0; i< cursos.size(); i++) {
             if (cursos.get(i).getId() == idCurso) {
                 return cursos.get(i);
             }
         }
-        System.out.println("\n\n");
         return null;
     }
 
@@ -152,7 +150,7 @@ public class UsuarioView {
             System.out.println("Informe se deseja ser Motorista ou Passageiro");
             System.out.println("==============================================");
             System.out.println("      [1] - Motorista   [2] - Passageiro ");
-            System.out.println("=======================================s=======");
+            System.out.println("==============================================");
             System.out.print  (" Infome Opção: "); int opcao = scan.nextInt();
             System.out.println("==============================================");
             switch (opcao) {
@@ -171,7 +169,6 @@ public class UsuarioView {
         System.out.println("            Realizando Login");
         System.out.print  (" Email: "); tmp1 = scan.nextLine();
         System.out.print  (" Senha: "); tmp2 = scan.nextLine();
-        System.out.println("==============================================");
 
         if (usuarioController.realizarLogin(tmp1, tmp2)) {
             Usuario usuarioAtual = usuarioController.determinarUsuario(tmp1, tmp2);

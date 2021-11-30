@@ -15,7 +15,6 @@ public class BairroView {
         Bairro bairro = new Bairro();
         Scanner scan = new Scanner(System.in);
 
-        System.out.println("==============================================");
         System.out.print  (" Nome do bairro: "); bairro.setNome(scan.nextLine());
         System.out.println("==============================================\n");
         this.bairroController.adicionar(bairro);

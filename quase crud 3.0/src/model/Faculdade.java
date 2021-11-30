@@ -9,7 +9,7 @@ public class Faculdade {
 
     @Override
     public String toString() {
-        return "id da faculdade: " + idFaculdade + " | " + "nome da faculdade: " + nome;
+        return "|Id: " + idFaculdade  + "| Faculdade: " + nome;
     }
 
     public long getIdFaculdade() {

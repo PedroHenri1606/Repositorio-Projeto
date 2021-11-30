@@ -36,7 +36,6 @@ public class CorridaView {
 
     public void escolherCorrida(Usuario usuario) {
         this.visualizarCorrida(usuario);
-        System.out.println("===========================================");
         System.out.println(" Digite o id da corrida: "); long idCorrida = Long.parseLong(scan.nextLine());
         System.out.println("==============================================");
         Corrida corridaAtual = corridaController.determinarCorridaAtual(idCorrida, usuario);

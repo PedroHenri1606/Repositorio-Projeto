@@ -15,7 +15,6 @@ public class CursoView {
         Curso curso = new Curso();
         Scanner scan = new Scanner(System.in);
 
-        System.out.println("==============================================");
         System.out.print  (" Nome do curso: "); curso.setNome(scan.nextLine());
         System.out.println("==============================================\n");
         this.cursoController.adicionar(curso);
@@ -28,7 +27,7 @@ public class CursoView {
     public List<Curso> listar() {
         List<Curso> cursos = cursoController.listar();
         for (Curso curso : cursos) {
-            System.out.println("|Id: " + curso.getId() + " |Curso: " + curso.getNome());
+            System.out.println("|Id: " + curso.getId() + " | Curso: " + curso.getNome());
         }
         return cursos;
     }
