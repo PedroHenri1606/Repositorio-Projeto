@@ -66,11 +66,14 @@ public class    DaoUsuario {
 
     public List<Usuario> visualizarUsuariosProximos(Usuario usuarioAtual) {
         List<Usuario> usuariosProximos = new ArrayList<>();
-        String sql = "SELECT * FROM uniflow.usuario where (id_bairro = ? and id_usuario <> ?);";
+        String sql;
+        System.out.println(usuarioAtual.getEscolha());
+        sql = "SELECT * FROM uniflow.usuario where (id_bairro = ? and id_usuario <> ? and escolha <> ?);";
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setLong(1, usuarioAtual.getBairro().getId());
             statement.setLong(2, usuarioAtual.getIdUsuario());
+            statement.setLong(3, usuarioAtual.getEscolha());
             ResultSet resultSet = statement.executeQuery();
             Usuario usuario;
             while (resultSet.next()) {
@@ -108,10 +111,13 @@ public class    DaoUsuario {
                 "sobrenome VARCHAR(50)," +
                 "email VARCHAR(100) UNIQUE," +
                 "senha VARCHAR (50)," +
-                "idFaculdade bigint, " +
-                "escolha VARCHAR(45)," +
-                "id_curso bigint, " +
-                "id_bairro bigint);";
+                "escolha BIGINT," +
+                "idFaculdade bigint," +
+                "foreign key(idFaculdade) references faculdade(idFaculdade), " +
+                "id_curso bigint," +
+                "foreign key(id_curso) references curso(id_curso), " +
+                "id_bairro bigint," +
+                "foreign key (id_bairro) references bairro(id_bairro));";
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.execute();
@@ -153,7 +159,7 @@ public class    DaoUsuario {
             statement.setString(3, user.getEmail());
             statement.setString(4, user.getSenha());
             statement.setLong(5, user.getDestino().getIdFaculdade());
-            statement.setString(6,user.getEscolha());
+            statement.setLong(6,    user.getEscolha());
             statement.setLong(7, user.getCurso().getId());
             statement.setLong(8, user.getBairro().getId());
             statement.execute();

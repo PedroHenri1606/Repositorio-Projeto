@@ -140,9 +140,9 @@ public class UsuarioView {
         return null;
     }
 
-    public String escolha() {
+    public long escolha() {
 
-        String resposta = "";
+        long resposta = 0;
 
         while (true) {
             Scanner scan = new Scanner(System.in);
@@ -154,8 +154,8 @@ public class UsuarioView {
             System.out.print  (" Infome Opção: "); int opcao = scan.nextInt();
             System.out.println("==============================================");
             switch (opcao) {
-                case 1 -> resposta = "Motorista";
-                case 2 -> resposta = "Passageiro";
+                case 1 -> resposta = 1;
+                case 2 -> resposta = 2;
             }
             return resposta;
         }

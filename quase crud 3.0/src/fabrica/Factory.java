@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class Factory {
 
-    String senha = "PEDROHENRIQUE123";
+    String senha = "eduardo123";
     public Connection getConection() {
         try {
             return DriverManager.getConnection("jdbc:mysql://localhost:3306/uniflow", "root", senha);

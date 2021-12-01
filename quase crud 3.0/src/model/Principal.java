@@ -14,11 +14,11 @@ public class Principal {
         CursoController cursoController = new CursoController();
         FaculdadeController faculdadeController = new FaculdadeController();
 
-        corridaController.criarTabelaCorrida();
-        cursoController.criarTabelaCurso();
-        usuarioController.CriarTabelaUsuario();
-        bairroController.criarTabelaBairro();
         faculdadeController.criarTabelaFaculdade();
+        cursoController.criarTabelaCurso();
+        bairroController.criarTabelaBairro();
+        usuarioController.CriarTabelaUsuario();
+        corridaController.criarTabelaCorrida();
 
         usuarioView.menuInicio();
     }

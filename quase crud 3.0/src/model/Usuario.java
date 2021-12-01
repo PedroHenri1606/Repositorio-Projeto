@@ -7,7 +7,7 @@ public class Usuario {
     String email;
     Bairro bairro;
     Curso curso;
-    String escolha;
+    long escolha;
     Faculdade destino;
 
     @Override
@@ -84,9 +84,11 @@ public class Usuario {
         this.curso = curso;
     }
 
-    public String getEscolha() {return escolha;}
+    public long getEscolha() {
+        return escolha;
+    }
 
-    public void setEscolha(String escolha) {
+    public void setEscolha(long escolha) {
         this.escolha = escolha;
     }
 
