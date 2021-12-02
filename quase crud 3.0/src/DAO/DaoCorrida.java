@@ -20,7 +20,7 @@ public class DaoCorrida {
     }
 
     public void criarTabelaCorrida() {
-        String sql = "CREATE TABLE IF NOT EXISTS corridas(id_corrida bigint primary key auto_increment, hora VARCHAR(50), dia int, mes int, ano int, preco decimal(10,2), id_usuario bigint);";
+        String sql = "CREATE TABLE IF NOT EXISTS corridas(id_corrida bigint primary key auto_increment, hora VARCHAR(50), dia int, mes int, ano int, preco decimal(10,2), id_usuario bigint, foreign key(id_usuario) references usuario(id_usuario));";
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.execute();
