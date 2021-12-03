@@ -53,6 +53,7 @@ public class UsuarioView {
             usuarioModel.setCurso(this.escolhendoCurso());
             usuarioModel.setDestino(this.escolhendoFaculdade());
             usuarioModel.setEscolha(this.escolha());
+            usuarioModel.setSexo(this.escolherSexo());
             usuarioController.realizarCadastro(usuarioModel);
         }
 
@@ -156,6 +157,26 @@ public class UsuarioView {
             switch (opcao) {
                 case 1 -> resposta = 1;
                 case 2 -> resposta = 2;
+            }
+            return resposta;
+        }
+    }
+
+    public long escolherSexo(){
+        long resposta = 0;
+
+        while(true){
+            Scanner scan = new Scanner(System.in);
+            System.out.println("==============================================");
+            System.out.println("           Informe o seu sexo                 ");
+            System.out.println("==============================================");
+            System.out.println("      [1] - Homem   [2] - Mulher ");
+            System.out.println("==============================================");
+            System.out.print  (" Infome Opção: "); int opcao = scan.nextInt();
+            System.out.println("==============================================");
+            switch (opcao){
+                case 1-> resposta = 1;
+                case 2-> resposta = 2;
             }
             return resposta;
         }

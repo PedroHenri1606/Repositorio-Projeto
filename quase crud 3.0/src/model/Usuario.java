@@ -7,6 +7,7 @@ public class Usuario {
     String email;
     Bairro bairro;
     Curso curso;
+    long sexo;
     long escolha;
     Faculdade destino;
 
@@ -20,6 +21,7 @@ public class Usuario {
                 ", email='" + email + '\'' +
                 ", bairro=" + bairro +
                 ", curso=" + curso +
+                ", sexo= " + sexo +
                 ", escolha=" + escolha +
                 ", destino='" + destino + '\'' +
                 '}';
@@ -98,5 +100,13 @@ public class Usuario {
 
     public void setDestino(Faculdade destino) {
         this.destino = destino;
+    }
+
+    public long getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(long sexo) {
+        this.sexo = sexo;
     }
 }

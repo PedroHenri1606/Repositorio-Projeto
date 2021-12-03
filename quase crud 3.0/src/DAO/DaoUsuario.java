@@ -113,6 +113,7 @@ public class    DaoUsuario {
                 "senha VARCHAR (50)," +
                 "escolha BIGINT," +
                 "idFaculdade bigint," +
+                "sexo bigint,"+
                 "foreign key(idFaculdade) references faculdade(idFaculdade), " +
                 "id_curso bigint," +
                 "foreign key(id_curso) references curso(id_curso), " +
@@ -151,7 +152,7 @@ public class    DaoUsuario {
 
     public void adicionar(Usuario user) {
 
-        String sql = "INSERT INTO uniflow.usuario(nome, sobrenome, email, senha, idFaculdade, escolha , id_curso, id_bairro) value(?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO uniflow.usuario(nome, sobrenome, email, senha, idFaculdade, escolha ,sexo, id_curso, id_bairro) value(?,?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, user.getNome());
@@ -159,9 +160,10 @@ public class    DaoUsuario {
             statement.setString(3, user.getEmail());
             statement.setString(4, user.getSenha());
             statement.setLong(5, user.getDestino().getIdFaculdade());
-            statement.setLong(6,    user.getEscolha());
-            statement.setLong(7, user.getCurso().getId());
-            statement.setLong(8, user.getBairro().getId());
+            statement.setLong(6, user.getEscolha());
+            statement.setLong(7, user.getSexo());
+            statement.setLong(8, user.getCurso().getId());
+            statement.setLong(9, user.getBairro().getId());
             statement.execute();
             statement.close();
         } catch (SQLException e) {
