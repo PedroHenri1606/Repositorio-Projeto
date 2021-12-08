@@ -6,6 +6,7 @@ import model.Bairro;
 import model.Curso;
 import model.Faculdade;
 import model.Usuario;
+import model.Carro;
 
 
 import java.util.List;
@@ -17,6 +18,7 @@ public class UsuarioView {
     CursoView cursoView = new CursoView();
     CorridaView corridaview = new CorridaView();
     FaculdadeView faculdadeView = new FaculdadeView();
+    CarroView carroView = new CarroView();
     Scanner scan = new Scanner(System.in);
 
     public void menuInicio() {
@@ -41,22 +43,30 @@ public class UsuarioView {
         this.espaco();
         Scanner scan = new Scanner(System.in);
 
-            Usuario usuarioModel = new Usuario();
-            System.out.println("==============================================");
-            System.out.println("       Realizando Cadastro de usuario         ");
-            System.out.println("==============================================");
-            System.out.print  (" Nome do usuario: ");    usuarioModel.setNome(scan.nextLine());
-            System.out.print  (" Sobrenome: ");          usuarioModel.setSobrenome(scan.nextLine());
-            System.out.print  (" Digite o seu Email: "); usuarioModel.setEmail(scan.nextLine());
-            System.out.print  (" Senha do usuario: ");   usuarioModel.setSenha(scan.nextLine());
-            usuarioModel.setBairro(this.escolhendoBairro());
-            usuarioModel.setCurso(this.escolhendoCurso());
-            usuarioModel.setDestino(this.escolhendoFaculdade());
-            usuarioModel.setEscolha(this.escolha());
-            usuarioModel.setSexo(this.escolherSexo());
+        Usuario usuarioModel = new Usuario();
+        System.out.println("==============================================");
+        System.out.println("       Realizando Cadastro de usuario         ");
+        System.out.println("==============================================");
+        System.out.print(" Nome do usuario: ");
+        usuarioModel.setNome(scan.nextLine());
+        System.out.print(" Sobrenome: ");
+        usuarioModel.setSobrenome(scan.nextLine());
+        System.out.print(" Digite o seu Email: ");
+        usuarioModel.setEmail(scan.nextLine());
+        System.out.print(" Senha do usuario: ");
+        usuarioModel.setSenha(scan.nextLine());
+        usuarioModel.setBairro(this.escolhendoBairro());
+        usuarioModel.setCurso(this.escolhendoCurso());
+        usuarioModel.setDestino(this.escolhendoFaculdade());
+        usuarioModel.setSexo(this.escolherSexo());
+        usuarioModel.setEscolha(this.escolha());
+        if (escolha() == 1) {
+            usuarioModel.setCarro(this.escolhendoCarro());
+            usuarioController.realizarCadastro(usuarioModel);
+        } else {
             usuarioController.realizarCadastro(usuarioModel);
         }
-
+    }
 
     public Faculdade escolhendoFaculdade() {
         while (true) {
@@ -73,6 +83,39 @@ public class UsuarioView {
             }
         }
     }
+
+    public Carro escolhendoCarro(){
+        while (true) {
+            System.out.println("==============================================");
+            carroView.visualizar();
+            System.out.println("==============================================");
+            System.out.println("            Escolha uma opção  \n");
+            System.out.println("       [1] - Cadastrar novo Carro");
+            System.out.println("       [2] - Escolher um Carro");
+            System.out.println("==============================================");
+            System.out.print  ("Opção: "); int escolha = Integer.parseInt(scan.nextLine());
+            System.out.println("==============================================");
+            switch (escolha) {
+                case 1 -> carroView.cadastrarCarro();
+                case 2 -> {return this.escolherCarro();}
+            }
+        }
+    }
+
+    public Carro escolherCarro() {
+        long idcarro;
+        List<Carro> carros = carroView.visualizar();
+        System.out.println("==============================================");
+        System.out.print  ("Informe carro escolhido: "); idcarro = Long.parseLong(scan.nextLine());
+
+        for (int i = 0; i< carros.size(); i++) {
+            if (carros.get(i).getId() == idcarro) {
+                return carros.get(i);
+            }
+        }
+        return null;
+    }
+
 
     public Bairro escolhendoBairro() {
 
@@ -193,43 +236,119 @@ public class UsuarioView {
 
         if (usuarioController.realizarLogin(tmp1, tmp2)) {
             Usuario usuarioAtual = usuarioController.determinarUsuario(tmp1, tmp2);
-            this.menu(usuarioAtual);
+            if(usuarioAtual.getEscolha() == 1) {
+                this.menuMotorista(usuarioAtual);
+            } else{
+                this.menuPassageiro(usuarioAtual);
+            }
         } else {
             System.out.println("==============================================");
             System.out.println("       Usuario ou senha incorreta!!:(         ");
             System.out.println("==============================================");
         }
+
     }
 
-    public void menu(Usuario userAtual) {
+    public void menuMotorista(Usuario userAtual) {
+
+        Scanner scan = new Scanner(System.in);
+
+        while (true) {
+
+            System.out.println("==============================================");
+            System.out.println(" Bem Vindo: " + userAtual.getNome() + "\n");
+            System.out.println(" [1] - Criar corridas ");
+            System.out.println(" [2] - Historico de corridas");
+            System.out.println(" [3] - Configuracoes");
+            System.out.println(" [4] - Sair");
+            System.out.println("==============================================");
+            int escolha = Integer.parseInt(scan.nextLine());
+
+            switch (escolha) {
+                case 1 ->  this.menuCorrida(userAtual);
+                case 2 ->  corridaview.visualizarMinhasCorrida(userAtual);
+                case 3 ->  this.configuracoes(userAtual);
+                case 4 ->  { return;}
+            }
+        }
+    }
+
+    public void menuCorrida2(Usuario userAtual){
 
         Scanner scan = new Scanner(System.in);
 
         while (true) {
             System.out.println("==============================================");
-            System.out.println(" Bem Vindo: " + userAtual.getNome() + "\n");
-            System.out.println(" [1] - Visualizar colegas de carona ");
-            System.out.println(" [2] - Criar corrida");
-            System.out.println(" [3] - Visualizar minhas corridas");
-            System.out.println(" [4] - Selecionar Corrida");
-            System.out.println(" [5] - Configuracoes");
-            System.out.println(" [6] - Sair");
+            System.out.println(" [1] - Escolher Corrida");
+            System.out.println(" [2] - Visualizar Usuarios próximos");
+            System.out.println(" [3] - Voltar");
             System.out.println("==============================================");
             int escolha = Integer.parseInt(scan.nextLine());
 
             switch (escolha) {
-                case 1 ->  this.visualizarUsuariosProximos(userAtual);
-                case 2 ->  corridaview.cadastrarCorrida(userAtual);
-                case 3 ->  corridaview.visualizarCorrida(userAtual);
-                case 4 ->  corridaview.escolherCorrida(userAtual);
-                case 5 -> this.configuracoes(userAtual);
-                case 6 -> { return;}
+                case 1:
+                    corridaview.visualizarCorridasPendentes();
+                    corridaview.escolherCorridaPassageiro(userAtual);
+                    break;
+                case 2:
+                    this.visualizarUsuariosProximos(userAtual);
+                    break;
+                case 3:
+                    return;
             }
         }
     }
 
+    public void menuPassageiro(Usuario userAtual) {
+
+        Scanner scan = new Scanner(System.in);
+
+        while (true) {
+
+            System.out.println("==============================================");
+            System.out.println(" Bem Vindo: " + userAtual.getNome() + "\n");
+            System.out.println(" [1] - Ver Corridas ");
+            System.out.println(" [2] - Historico de  corridas");
+            System.out.println(" [3] - Configuracoes");
+            System.out.println(" [4] - Sair");
+            System.out.println("==============================================");
+            int escolha = Integer.parseInt(scan.nextLine());
+
+            switch (escolha) {
+                case 1 ->  this.menuCorrida2(userAtual);
+                case 2 ->  corridaview.visualizarMinhasCorrida(userAtual);
+                case 3 ->  this.configuracoes(userAtual);
+                case 4 ->  { return;}
+            }
+        }
+    }
+
+    public void menuCorrida(Usuario userAtual) {
+
+        Scanner scan = new Scanner(System.in);
+
+        while (true) {
+            System.out.println("==============================================");
+            System.out.println(" [1] - Criar corrida");
+            System.out.println(" [2] - Visualizar Usuarios próximos");
+            System.out.println(" [3] - Historico de Corridas");
+            System.out.println(" [4] - Voltar");
+            System.out.println("==============================================");
+            int escolha = Integer.parseInt(scan.nextLine());
+
+            switch (escolha) {
+                case 1 -> corridaview.cadastrarCorrida(userAtual);
+                case 2 -> this.visualizarUsuariosProximos(userAtual);
+                case 3 -> corridaview.escolherCorrida(userAtual);
+                case 4 -> {return;}
+            }
+        }
+    }
+
+
     public void visualizarUsuariosProximos(Usuario usuario) {
         List<Usuario> usuarios = usuarioController.visualizarUsuarios(usuario);
+        System.out.println("==============================================");
         for (Usuario usuario1 : usuarios) {
             System.out.println("Nome: " + usuario1.getNome() + " | Email: " + usuario1.getEmail());
         }

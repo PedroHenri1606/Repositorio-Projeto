@@ -3,6 +3,7 @@ package model;
 public class Corrida {
 
     private Usuario user;
+    private Carro carro;
     private String hora;
     private int dia;
     private int mes;
@@ -27,6 +28,7 @@ public class Corrida {
                 '}';
     }
 
+
     public Usuario getUser() {
         return user;
     }
@@ -35,6 +37,11 @@ public class Corrida {
         this.user = user;
     }
 
+    public Carro getCarro() {return carro;}
+
+    public void setCarro(Carro carro) {
+        this.carro = carro;
+    }
 
     public String getHora() {
         return hora;

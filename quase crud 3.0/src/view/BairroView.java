@@ -27,7 +27,6 @@ public class BairroView {
             System.out.println("|Id: " + bairro.getId() + "| Bairro: " + bairro.getNome());
         }
         return bairros;
-
     }
 
     public String escolherBairro(int escolha) {

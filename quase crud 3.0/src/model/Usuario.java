@@ -10,21 +10,20 @@ public class Usuario {
     long sexo;
     long escolha;
     Faculdade destino;
+    Carro carro;
 
     @Override
     public String toString() {
-        return "Usuario{" +
-                "idUsuario=" + idUsuario +
-                ", nome='" + nome + '\'' +
-                ", sobrenome='" + sobrenome + '\'' +
-                ", senha='" + senha + '\'' +
-                ", email='" + email + '\'' +
-                ", bairro=" + bairro +
-                ", curso=" + curso +
-                ", sexo= " + sexo +
-                ", escolha=" + escolha +
-                ", destino='" + destino + '\'' +
-                '}';
+        return nome;
+
+    }
+
+    public Carro getCarro() {
+        return carro;
+    }
+
+    public void setCarro(Carro carro) {
+        this.carro = carro;
     }
 
     public long getIdUsuario() {

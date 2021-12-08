@@ -1,6 +1,6 @@
 package DAO;
 
-import fabrica.Factory;
+import  fabrica.Factory;
 import model.Bairro;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -87,7 +87,7 @@ public class DaoBairro {
             ResultSet resultSet = statement.executeQuery();
 
             while(resultSet.next()){
-                idBairro = resultSet.getLong("id_bairro");
+                idBairro = resultSet.getLong("id|_bairro");
             }
             statement.execute();
             statement.close();

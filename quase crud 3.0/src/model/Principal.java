@@ -1,5 +1,6 @@
 package model;
 
+import DAO.DaoCarro;
 import controller.*;
 import view.UsuarioView;
 
@@ -13,7 +14,10 @@ public class Principal {
         UsuarioController usuarioController = new UsuarioController();
         CursoController cursoController = new CursoController();
         FaculdadeController faculdadeController = new FaculdadeController();
+        CarroController carroController = new CarroController();
 
+
+        carroController.criarTabelaCarro();
         faculdadeController.criarTabelaFaculdade();
         cursoController.criarTabelaCurso();
         bairroController.criarTabelaBairro();

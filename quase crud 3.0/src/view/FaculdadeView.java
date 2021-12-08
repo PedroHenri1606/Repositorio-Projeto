@@ -9,11 +9,12 @@ import java.util.Scanner;
 public class FaculdadeView {
     FaculdadeController faculdadeController = new FaculdadeController();
     public void cadastrar() {
-        System.out.println("==============================================");
+
         Scanner scanner = new Scanner(System.in);
         Faculdade faculdade = new Faculdade();
-        System.out.print("Digite a faculdade: ");
-        faculdade.setNome(scanner.nextLine());
+
+        System.out.println("==============================================");
+        System.out.print  ("Digite a faculdade: "); faculdade.setNome(scanner.nextLine());
         faculdadeController.SalvarFaculdade(faculdade);
     }
 

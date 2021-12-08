@@ -21,6 +21,10 @@ public class CorridaController {
         return this.daoCorrida.visualizar(usuario);
     }
 
+    public List<Corrida> visualizarPendentes() {
+        return this.daoCorrida.visualizarPendentes();
+    }
+
     public void cadastrarCorrida(Corrida corrida) {
             this.daoCorrida.cadastrarCorrida(corrida);
     }
