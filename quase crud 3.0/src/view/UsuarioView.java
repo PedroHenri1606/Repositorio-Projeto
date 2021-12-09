@@ -60,7 +60,7 @@ public class UsuarioView {
         usuarioModel.setDestino(this.escolhendoFaculdade());
         usuarioModel.setSexo(this.escolherSexo());
         usuarioModel.setEscolha(this.escolha());
-        if (escolha() == 1) {
+        if (usuarioModel.getEscolha() == 1) {
             usuarioModel.setCarro(this.escolhendoCarro());
             usuarioController.realizarCadastro(usuarioModel);
         } else {
@@ -196,7 +196,6 @@ public class UsuarioView {
             System.out.println("      [1] - Motorista   [2] - Passageiro ");
             System.out.println("==============================================");
             System.out.print  (" Infome Opção: "); int opcao = scan.nextInt();
-            System.out.println("==============================================");
             switch (opcao) {
                 case 1 -> resposta = 1;
                 case 2 -> resposta = 2;
