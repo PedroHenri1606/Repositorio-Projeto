@@ -14,4 +14,5 @@ public class UsuarioController {
     public Usuario determinarUsuario(String email, String senha) {return daoUsuario.determinarUsuarioAtual(email, senha);}
     public void editarDados(Usuario usuario) {daoUsuario.editar(usuario);}
     public List<Usuario> visualizarUsuarios(Usuario usuario) {return daoUsuario.visualizarUsuariosProximos(usuario);}
+    public Usuario retornarDado(long id){ return daoUsuario.retornaDados(id);}
 }

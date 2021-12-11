@@ -12,7 +12,6 @@ import java.sql.SQLException;
 import java.util.*;
 
 public class DaoCorrida {
-    static List<Corrida> corridas = new ArrayList<>();
 
     Connection connection;
     CarroController carroController = new CarroController();
@@ -40,7 +39,8 @@ public class DaoCorrida {
         }
     }
 
-    public List<Corrida> visualizar(Usuario usuario) {
+    public List<Corrida>
+    visualizar(Usuario usuario, Carro carro) {
 
         List<Corrida> minhasCorridas = new ArrayList<>();
 
@@ -51,11 +51,9 @@ public class DaoCorrida {
             statement.setLong(1, usuario.getIdUsuario());
             ResultSet resultSet = statement.executeQuery();
             Corrida corrida;
-            Carro carro;
 
             while (resultSet.next()) {
                 corrida = new Corrida();
-                carro = new Carro();
 
                 corrida.setIdCorrida(resultSet.getLong("id_corrida"));
                 corrida.setHora(resultSet.getString("hora"));
@@ -65,7 +63,7 @@ public class DaoCorrida {
                 corrida.setAno(resultSet.getInt("ano"));
                 corrida.setPreco(resultSet.getDouble("preco"));
                 corrida.setUser(usuario);
-                corrida.setCarro(this.carroController.retornarCarro(resultSet.getLong("id_carro")));
+                corrida.setCarro(carro);
                 minhasCorridas.add(corrida);
             }
         } catch (SQLException e) {
@@ -121,23 +119,6 @@ public class DaoCorrida {
         }
     }
 
-    public void salvarAlteracoes(Corrida corrida) {
-        String sql = "update uniflow.corridas set hora = ?, dia = ?, mes = ?, ano = ?, preco = ?, id_usuario = ? where id_corrida = ?;";
-        try {
-            PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setString(1,corrida.getHora());
-            statement.setInt(2, corrida.getDia());
-            statement.setInt(3, corrida.getMes());
-            statement.setInt(4,corrida.getAno());
-            statement.setDouble(5,corrida.getPreco());
-            statement.setLong(6, corrida.getUser().getIdUsuario());
-            statement.setLong(7,corrida.getIdCorrida());
-            statement.execute();
-            statement.close();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
     public Corrida determinarCorridaAtual(long idCorrida, Usuario usuario) {
         Corrida tmp = new Corrida();
         String sql = "select * from uniflow.corridas where (id_corrida = ? and id_usuario = ?);";

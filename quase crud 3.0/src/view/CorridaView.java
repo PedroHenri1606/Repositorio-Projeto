@@ -4,16 +4,18 @@ import controller.CarroController;
 import controller.CorridaController;
 import model.Corrida;
 import model.Usuario;
+import model.Carro;
 
 import java.util.*;
 
 public class CorridaView {
 
     CorridaController corridaController = new CorridaController();
+    CarroController carroController = new CarroController();
     Scanner scan = new Scanner(System.in);
 
-    public void visualizarMinhasCorrida(Usuario usuario) {
-        List<Corrida> corridas = corridaController.visualizar(usuario);
+    public void visualizarMinhasCorrida(Usuario usuario,Carro carro) {
+        List<Corrida> corridas = corridaController.visualizar(usuario, carro);
         System.out.println("==============================================");
         for (Corrida corrida : corridas) {
             System.out.println("Id: "+ corrida.getIdCorrida());
@@ -48,14 +50,15 @@ public class CorridaView {
         System.out.print  ("Mês da corrida: ");     corrida.setMes(Integer.parseInt(scan.nextLine()));
         System.out.print  ("Ano da corrida: ");     corrida.setAno(Integer.parseInt(scan.nextLine()));
         System.out.print  ("Preço da corrida: ");   corrida.setPreco(Double.parseDouble(scan.nextLine()));
-        corrida.setCarro(usuario.getCarro());
         corrida.setUser(usuario);
+        corrida.setCarro(carroController.retornarDadosCorrida(usuario.getIdUsuario()));
+
         System.out.println("==============================================\n");
         corridaController.cadastrarCorrida(corrida);
     }
 
-    public void escolherCorrida(Usuario usuario) {
-        this.visualizarMinhasCorrida(usuario);
+    public void escolherCorrida(Usuario usuario, Carro carro) {
+        this.visualizarMinhasCorrida(usuario, carro);
         System.out.print  ("Digite o id da corrida: "); long idCorrida = Long.parseLong(scan.nextLine());
         Corrida corridaAtual = corridaController.determinarCorridaAtual(idCorrida, usuario);
         this.menuCorrida(corridaAtual, usuario);
@@ -89,7 +92,7 @@ public class CorridaView {
         System.out.println("Criador: " + usuario.getIdUsuario());
         System.out.println("Horario: " + corridaAtual.getHora());
         System.out.println("Data: " + corridaAtual.getDia() + "/" + corridaAtual.getMes() + "/" + corridaAtual.getAno());
-        System.out.println("Carro: " + carroController.retornarCarro(usuario.getIdUsuario()));
+        System.out.println("Carro: " + carroController.determinarCarro(usuario.getIdUsuario()));
         System.out.println("Preço: R$" + corridaAtual.getPreco());
 
     }

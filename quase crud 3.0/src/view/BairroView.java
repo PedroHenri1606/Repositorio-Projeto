@@ -29,7 +29,4 @@ public class BairroView {
         return bairros;
     }
 
-    public String escolherBairro(int escolha) {
-        return bairroController.escolherBairro(escolha);
-    }
 }

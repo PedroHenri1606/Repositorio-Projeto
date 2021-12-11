@@ -2,11 +2,12 @@ package model;
 
 public class Carro {
     private long id;
-    private String nome;
-    private String fabricante;
-    private String cor;
+    private CarroNome nome;
+    private CarroFabricante fabricante;
+    private CarroCor cor;
     private long ano;
     private String placa;
+    private Usuario dono;
 
     public Carro() {
     }
@@ -19,27 +20,27 @@ public class Carro {
         this.id = id;
     }
 
-    public String getNome() {
+    public CarroNome getNome() {
         return nome;
     }
 
-    public void setNome(String nome) {
+    public void setNome(CarroNome nome) {
         this.nome = nome;
     }
 
-    public String getFabricante() {
+    public CarroFabricante getFabricante() {
         return fabricante;
     }
 
-    public void setFabricante(String fabricante) {
+    public void setFabricante(CarroFabricante fabricante) {
         this.fabricante = fabricante;
     }
 
-    public String getCor() {
+    public CarroCor getCor() {
         return cor;
     }
 
-    public void setCor(String cor) {
+    public void setCor(CarroCor cor) {
         this.cor = cor;
     }
 
@@ -59,8 +60,16 @@ public class Carro {
         this.placa = placa;
     }
 
+    public Usuario getDono() {
+        return dono;
+    }
+
+    public void setDono(Usuario dono) {
+        this.dono = dono;
+    }
+
     @Override
     public String toString() {
-        return fabricante + " " + nome + " " + cor + "\n" + "Placa: "+ placa;
+        return fabricante + " " + nome + " " + cor + " " + ano;
     }
 }

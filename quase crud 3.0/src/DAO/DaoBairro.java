@@ -41,19 +41,7 @@ public class DaoBairro {
         }
     }
 
-    public Bairro editar(Bairro bairro){
 
-        String sql = "UPDATE uniflow.bairro set nome_bairro = ?;";
-        try{
-            PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setString(1,bairro.getNome());
-            statement.execute();
-            statement.close();
-            return bairro;
-        } catch (SQLException e){
-            throw new RuntimeException(e);
-        }
-    }
 
     public String escolherBairro(long id){
 
@@ -77,27 +65,7 @@ public class DaoBairro {
         }
     }
 
-    public long escolherBairroID(long id){
 
-        String sql = "SELECT id_bairro from bairro where id_bairro =" + id;
-
-        long idBairro= 0;
-        try{
-            PreparedStatement statement = connection.prepareStatement(sql);
-            ResultSet resultSet = statement.executeQuery();
-
-            while(resultSet.next()){
-                idBairro = resultSet.getLong("id|_bairro");
-            }
-            statement.execute();
-            statement.close();
-
-            return idBairro;
-        } catch (SQLException e){
-            throw new RuntimeException(e);
-
-        }
-    }
 
     public List<Bairro> listar(){
 

@@ -20,7 +20,9 @@ public class DAOFaculdade {
     }
 
     public void criarTabelaFaculdade() {
-        String sql = "create table if not exists faculdade(idFaculdade bigint primary key auto_increment, nome varchar(50));";
+        String sql = "create table if not exists faculdade(" +
+                "idFaculdade bigint primary key auto_increment, " +
+                "nome varchar(50));";
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.execute();

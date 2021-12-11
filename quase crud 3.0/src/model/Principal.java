@@ -14,14 +14,23 @@ public class Principal {
         UsuarioController usuarioController = new UsuarioController();
         CursoController cursoController = new CursoController();
         FaculdadeController faculdadeController = new FaculdadeController();
+
+        CarroNomeController carroNomeController = new CarroNomeController();
         CarroController carroController = new CarroController();
+        CarroFabricanteController carroFabricanteController = new CarroFabricanteController();
+        CarroCorController carroCorController = new CarroCorController();
 
 
-        carroController.criarTabelaCarro();
+        carroNomeController.criarTabelaCarroNome();
+        carroFabricanteController.criarTabelaCarroFabricante();
+        carroCorController.criarTabelaCarroCor();
+
+
         faculdadeController.criarTabelaFaculdade();
         cursoController.criarTabelaCurso();
         bairroController.criarTabelaBairro();
         usuarioController.CriarTabelaUsuario();
+        carroController.criarTabelaCarro();
         corridaController.criarTabelaCorrida();
 
         usuarioView.menuInicio();

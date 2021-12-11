@@ -44,18 +44,6 @@ public class DaoCurso {
         }
     }
 
-    public Curso editar(Curso curso) {
-        String sql = "UPDATE uniflow.curso set nome_curso = ?;";
-        try {
-            PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setString(1, curso.getNome());
-            statement.execute();
-            statement.close();
-            return curso;
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     public String escolherCurso(long id) {
 
@@ -68,26 +56,6 @@ public class DaoCurso {
 
             while (resultSet.next()) {
                 nomeCurso = resultSet.getString("nome_curso");
-            }
-            statement.execute();
-            statement.close();
-
-            return nomeCurso;
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-    public long escolherCursoID(long id) {
-
-        String sql = "SELECT id_curso from curso where id_curso = " + id;
-
-        long nomeCurso = 0;
-        try {
-            PreparedStatement statement = connection.prepareStatement(sql);
-            ResultSet resultSet = statement.executeQuery();
-
-            while (resultSet.next()) {
-                nomeCurso = resultSet.getLong("id_curso");
             }
             statement.execute();
             statement.close();
