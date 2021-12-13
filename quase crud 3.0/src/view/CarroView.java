@@ -2,32 +2,42 @@ package view;
 
 import controller.*;
 import model.*;
-import java.util.Scanner;
+import javax.swing.*;
+import java.util.List;
+import java.util.StringTokenizer;
 
 public class CarroView {
 
     CarroNomeView carroNomeView = new CarroNomeView();
     CarroController carroController = new CarroController();
+    CarroCorController carroCorController = new CarroCorController();
     CarroFabricanteController carroFabricanteController = new CarroFabricanteController();
     CarroFabricanteView carroFabricanteView = new CarroFabricanteView();
-    CarroCorController carroCorController = new CarroCorController();
     CarroCorView carroCorView = new CarroCorView();
     CarroNomeController carroNomeController = new CarroNomeController();
     UsuarioController usuarioController = new UsuarioController();
-    Scanner scan = new Scanner(System.in);
 
-    public Carro cadastrarCarro(Usuario user){
+    public Carro cadastrarCarro(Usuario user) {
 
         Carro carro = new Carro();
-        Scanner scan = new Scanner(System.in);
 
-        carro.setFabricante(this.escolhendoFabricante());
-        carro.setNome(this.escolhendoNomeCarro());
-        carro.setCor(this.escolhendoCor());
-        System.out.print(" Ano de fabricação: "); carro.setAno(scan.nextLong());
-        String tmp1 = scan.nextLine();
-        System.out.print(" Placa do carro: "); carro.setPlaca(scan.nextLine());
-        System.out.println("==============================================\n");
+        int id = 0;
+        id = this.escolhendoFabricante(id);
+        carro.setFabricante(carroFabricanteController.selecionarFabricante(id));
+
+        int id2 = 0;
+        id2 = this.escolhendoNomeCarro(id2);
+        carro.setNome(carroNomeController.selecionarNome(id2));
+
+        int id3 = 0;
+        id3 = this.escolhendoCor(id3);
+        carro.setCor(carroCorController.selecionarCor(id3));
+
+        String ano = JOptionPane.showInputDialog(null, "      Realizando Cadastro do Carro\n\n" + "Ano de Fabricação: ", "UniFlow", JOptionPane.INFORMATION_MESSAGE);
+        carro.setAno(Long.parseLong(ano));
+
+        String placa = JOptionPane.showInputDialog(null, "      Realizando Cadastro do Carro\n\n" + "Placa do Veiculo: ", "UniFlow", JOptionPane.INFORMATION_MESSAGE);
+        carro.setPlaca(placa);
 
         carro.setDono(usuarioController.retornarDado(user.getIdUsuario()));
 
@@ -35,97 +45,80 @@ public class CarroView {
         return carro;
     }
 
-    public CarroNome escolhendoNomeCarro(){
+    public int escolhendoFabricante(int id) {
 
-        while (true) {
-            System.out.println("==============================================");
-            carroNomeView.visualizarNome();
-            System.out.println("==============================================");
-            System.out.println("            Escolha uma opção  \n");
-            System.out.println("       [1] - Cadastrar novo Modelo");
-            System.out.println("       [2] - Escolher um Modelo");
-            System.out.println("==============================================");
-            System.out.print  ("Opção: "); int escolha = Integer.parseInt(scan.nextLine());
-            System.out.println("==============================================");
-            switch (escolha) {
-                case 1 -> this.cadastrarNomeCarro();
-                case 2 -> {return this.escolherNomeCarro();}
+        List<CarroFabricante> list;
+        list = carroFabricanteView.visualizarFabricante();
+        String[] object = new String[list.size()];
+        JFrame frame = new JFrame();
+        frame.setAlwaysOnTop(true);
+        int i = 0;
+
+        try {
+            for (CarroFabricante fabricante : list) {
+                object[i] = (fabricante.getId() + "|" + fabricante.getNome());
+                i++;
             }
+
+            Object selectionObjetec = JOptionPane.showInputDialog(frame, "Escolha um Fabricante:", "UniFlow", JOptionPane.QUESTION_MESSAGE, null, object, object[0]);
+            String tmp = selectionObjetec.toString();
+            StringTokenizer st = new StringTokenizer(tmp);
+            id = Integer.valueOf(st.nextToken("|"));
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+        return id;
     }
 
-    public CarroNome escolherNomeCarro() {
+    public int escolhendoNomeCarro(int id2) {
 
-        System.out.println("==============================================");
-        System.out.print  ("Informe Modelo escolhido: "); long idCarro = Long.parseLong(scan.nextLine());
-        return carroNomeController.retornarNome(idCarro);
-    }
+        List<CarroNome> list;
+        list = carroNomeView.visualizarNome();
+        String[] object = new String[list.size()];
+        JFrame frame = new JFrame();
+        frame.setAlwaysOnTop(true);
+        int i = 0;
 
-    public void cadastrarNomeCarro(){
-        this.carroNomeView.cadastrarNome();
-    }
-
-    public CarroFabricante escolhendoFabricante(){
-
-        while (true) {
-            System.out.println("==============================================");
-            carroFabricanteView.visualizarFabricante();
-            System.out.println("==============================================");
-            System.out.println("            Escolha uma opção  \n");
-            System.out.println("       [1] - Cadastrar nova Fabricante");
-            System.out.println("       [2] - Escolher uma Fabricante");
-            System.out.println("==============================================");
-            System.out.print  ("Opção: "); int escolha = Integer.parseInt(scan.nextLine());
-            System.out.println("==============================================");
-            switch (escolha) {
-                case 1 -> this.cadastrarFabricante();
-                case 2 -> {return this.escolherFabricante();}
+        try {
+            for (CarroNome carroNome : list) {
+                object[i] = (carroNome.getId() + "|" + carroNome.getNome());
+                i++;
             }
+
+            Object selectionObjetec = JOptionPane.showInputDialog(frame, "Escolha um Modelo:", "UniFlow", JOptionPane.QUESTION_MESSAGE, null, object, object[0]);
+            String tmp = selectionObjetec.toString();
+            StringTokenizer st = new StringTokenizer(tmp);
+            id2 = Integer.valueOf(st.nextToken("|"));
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+        return id2;
     }
 
-    public CarroFabricante escolherFabricante() {
+    public int escolhendoCor(int id3) {
 
-        System.out.println("==============================================");
-        System.out.print  ("Informe Fabricante escolhido: "); long idFabricante = Long.parseLong(scan.nextLine());
-        return carroFabricanteController.retornarNome(idFabricante);
-    }
+        List<CarroCor> list;
+        list = carroCorView.visualizarCor();
+        String[] object = new String[list.size()];
+        JFrame frame = new JFrame();
+        frame.setAlwaysOnTop(true);
+        int i = 0;
 
-    public void cadastrarFabricante(){
-        this.carroFabricanteView.cadastrarFabricante();
-    }
-
-    public CarroCor escolhendoCor(){
-
-        while (true) {
-            System.out.println("==============================================");
-            carroCorView.visualizarCor();
-            System.out.println("==============================================");
-            System.out.println("            Escolha uma opção  \n");
-            System.out.println("       [1] - Cadastrar nova Cor");
-            System.out.println("       [2] - Escolher uma Cor");
-            System.out.println("==============================================");
-            System.out.print  ("Opção: "); int escolha = Integer.parseInt(scan.nextLine());
-            System.out.println("==============================================");
-            switch (escolha) {
-                case 1 -> this.cadastrarCor();
-                case 2 -> {return this.escolherCor();}
+        try {
+            for (CarroCor carroCor : list) {
+                object[i] = (carroCor.getId() + "|" + carroCor.getNome());
+                i++;
             }
+
+            Object selectionObjetec = JOptionPane.showInputDialog(frame, "Escolha uma Cor:", "UniFlow", JOptionPane.QUESTION_MESSAGE, null, object, object[0]);
+            String tmp = selectionObjetec.toString();
+            StringTokenizer st = new StringTokenizer(tmp);
+            id3 = Integer.valueOf(st.nextToken("|"));
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+        return id3;
     }
-
-    public CarroCor escolherCor() {
-
-        System.out.println("==============================================");
-        System.out.print  ("Informe Cor escolhido: "); long idCor = Long.parseLong(scan.nextLine());
-        return carroCorController.retornarCor(idCor);
-    }
-
-    public void cadastrarCor(){
-        this.carroCorView.cadastrarCor();
-    }
-
-
 }
 
 

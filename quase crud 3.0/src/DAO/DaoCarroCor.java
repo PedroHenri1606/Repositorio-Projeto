@@ -2,6 +2,7 @@ package DAO;
 
 import fabrica.Factory;
 import model.CarroCor;
+import model.Curso;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,7 +13,7 @@ import java.util.List;
 
 public class DaoCarroCor {
 
-    Connection connection = null;
+    Connection connection;
 
     public DaoCarroCor(){ this.connection = new Factory().getConection();}
 
@@ -87,5 +88,30 @@ public class DaoCarroCor {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public CarroCor determinaCor(int id) {
+
+        String sql = "SELECT * FROM carrocor where id_cor = " + id;
+        List<CarroCor> cores = new ArrayList();
+        CarroCor carroCor = new CarroCor();
+
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                carroCor.setId(resultSet.getInt("id_cor"));
+                carroCor.setNome(resultSet.getString("nome"));
+                cores.add(carroCor);
+            }
+            statement.execute();
+            statement.close();
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return carroCor;
     }
 }

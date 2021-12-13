@@ -1,18 +1,15 @@
 package view;
 
-
-import controller.CarroController;
-import controller.UsuarioController;
+import controller.*;
 import model.Bairro;
 import model.Curso;
 import model.Faculdade;
 import model.Usuario;
 import model.Carro;
-
-
-
+import javax.swing.*;
 import java.util.List;
-import java.util.Scanner;
+import java.util.StringTokenizer;
+import javax.swing.JOptionPane;
 
 public class UsuarioView {
     UsuarioController usuarioController = new UsuarioController();
@@ -22,21 +19,21 @@ public class UsuarioView {
     CorridaView corridaview = new CorridaView();
     FaculdadeView faculdadeView = new FaculdadeView();
     CarroView carroView = new CarroView();
-    Scanner scan = new Scanner(System.in);
 
-    public void menuInicio() {
-        while (true) {
-            Scanner scan = new Scanner(System.in);
-            System.out.println("==============================================");
-            System.out.println("              Escolha uma opção             \n");
-            System.out.println("        [1]- Realizar Login ");
-            System.out.println("        [2]- Cadastrar novo Usuario");
-            System.out.println("==============================================");
-            System.out.print(" Opção: ");
-            int escolha = Integer.parseInt(scan.nextLine());
-            switch (escolha) {
-                case 1 -> this.realizarlogin();
-                case 2 -> this.cadastroUsuario();
+    public String menuInicioExibir() {
+            String[] escolhas = {"1", "2"};
+            String menuTexto = "[1] - Realizar Login\n[2] - Cadastrar Usuário";
+            return (String) JOptionPane.showInputDialog(null, "              Bem Vindo\n\n" + menuTexto, "UniFlow", JOptionPane.INFORMATION_MESSAGE, null, escolhas, escolhas[0]);
+        }
+
+        public void menuInicio(){
+
+        while(true){
+            String opcao = menuInicioExibir();
+
+            switch (opcao) {
+                case "1" -> this.realizarlogin();
+                case "2" -> this.cadastroUsuario();
             }
         }
     }
@@ -44,20 +41,34 @@ public class UsuarioView {
 
     public void cadastroUsuario() {
 
-        this.espaco();
-        Scanner scan = new Scanner(System.in);
+
 
         Usuario usuarioModel = new Usuario();
-        System.out.println("==============================================");
-        System.out.println("       Realizando Cadastro de usuario         ");
-        System.out.println("==============================================");
-        System.out.print(" Nome do usuario: "); usuarioModel.setNome(scan.nextLine());
-        System.out.print(" Sobrenome: ");  usuarioModel.setSobrenome(scan.nextLine());
-        System.out.print(" Digite o seu Email: "); usuarioModel.setEmail(scan.nextLine());
-        System.out.print(" Senha do usuario: ");  usuarioModel.setSenha(scan.nextLine());
-        usuarioModel.setBairro(this.escolhendoBairro());
-        usuarioModel.setCurso(this.escolhendoCurso());
-        usuarioModel.setDestino(this.escolhendoFaculdade());
+        BairroController bairroController = new BairroController();
+        FaculdadeController faculdadeController = new FaculdadeController();
+        CursoController cursoController = new CursoController();
+
+        String nome = JOptionPane.showInputDialog(null,"      Realizando Cadastro de Usuario\n\n"+"Nome: ","UniFlow",JOptionPane.INFORMATION_MESSAGE);
+        usuarioModel.setNome(nome);
+        String sobrenome = JOptionPane.showInputDialog(null,"      Realizando Cadastro de Usuario\n\n"+"Sobrenome: ","UniFlow",JOptionPane.INFORMATION_MESSAGE);
+        usuarioModel.setSobrenome(sobrenome);
+        String email = JOptionPane.showInputDialog(null,"      Realizando Cadastro de Usuario\n\n"+"Email: ","UniFlow",JOptionPane.INFORMATION_MESSAGE);
+        usuarioModel.setEmail(email);
+        String senha = JOptionPane.showInputDialog(null,"      Realizando Cadastro de Usuario\n\n"+"Senha: ","UniFlow",JOptionPane.INFORMATION_MESSAGE);
+        usuarioModel.setSenha(senha);
+
+        int id=0;
+        id = this.escolhendoBairro(id);
+        usuarioModel.setBairro(bairroController.selecionaBairro(id));
+
+        int id2=0;
+        id2 = this.escolhendoCurso(id2);
+        usuarioModel.setCurso(cursoController.selecionaCurso(id2));
+
+        int id3=0;
+        id3 = this.escolhendoFaculdade(id3);
+        usuarioModel.setDestino(faculdadeController.selecionaFaculdade(id3));
+
         usuarioModel.setSexo(this.escolherSexo());
         usuarioModel.setEscolha(this.escolha());
 
@@ -70,141 +81,127 @@ public class UsuarioView {
         }
     }
 
-    public Faculdade escolhendoFaculdade() {
-        while (true) {
-            System.out.println("==============================================");
-            faculdadeView.listarFaculdades();
-            System.out.println("==============================================");
-            System.out.println("              Escolha uma opção             \n");
-            System.out.println("       [1] Cadastrar Faculdade");
-            System.out.println("       [2] Selecionar Faculdade");
-            System.out.println("==============================================");
-            switch (Integer.parseInt(scan.nextLine())) {
-                case 1 -> faculdadeView.cadastrar();
-                case 2 ->{ return faculdadeView.selecionarFaculdade();}
+    public int escolhendoBairro(int id) {
+
+        List<Bairro> list;
+        list = bairroView.visualizar();
+        String[] object = new String[list.size()];
+        JFrame frame = new JFrame();
+        frame.setAlwaysOnTop(true);
+        int i = 0;
+
+        try{
+            for(Bairro bairro: list){
+                object[i] = (bairro.getId() + "|" + bairro.getNome());
+
+                i++;
             }
+
+            Object selectionObjetec = JOptionPane.showInputDialog(frame,"Escolha um Bairro:","UniFlow",JOptionPane.QUESTION_MESSAGE,null,object,object[0]);
+            String tmp = selectionObjetec.toString();
+            StringTokenizer st = new StringTokenizer(tmp);
+            id = Integer.valueOf(st.nextToken("|"));
+        } catch (Exception e){
+            e.printStackTrace();
         }
+        return id;
     }
 
-    public Bairro escolhendoBairro() {
+    public int escolhendoCurso(int id2) {
 
-        while (true) {
-            System.out.println("==============================================");
-            bairroView.visualizar();
-            System.out.println("==============================================");
-            System.out.println("            Escolha uma opção  \n");
-            System.out.println("       [1] - Cadastrar novo bairro");
-            System.out.println("       [2] - Escolher um Bairro");
-            System.out.println("==============================================");
-            System.out.print  ("Opção: "); int escolha = Integer.parseInt(scan.nextLine());
-            System.out.println("==============================================");
-            switch (escolha) {
-                case 1 -> bairroView.cadastrarBairro();
-                case 2 -> {return this.escolherBairro();}
+        List<Curso> list;
+        list = cursoView.listar();
+        String[] object = new String[list.size()];
+        JFrame frame = new JFrame();
+        frame.setAlwaysOnTop(true);
+        int i = 0;
+
+        try{
+            for(Curso curso: list){
+                object[i] = (curso.getId() + "|" + curso.getNome());
+
+                i++;
             }
+
+            Object selectionObjetec = JOptionPane.showInputDialog(frame,"Escolha um Curso:","UniFlow",JOptionPane.QUESTION_MESSAGE,null,object,object[0]);
+            String tmp = selectionObjetec.toString();
+            StringTokenizer st = new StringTokenizer(tmp);
+            id2 = Integer.valueOf(st.nextToken("|"));
+        } catch (Exception e){
+            e.printStackTrace();
         }
+        return id2;
     }
 
-    public Bairro escolherBairro() {
-        long idBairro;
-        List<Bairro> bairros = bairroView.visualizar();
-        System.out.println("==============================================");
-        System.out.print  ("Informe bairro escolhido: "); idBairro = Long.parseLong(scan.nextLine());
+    public int escolhendoFaculdade(int id3) {
 
-        for (int i = 0; i< bairros.size(); i++) {
-            if (bairros.get(i).getId() == idBairro) {
-                return bairros.get(i);
+        List<Faculdade> list;
+        list = faculdadeView.listarFaculdades();
+        String[] object = new String[list.size()];
+        JFrame frame = new JFrame();
+        frame.setAlwaysOnTop(true);
+        int i = 0;
+
+        try{
+            for(Faculdade faculdade: list){
+                object[i] = (faculdade.getIdFaculdade() + "|" + faculdade.getNome());
+
+                i++;
             }
+
+            Object selectionObjetec = JOptionPane.showInputDialog(frame,"Escolha uma Faculdade:","UniFlow",JOptionPane.QUESTION_MESSAGE,null,object,object[0]);
+            String tmp = selectionObjetec.toString();
+            StringTokenizer st = new StringTokenizer(tmp);
+            id3 = Integer.valueOf(st.nextToken("|"));
+        } catch (Exception e){
+            e.printStackTrace();
         }
-        return null;
+        return id3;
     }
 
-
-    public Curso escolhendoCurso() {
-        while (true) {
-            System.out.println("==============================================");
-            cursoView.listar();
-            System.out.println("==============================================");
-            System.out.println("              Escolha uma opção             \n");
-            System.out.println("       [1] - Cadastrar Curso");
-            System.out.println("       [2] - Escolher Curso");
-            System.out.println("==============================================");
-            System.out.print  (" Opção: "); int escolha = Integer.parseInt(scan.nextLine());
-            System.out.println("==============================================");
-            switch (escolha) {
-                case 1 -> cursoView.cadastrarCurso();
-                case 2 -> {return this.escolherCurso();}
-            }
-        }
+    public String escolhaExibir(){
+        String[] escolhas = {"1", "2"};
+        String menuEscolha = "[1] - Motorista\n[2] - Passageiro";
+        return (String) JOptionPane.showInputDialog(null, "         Selecione uma opção\n\n" + menuEscolha, "UniFlow", JOptionPane.INFORMATION_MESSAGE, null, escolhas, escolhas[0]);
     }
 
-    public Curso escolherCurso() {
-
-        long idCurso;
-        List<Curso> cursos = cursoView.listar();
-        System.out.println("==============================================");
-        System.out.print  ("Informe o Id: "); idCurso = Long.parseLong(scan.nextLine());
-
-        for (int i = 0; i< cursos.size(); i++) {
-            if (cursos.get(i).getId() == idCurso) {
-                return cursos.get(i);
-            }
-        }
-        return null;
-    }
-
-    public long escolha() {
-
-        long resposta = 0;
-
-        while (true) {
-            Scanner scan = new Scanner(System.in);
-            System.out.println("==============================================");
-            System.out.println("Informe se deseja ser Motorista ou Passageiro");
-            System.out.println("==============================================");
-            System.out.println("      [1] - Motorista   [2] - Passageiro ");
-            System.out.println("==============================================");
-            System.out.print  (" Infome Opção: "); int opcao = scan.nextInt();
-            System.out.println("==============================================");
-            switch (opcao) {
-                case 1 -> resposta = 1;
-                case 2 -> resposta = 2;
-            }
-            return resposta;
-        }
-    }
-
-    public long escolherSexo(){
-        long resposta = 0;
+    public int escolha() {
 
         while(true){
-            Scanner scan = new Scanner(System.in);
-            System.out.println("==============================================");
-            System.out.println("           Informe o seu sexo                 ");
-            System.out.println("==============================================");
-            System.out.println("      [1] - Homem   [2] - Mulher ");
-            System.out.println("==============================================");
-            System.out.print  (" Infome Opção: "); int opcao = scan.nextInt();
-            System.out.println("==============================================");
-            switch (opcao){
-                case 1-> resposta = 1;
-                case 2-> resposta = 2;
+            String opcao = escolhaExibir();
+
+            switch (opcao) {
+                case "1" : return 1;
+                case "2" : return 2;
             }
-            return resposta;
+        }
+    }
+
+    public String escolherSexoExibir(){
+        String[] escolhas = {"1", "2"};
+        String menuSexo = "[1] - Homem\n[2] - Mulher";
+        return (String) JOptionPane.showInputDialog(null, "         Selecione o seu Sexo\n\n" + menuSexo, "UniFlow", JOptionPane.INFORMATION_MESSAGE, null, escolhas, escolhas[0]);
+    }
+
+
+    public long escolherSexo(){
+        while(true){
+            String opcao = escolherSexoExibir();
+
+            switch (opcao) {
+                case "1" : return 1;
+                case "2" : return 2;
+            }
         }
     }
 
     public void realizarlogin() {
 
-        Scanner scan = new Scanner(System.in);
-        String tmp1, tmp2;
-        System.out.println("============================================");
-        System.out.println("            Realizando Login");
-        System.out.print  (" Email: "); tmp1 = scan.nextLine();
-        System.out.print  (" Senha: "); tmp2 = scan.nextLine();
+        String email = JOptionPane.showInputDialog("Login\n Email: ");
+        String senha = JOptionPane.showInputDialog("Login\n Senha: ");
 
-        if (usuarioController.realizarLogin(tmp1, tmp2)) {
-            Usuario usuarioAtual = usuarioController.determinarUsuario(tmp1, tmp2);
+        if (usuarioController.realizarLogin(email, senha)) {
+            Usuario usuarioAtual = usuarioController.determinarUsuario(email, senha);
             Carro carroAtual = carroController.determinarCarro(usuarioAtual.getIdUsuario());
             if(usuarioAtual.getEscolha() == 1) {
                 this.menuMotorista(usuarioAtual,carroAtual);
@@ -212,136 +209,132 @@ public class UsuarioView {
                 this.menuPassageiro(usuarioAtual, carroAtual);
             }
         } else {
-            System.out.println("==============================================");
-            System.out.println("       Usuario ou senha incorreta!!:(         ");
-            System.out.println("==============================================");
+            JOptionPane.showMessageDialog(null,"Usuario ou senha incorreta!");
         }
+    }
 
+    public String menuMotoristaExibir(Usuario userAtual) {
+        String[] escolhas = {"1", "2", "3", "4"};
+        String menuMotorista = "Bem Vindo: " + userAtual.getNome()+ "\n"+"[1] - Menu Corridas\n[2] - Historico de Corridas\n[3] - Configurações\n[4] - Sair";
+        return (String) JOptionPane.showInputDialog(null, menuMotorista, "UniFlow", JOptionPane.INFORMATION_MESSAGE, null, escolhas, escolhas[0]);
     }
 
     public void menuMotorista(Usuario userAtual, Carro carroAtual) {
 
-        Scanner scan = new Scanner(System.in);
-
         while (true) {
+            String  opcao = menuMotoristaExibir(userAtual);
 
-            System.out.println("==============================================");
-            System.out.println(" Bem Vindo: " + userAtual.getNome() + "\n");
-            System.out.println(" [1] - Criar corridas ");
-            System.out.println(" [2] - Historico de corridas");
-            System.out.println(" [3] - Configuracoes");
-            System.out.println(" [4] - Sair");
-            System.out.println("==============================================");
-            int escolha = Integer.parseInt(scan.nextLine());
-
-            switch (escolha) {
-                case 1 ->  this.menuCorrida(userAtual, carroAtual);
-                case 2 ->  corridaview.visualizarMinhasCorrida(userAtual, carroAtual);
-                case 3 ->  this.configuracoes(userAtual);
-                case 4 ->  { return;}
+            switch (opcao) {
+                case "1" ->  this.menuCorrida(userAtual, carroAtual);
+                case "2" ->  corridaview.visualizarMinhasCorrida(userAtual, carroAtual);
+                case "3" ->  this.configuracoes(userAtual);
+                case "4" ->  { return;}
             }
         }
     }
 
-    public void menuCorrida2(Usuario userAtual){
+    public String menuCorridaPassageiroExibir(){
 
-        Scanner scan = new Scanner(System.in);
+        String[] escolhas = {"1", "2", "3"};
+        String menuCorridaPassageiro = "[1] - Escolher Corrida\n[2] - Visualizar Usuarios próximos\n[3] - Voltar";
+        return (String) JOptionPane.showInputDialog(null, menuCorridaPassageiro, "UniFlow", JOptionPane.INFORMATION_MESSAGE, null, escolhas, escolhas[0]);
+    }
+
+    public void menuCorridaPassageiro(Usuario userAtual){
 
         while (true) {
-            System.out.println("==============================================");
-            System.out.println(" [1] - Escolher Corrida");
-            System.out.println(" [2] - Visualizar Usuarios próximos");
-            System.out.println(" [3] - Voltar");
-            System.out.println("==============================================");
-            int escolha = Integer.parseInt(scan.nextLine());
+            String opcao = menuCorridaPassageiroExibir();
 
-            switch (escolha) {
-                case 1:
+            switch (opcao) {
+                case "1":
                     corridaview.visualizarCorridasPendentes();
                     corridaview.escolherCorridaPassageiro(userAtual);
                     break;
-                case 2:
+                case "2":
                     this.visualizarUsuariosProximos(userAtual);
                     break;
-                case 3:
+                case "3":
                     return;
             }
         }
     }
 
+    public String menuPassageiroExibir(Usuario userAtual){
+
+        String[] escolhas = {"1", "2", "3","4"};
+        String menuPassageiro = "Bem Vindo: " + userAtual.getNome()+ "\n"+"[1] - Menu Corridas\n[2] - Historico de Corridas\n[3] - Configurações\n[4] - Sair";
+        return (String) JOptionPane.showInputDialog(null, menuPassageiro, "UniFlow", JOptionPane.INFORMATION_MESSAGE, null, escolhas, escolhas[0]);
+    }
+
     public void menuPassageiro(Usuario userAtual, Carro carroAtual) {
 
-        Scanner scan = new Scanner(System.in);
-
         while (true) {
+            String opcao = menuPassageiroExibir(userAtual);
 
-            System.out.println("==============================================");
-            System.out.println(" Bem Vindo: " + userAtual.getNome() + "\n");
-            System.out.println(" [1] - Ver Corridas ");
-            System.out.println(" [2] - Historico de  corridas");
-            System.out.println(" [3] - Configuracoes");
-            System.out.println(" [4] - Sair");
-            System.out.println("==============================================");
-            int escolha = Integer.parseInt(scan.nextLine());
-
-            switch (escolha) {
-                case 1 ->  this.menuCorrida2(userAtual);
-                case 2 ->  corridaview.visualizarMinhasCorrida(userAtual,carroAtual);
-                case 3 ->  this.configuracoes(userAtual);
-                case 4 ->  { return;}
+            switch (opcao) {
+                case "1" ->  this.menuCorridaPassageiro(userAtual);
+                case "2" ->  corridaview.visualizarMinhasCorrida(userAtual,carroAtual);
+                case "3" ->  this.configuracoes(userAtual);
+                case "4" ->  { return;}
             }
         }
     }
 
+    public String menuCorridaExibir(){
+
+        String[] escolhas = {"1", "2", "3","4"};
+        String menuCorrida = "[1] - Criar Corrida\n[2] - Visualizar Usuarios próximos\n[3] - Historico de Corridas\n[4]- Voltar";
+        return (String) JOptionPane.showInputDialog(null, menuCorrida, "UniFlow", JOptionPane.INFORMATION_MESSAGE, null, escolhas, escolhas[0]);
+    }
+
     public void menuCorrida(Usuario userAtual, Carro carroAtual) {
 
-        Scanner scan = new Scanner(System.in);
-
         while (true) {
-            System.out.println("==============================================");
-            System.out.println(" [1] - Criar corrida");
-            System.out.println(" [2] - Visualizar Usuarios próximos");
-            System.out.println(" [3] - Historico de Corridas");
-            System.out.println(" [4] - Voltar");
-            System.out.println("==============================================");
-            int escolha = Integer.parseInt(scan.nextLine());
 
-            switch (escolha) {
-                case 1 -> corridaview.cadastrarCorrida(userAtual);
-                case 2 -> this.visualizarUsuariosProximos(userAtual);
-                case 3 -> corridaview.escolherCorrida(userAtual, carroAtual);
-                case 4 -> {return;}
+            String opcao = menuCorridaExibir();
+
+            switch (opcao) {
+                case "1" -> corridaview.cadastrarCorrida(userAtual);
+                case "2" -> this.visualizarUsuariosProximos(userAtual);
+                case "3" -> corridaview.escolherCorrida(userAtual, carroAtual);
+                case "4" -> {return;}
             }
         }
     }
 
 
     public void visualizarUsuariosProximos(Usuario usuario) {
-        List<Usuario> usuarios = usuarioController.visualizarUsuarios(usuario);
-        System.out.println("==============================================");
-        for (Usuario usuario1 : usuarios) {
-            System.out.println("Nome: " + usuario1.getNome() + " | Email: " + usuario1.getEmail());
+        List<Usuario> list = usuarioController.visualizarUsuarios(usuario);
+        JFrame frame = new JFrame();
+        frame.setAlwaysOnTop(true);
+        String output = "";
+
+            for (Usuario usuario1 : list) {
+                String tmp = "NOME : " + usuario1.getNome() + " | EMAIL: " + usuario1.getEmail();
+                output += tmp + " \n\n";
+            }
+            if (list.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Nenhum Usuario encontrado!", "UniFlow", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+            JOptionPane.showMessageDialog(frame, output);
         }
+    }
+
+    public String configuracoesExibir(){
+
+        String[] escolhas = {"1", "2", "3"};
+        String menuConfiguracoes = "[1] - Nome de Usuario\n[2] - Senha\n[3] - Sair";
+        return (String) JOptionPane.showInputDialog(null, menuConfiguracoes, "UniFlow", JOptionPane.INFORMATION_MESSAGE, null, escolhas, escolhas[0]);
     }
 
     public void configuracoes(Usuario usuarioAtual) {
 
-        Scanner scanner = new Scanner(System.in);
-
         while (true) {
-            System.out.println("==============================================");
-            System.out.println("            Modificar Dados");
-            System.out.println("==============================================");
-            System.out.println("     [1] nome de usuario");
-            System.out.println("     [2] senha");
-            System.out.println("     [3] sair");
-            System.out.println("==============================================");
-            System.out.print  (" Informe opção: "); int escolha = Integer.parseInt(scanner.nextLine());
-            System.out.println("==============================================");
-            switch (escolha) {
-                case 1 -> { usuarioAtual = this.modificarnome(usuarioAtual); this.salvarAlteracoes(usuarioAtual);}
-                case 2 -> { usuarioAtual = this.modificarSenha(usuarioAtual); this.salvarAlteracoes(usuarioAtual);}
-                case 3 -> { return; }
+            String opcao = configuracoesExibir();
+            switch (opcao) {
+                case "1" -> { usuarioAtual = this.modificarnome(usuarioAtual); this.salvarAlteracoes(usuarioAtual);}
+                case "2" -> { usuarioAtual = this.modificarSenha(usuarioAtual); this.salvarAlteracoes(usuarioAtual);}
+                case "3" -> { return; }
             }
         }
     }
@@ -349,39 +342,33 @@ public class UsuarioView {
     public void salvarAlteracoes(Usuario usuario) {usuarioController.editarDados(usuario);}
 
     public Usuario modificarSenha(Usuario usuarioAtual) {
+
         if (validar(usuarioAtual)) {
-            System.out.println("Digite uma nova Senha: "); usuarioAtual.setSenha(scan.nextLine());
-            System.out.println("==============================================");
+            String senha = JOptionPane.showInputDialog(null,"      Alterar Senha\n\n"+"Nome: ","UniFlow",JOptionPane.INFORMATION_MESSAGE);
+            usuarioAtual.setSenha(senha);
         }
         return usuarioAtual;
     }
 
     public Usuario modificarnome(Usuario usuarioAtual) {
+
         if (validar(usuarioAtual)) {
-            System.out.println("Digite um novo Nome: "); usuarioAtual.setNome(scan.nextLine());
-            System.out.println("==============================================");
+            String nome= JOptionPane.showInputDialog(null,"      Alterar Nome\n\n"+"Senha: ","UniFlow",JOptionPane.INFORMATION_MESSAGE);
+            usuarioAtual.setNome(nome);
         }
         return usuarioAtual;
     }
 
     public boolean validar(Usuario usuarioAtual) {
 
-        System.out.print("Digite a Senha Atual: "); String senha = scan.nextLine();
-        System.out.println("==============================================");
-
+        String senha = JOptionPane.showInputDialog(null,"      Validando Senha\n\n"+"Senha: ","UniFlow",JOptionPane.INFORMATION_MESSAGE);
         if (usuarioAtual.getSenha().equals(senha)) {
             return usuarioAtual.getSenha().equals(senha);
         } else {
-            System.out.println("     -Senha invalida - Tente Novamente-");
-            System.out.println("==============================================");
+            JOptionPane.showMessageDialog(null,"Senha Incorreta!","UniFlow",JOptionPane.INFORMATION_MESSAGE);
             return usuarioAtual.getSenha().equals(senha);
         }
     }
 
-    public void espaco() {
-        for (int i = 0; i < 15; i++) {
-            System.out.println();
-        }
-    }
 }
 

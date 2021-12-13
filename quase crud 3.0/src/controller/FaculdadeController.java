@@ -7,7 +7,20 @@ import java.util.List;
 
 public class FaculdadeController {
     DAOFaculdade daoFaculdade = new DAOFaculdade();
-    public void SalvarFaculdade(Faculdade faculdade) {daoFaculdade.cadastrarFaculdade(faculdade);}
-    public List<Faculdade> listarFaculdade() {return daoFaculdade.listarFaculdade();}
-    public void criarTabelaFaculdade(){  daoFaculdade.criarTabelaFaculdade();}
+
+    public void SalvarFaculdade(Faculdade faculdade) {
+        daoFaculdade.cadastrarFaculdade(faculdade);
+    }
+
+    public List<Faculdade> listarFaculdade() {
+        return daoFaculdade.listarFaculdade();
+    }
+
+    public void criarTabelaFaculdade() {
+        daoFaculdade.criarTabelaFaculdade();
+    }
+
+    public Faculdade selecionaFaculdade(int id) {
+        return daoFaculdade.determinaFaculdade(id);
+    }
 }

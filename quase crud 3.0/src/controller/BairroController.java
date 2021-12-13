@@ -14,4 +14,5 @@ public class BairroController {
     public String escolherBairro(int id){ return this.daoBairro.escolherBairro(id);}
     public List<Bairro> listar(){ return this.daoBairro.listar();}
     public Bairro retornarDados(long id){ return this.daoBairro.retornarDados(id);}
+    public Bairro selecionaBairro(int id){ return this.daoBairro.determinaBairro(id);}
 }

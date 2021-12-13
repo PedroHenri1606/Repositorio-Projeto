@@ -124,7 +124,7 @@ public class DaoUsuario {
         return usuariosProximos;
     }
 
-    Connection connection = null;
+    Connection connection;
 
     public DaoUsuario() {
         this.connection = new Factory().getConection();

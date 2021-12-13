@@ -2,6 +2,7 @@ package DAO;
 
 import fabrica.Factory;
 import model.Curso;
+import model.Faculdade;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,7 +12,7 @@ import java.util.*;
 
 public class DaoCurso {
 
-    Connection connection = null;
+    Connection connection;
 
     public DaoCurso() {
         this.connection = new Factory().getConection();
@@ -106,6 +107,31 @@ public class DaoCurso {
             }
             statement.execute();
             statement.close();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return curso;
+    }
+
+    public Curso determinaCurso(int id) {
+
+        String sql = "SELECT * FROM curso where id_curso = " + id;
+        List<Curso> cursos = new ArrayList();
+        Curso curso = new Curso();
+
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                curso.setId(resultSet.getInt("id_curso"));
+                curso.setNome(resultSet.getString("nome_curso"));
+                cursos.add(curso);
+            }
+            statement.execute();
+            statement.close();
+
 
         } catch (SQLException e) {
             throw new RuntimeException(e);

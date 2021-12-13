@@ -13,4 +13,5 @@ public class CarroNomeController {
     public CarroNome adicionar (CarroNome carroNome){ return daoCarroNome.adicionar(carroNome);}
     public List<CarroNome> listar(){ return daoCarroNome.listar();}
     public CarroNome retornarNome(long id){ return daoCarroNome.retornarNome(id);}
+    public CarroNome selecionarNome(int id){ return daoCarroNome.determinaCurso(id);}
 }

@@ -10,80 +10,80 @@ import java.util.*;
 
 public class DaoBairro {
 
-    Connection connection = null;
+    Connection connection;
 
-    public DaoBairro(){ this.connection = new Factory().getConection();}
+    public DaoBairro() {
+        this.connection = new Factory().getConection();
+    }
 
-    public void criaTabelaBairro(){
-        String sql = "CREATE TABLE IF NOT EXISTS bairro("+
-                "id_bairro bigint primary key auto_increment,"+
+    public void criaTabelaBairro() {
+        String sql = "CREATE TABLE IF NOT EXISTS bairro(" +
+                "id_bairro bigint primary key auto_increment," +
                 "nome_bairro VARCHAR(45));";
-        try{
+        try {
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.execute();
             statement.close();
-        } catch (SQLException e){
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public Bairro adicionar(Bairro bairro){
+    public Bairro adicionar(Bairro bairro) {
 
         String sql = "INSERT INTO uniflow.bairro (nome_bairro) value (?)";
-        try{
+        try {
             PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setString(1,bairro.getNome());
+            statement.setString(1, bairro.getNome());
             statement.execute();
             statement.close();
             return bairro;
-        } catch (SQLException e){
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
 
-
-    public String escolherBairro(long id){
+    public String escolherBairro(long id) {
 
         String sql = "SELECT nome_bairro from bairro where id_bairro =" + id;
 
-        String nomeBairro= "";
-        try{
+        String nomeBairro = "";
+        try {
             PreparedStatement statement = connection.prepareStatement(sql);
             ResultSet resultSet = statement.executeQuery();
 
-            while(resultSet.next()){
+            while (resultSet.next()) {
                 nomeBairro = resultSet.getString("nome_bairro");
             }
             statement.execute();
             statement.close();
 
             return nomeBairro;
-        } catch (SQLException e){
+        } catch (SQLException e) {
             throw new RuntimeException(e);
 
         }
     }
 
 
-
-    public List<Bairro> listar(){
+    public List<Bairro> listar() {
 
         String sql = "SELECT * FROM uniflow.bairro";
 
-        try{
+        try {
             PreparedStatement statement = this.connection.prepareStatement(sql);
             ResultSet resultSet = statement.executeQuery();
             ArrayList bairros = new ArrayList();
 
-            while(resultSet.next()){
+            while (resultSet.next()) {
                 Bairro bairro = new Bairro();
                 bairro.setId(resultSet.getInt("id_bairro"));
                 bairro.setNome(resultSet.getString("nome_bairro"));
                 bairros.add(bairro);
             }
             return bairros;
-        } catch (SQLException e){
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
@@ -101,6 +101,31 @@ public class DaoBairro {
 
             while (resultSet.next()) {
                 bairro.setId(resultSet.getInt("id_bairro"));
+                bairros.add(bairro);
+            }
+            statement.execute();
+            statement.close();
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return bairro;
+    }
+
+    public Bairro determinaBairro(int id) {
+
+        String sql = "SELECT * FROM bairro where id_bairro = " + id;
+        List<Bairro> bairros = new ArrayList();
+        Bairro bairro = new Bairro();
+
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                bairro.setId(resultSet.getInt("id_bairro"));
+                bairro.setNome(resultSet.getString("nome_bairro"));
                 bairros.add(bairro);
             }
             statement.execute();

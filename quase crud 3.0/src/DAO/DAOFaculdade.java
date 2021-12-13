@@ -1,6 +1,7 @@
 package DAO;
 
 import fabrica.Factory;
+import model.Bairro;
 import model.Faculdade;
 
 import java.sql.Connection;
@@ -81,6 +82,31 @@ public class DAOFaculdade {
             throw new RuntimeException(e);
         }
         return null;
+    }
+
+    public Faculdade determinaFaculdade(int id) {
+
+        String sql = "SELECT * FROM faculdade where idFaculdade = " + id;
+        List<Faculdade> faculdades = new ArrayList();
+        Faculdade faculdade = new Faculdade();
+
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                faculdade.setIdFaculdade(resultSet.getInt("idFaculdade"));
+                faculdade.setNome(resultSet.getString("nome"));
+                faculdades.add(faculdade);
+            }
+            statement.execute();
+            statement.close();
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return faculdade;
     }
 }
 

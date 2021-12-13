@@ -13,5 +13,6 @@ public class CarroFabricanteController {
     public CarroFabricante adicionar(CarroFabricante carroFabricante){ return daoCarroFabricante.adicionar(carroFabricante);}
     public List<CarroFabricante> listar(){ return daoCarroFabricante.listar();}
     public CarroFabricante retornarNome(long id){ return daoCarroFabricante.retornarNome(id);}
+    public CarroFabricante selecionarFabricante(int id){ return daoCarroFabricante.determinaFabricante(id);}
 
 }

@@ -2,6 +2,8 @@ package DAO;
 
 import fabrica.Factory;
 import model.CarroFabricante;
+import model.Curso;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,7 +13,7 @@ import java.util.List;
 
 public class DaoCarroFabricante {
 
-    Connection connection = null;
+    Connection connection;
 
     public DaoCarroFabricante(){ this.connection = new Factory().getConection();}
 
@@ -87,5 +89,30 @@ public class DaoCarroFabricante {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public CarroFabricante determinaFabricante(int id) {
+
+        String sql = "SELECT * FROM carrofabricante where id_fabricante = " + id;
+        List<CarroFabricante> fabricantes = new ArrayList();
+        CarroFabricante carroFabricante = new CarroFabricante();
+
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                carroFabricante.setId(resultSet.getInt("id_fabricante"));
+                carroFabricante.setNome(resultSet.getString("nome"));
+                fabricantes.add(carroFabricante);
+            }
+            statement.execute();
+            statement.close();
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return carroFabricante;
     }
 }

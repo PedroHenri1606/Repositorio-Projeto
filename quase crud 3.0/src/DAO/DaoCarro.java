@@ -19,7 +19,7 @@ public class DaoCarro {
     CarroNomeController carroNomeController = new CarroNomeController();
     UsuarioController usuarioController = new UsuarioController();
 
-    Connection connection = null;
+    Connection connection;
 
     public DaoCarro() {
         this.connection = new Factory().getConection();

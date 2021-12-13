@@ -14,4 +14,5 @@ public class CursoController {
     public String escolherCurso(int id){ return this.daoCurso.escolherCurso(id);}
     public List<Curso> listar(){ return this.daoCurso.listar();}
     public Curso retornarDados(long id){ return daoCurso.retornarDados(id);}
+    public Curso selecionaCurso(int id){ return daoCurso.determinaCurso(id);}
 }
