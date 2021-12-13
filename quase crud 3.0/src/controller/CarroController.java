@@ -5,11 +5,9 @@ import model.Carro;
 
 public class CarroController {
 
-    DaoCarro daoCarro = new DaoCarro();
-
-    public void criarTabelaCarro(){ daoCarro.criarTabelaCarro();}
-    public Carro cadastrarCarro(Carro carro){ return daoCarro.adicionar(carro);}
-    public Carro retornarDados(long id){ return daoCarro.retornarDados(id);}
-    public Carro determinarCarro(long id){ return daoCarro.determinarCarro(id);}
-    public Carro retornarDadosCorrida(long id){ return daoCarro.retornarDadosCorrida(id);}
+    public void criarTabelaCarro(){ DaoCarro daoCarro = new DaoCarro();daoCarro.criarTabelaCarro();}
+    public Carro cadastrarCarro(Carro carro){ DaoCarro daoCarro = new DaoCarro();return daoCarro.adicionar(carro);}
+    public Carro retornarDados(long id){DaoCarro daoCarro = new DaoCarro(); return daoCarro.retornarDados(id);}
+    public Carro determinarCarro(long id){ DaoCarro daoCarro = new DaoCarro();return daoCarro.determinarCarro(id);}
+    public Carro retornarDadosCorrida(long id){DaoCarro daoCarro = new DaoCarro(); return daoCarro.retornarDadosCorrida(id);}
 }

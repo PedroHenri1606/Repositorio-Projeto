@@ -2,9 +2,7 @@ package view;
 
 import controller.CursoController;
 import model.Curso;
-
 import java.util.List;
-import java.util.Scanner;
 
 public class CursoView {
 

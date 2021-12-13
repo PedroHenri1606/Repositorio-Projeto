@@ -10,5 +10,4 @@ public class BairroView {
         BairroController bairroController = new BairroController();
          return  bairroController.listar();
     }
-
 }

@@ -11,10 +11,6 @@ import java.util.List;
 
 public class DaoUsuario {
 
-    CursoController cursoController = new CursoController();
-    BairroController bairroController = new BairroController();
-
-
     public boolean login(String email, String senha) {
         boolean status;
         String sql = "select * from uniflow.usuario where (email = ? AND senha = ?);";
@@ -55,8 +51,9 @@ public class DaoUsuario {
                 Faculdade faculdade = daoFaculdade.selecionarPorId(resultSet.getLong("idFaculdade"));
                 tmp.setDestino(faculdade);
 
-
+                CursoController cursoController = new CursoController();
                 tmp.setCurso(cursoController.retornarDados(resultSet.getLong("id_curso")));
+                BairroController bairroController = new BairroController();
                 tmp.setBairro(bairroController.retornarDados(resultSet.getLong("id_bairro")));
 
                 tmp.setSenha(resultSet.getString("senha"));
@@ -114,8 +111,10 @@ public class DaoUsuario {
                 Faculdade faculdade = daoFaculdade.selecionarPorId(resultSet.getLong("idFaculdade"));
                 usuario.setDestino(faculdade);
 
-                usuario.setCurso(this.cursoController.retornarDados(resultSet.getLong("id_curso")));
-                usuario.setBairro(this.bairroController.retornarDados(resultSet.getLong("id_bairro")));
+                CursoController cursoController = new CursoController();
+                usuario.setCurso(cursoController.retornarDados(resultSet.getLong("id_curso")));
+                BairroController bairroController = new BairroController();
+                usuario.setBairro(bairroController.retornarDados(resultSet.getLong("id_bairro")));
                 usuariosProximos.add(usuario);
             }
         } catch (SQLException e) {

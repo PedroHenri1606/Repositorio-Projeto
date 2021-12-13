@@ -2,17 +2,13 @@ package controller;
 
 import DAO.DaoBairro;
 import model.Bairro;
-
 import java.util.List;
 
 public class BairroController {
 
-    DaoBairro daoBairro = new DaoBairro();
-
-    public void criarTabelaBairro(){ this.daoBairro.criaTabelaBairro();}
-    public Bairro adicionar(Bairro bairro){ return this.daoBairro.adicionar(bairro);}
-    public String escolherBairro(int id){ return this.daoBairro.escolherBairro(id);}
-    public List<Bairro> listar(){ return this.daoBairro.listar();}
-    public Bairro retornarDados(long id){ return this.daoBairro.retornarDados(id);}
-    public Bairro selecionaBairro(int id){ return this.daoBairro.determinaBairro(id);}
+    public void criarTabelaBairro(){DaoBairro daoBairro = new DaoBairro(); daoBairro.criaTabelaBairro();}
+    public Bairro adicionar(Bairro bairro){DaoBairro daoBairro = new DaoBairro(); return daoBairro.adicionar(bairro);}
+    public List<Bairro> listar(){DaoBairro daoBairro = new DaoBairro(); return daoBairro.listar();}
+    public Bairro retornarDados(long id){ DaoBairro daoBairro = new DaoBairro();return daoBairro.retornarDados(id);}
+    public Bairro selecionaBairro(int id){ DaoBairro daoBairro = new DaoBairro();return daoBairro.determinaBairro(id);}
 }

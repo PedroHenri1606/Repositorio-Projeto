@@ -2,9 +2,7 @@ package view;
 
 import controller.FaculdadeController;
 import model.Faculdade;
-
 import java.util.List;
-import java.util.Scanner;
 
 public class FaculdadeView {
 

@@ -1,18 +1,14 @@
 package controller;
 
 import DAO.DaoCarroCor;
-import model.Carro;
 import model.CarroCor;
-
 import java.util.List;
 
 public class CarroCorController {
 
-    DaoCarroCor daoCarroCor = new DaoCarroCor();
-
-    public void criarTabelaCarroCor(){ daoCarroCor.criarTabelaCarroCor();}
-    public CarroCor adicionar(CarroCor carroCor){ return daoCarroCor.adicionar(carroCor);}
-    public List<CarroCor> listar (){ return daoCarroCor.listar();}
-    public CarroCor retornarCor(long id){ return daoCarroCor.retornarCor(id);}
-    public CarroCor selecionarCor(int id){ return daoCarroCor.determinaCor(id);}
+    public void criarTabelaCarroCor(){DaoCarroCor daoCarroCor = new DaoCarroCor(); daoCarroCor.criarTabelaCarroCor();}
+    public CarroCor adicionar(CarroCor carroCor){DaoCarroCor daoCarroCor = new DaoCarroCor(); return daoCarroCor.adicionar(carroCor);}
+    public List<CarroCor> listar (){DaoCarroCor daoCarroCor = new DaoCarroCor(); return daoCarroCor.listar();}
+    public CarroCor retornarCor(long id){DaoCarroCor daoCarroCor = new DaoCarroCor(); return daoCarroCor.retornarCor(id);}
+    public CarroCor selecionarCor(int id){DaoCarroCor daoCarroCor = new DaoCarroCor(); return daoCarroCor.determinaCor(id);}
 }

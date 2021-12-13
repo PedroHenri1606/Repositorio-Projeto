@@ -2,17 +2,14 @@ package controller;
 
 import DAO.DaoCarroFabricante;
 import model.CarroFabricante;
-
 import java.util.List;
 
 public class CarroFabricanteController {
 
-    DaoCarroFabricante daoCarroFabricante = new DaoCarroFabricante();
-
-    public void criarTabelaCarroFabricante(){ daoCarroFabricante.criarTabelaCarroFabricante();}
-    public CarroFabricante adicionar(CarroFabricante carroFabricante){ return daoCarroFabricante.adicionar(carroFabricante);}
-    public List<CarroFabricante> listar(){ return daoCarroFabricante.listar();}
-    public CarroFabricante retornarNome(long id){ return daoCarroFabricante.retornarNome(id);}
-    public CarroFabricante selecionarFabricante(int id){ return daoCarroFabricante.determinaFabricante(id);}
+    public void criarTabelaCarroFabricante(){DaoCarroFabricante daoCarroFabricante = new DaoCarroFabricante(); daoCarroFabricante.criarTabelaCarroFabricante();}
+    public CarroFabricante adicionar(CarroFabricante carroFabricante){ DaoCarroFabricante daoCarroFabricante = new DaoCarroFabricante();return daoCarroFabricante.adicionar(carroFabricante);}
+    public List<CarroFabricante> listar(){DaoCarroFabricante daoCarroFabricante = new DaoCarroFabricante(); return daoCarroFabricante.listar();}
+    public CarroFabricante retornarNome(long id){ DaoCarroFabricante daoCarroFabricante = new DaoCarroFabricante();return daoCarroFabricante.retornarNome(id);}
+    public CarroFabricante selecionarFabricante(int id){ DaoCarroFabricante daoCarroFabricante = new DaoCarroFabricante();return daoCarroFabricante.determinaFabricante(id);}
 
 }

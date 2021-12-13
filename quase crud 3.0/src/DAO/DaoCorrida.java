@@ -14,7 +14,6 @@ import java.util.*;
 public class DaoCorrida {
 
     Connection connection;
-    CarroController carroController = new CarroController();
 
     public DaoCorrida() {
         this.connection = new Factory().getConection();
@@ -91,7 +90,8 @@ public class DaoCorrida {
                 corrida.setMes(resultSet.getInt("mes"));
                 corrida.setAno(resultSet.getInt("ano"));
                 corrida.setPreco(resultSet.getDouble("preco"));
-                corrida.setCarro(this.carroController.retornarDados(resultSet.getLong("id_carro")));
+                CarroController carroController = new CarroController();
+                corrida.setCarro(carroController.retornarDados(resultSet.getLong("id_carro")));
                 minhasCorridas.add(corrida);
             }
         } catch (SQLException e) {

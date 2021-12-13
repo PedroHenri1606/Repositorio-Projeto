@@ -10,10 +10,10 @@ import java.util.*;
 
 public class CorridaView {
 
-    CorridaController corridaController = new CorridaController();
-    CarroController carroController = new CarroController();
-
     public void visualizarMinhasCorrida(Usuario usuario,Carro carro) {
+
+        CorridaController corridaController = new CorridaController();
+
         List<Corrida> corridas = corridaController.visualizar(usuario, carro);
         JFrame frame = new JFrame();
         frame.setAlwaysOnTop(true);
@@ -31,11 +31,14 @@ public class CorridaView {
         if (corridas.isEmpty()){
             JOptionPane.showMessageDialog(null, "Nenhuma Corrida encontrada!", "UniFlow", JOptionPane.INFORMATION_MESSAGE);
         } else{
-            JOptionPane.showMessageDialog(frame,"      Selecione um ID"+output,"UniFlow",JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(frame,"         Selecione um ID\n"+output,"UniFlow",JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
     public void visualizarCorridasPendentes() {
+
+        CorridaController corridaController = new CorridaController();
+
         List<Corrida> corridas = corridaController.visualizarPendentes();
         JFrame frame = new JFrame();
         frame.setAlwaysOnTop(true);
@@ -53,7 +56,7 @@ public class CorridaView {
         if (corridas.isEmpty()){
             JOptionPane.showMessageDialog(null, "Nenhuma Corrida encontrada!", "UniFlow", JOptionPane.INFORMATION_MESSAGE);
         } else{
-            JOptionPane.showMessageDialog(frame,"      Selecione um ID"+output,"UniFlow",JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(frame,"         Selecione um ID\n"+output,"UniFlow",JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
@@ -77,18 +80,30 @@ public class CorridaView {
         corrida.setPreco(Double.parseDouble(preco));
 
         corrida.setUser(usuario);
+        CarroController carroController = new CarroController();
         corrida.setCarro(carroController.retornarDadosCorrida(usuario.getIdUsuario()));
+        CorridaController corridaController = new CorridaController();
         corridaController.cadastrarCorrida(corrida);
     }
 
     public void escolherCorrida(Usuario usuario, Carro carro) {
+
+       CorridaController corridaController = new CorridaController();
+
+        UsuarioView usuarioView = new UsuarioView();
         this.visualizarMinhasCorrida(usuario, carro);
         String id = JOptionPane.showInputDialog(null,"Digite o id da Corrida: ","UniFlow",JOptionPane.INFORMATION_MESSAGE);
+        if(id.isEmpty()){
+            usuarioView.menuCorrida(usuario,carro);
+        }
         Corrida corridaAtual = corridaController.determinarCorridaAtual(Long.parseLong(id), usuario);
         this.menuCorrida(corridaAtual, usuario);
     }
 
     public void escolherCorridaPassageiro(Usuario usuario) {
+
+        CorridaController corridaController = new CorridaController();
+
        String id = JOptionPane.showInputDialog(null,"Digite o id da Corrida: ","UniFlow",JOptionPane.INFORMATION_MESSAGE);
         Corrida corridaAtual = corridaController.determinarCorridaAtual(Long.parseLong(id), usuario);
         this.menuCorrida(corridaAtual, usuario);

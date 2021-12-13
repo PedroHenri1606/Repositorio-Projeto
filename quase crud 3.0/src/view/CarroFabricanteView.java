@@ -9,6 +9,5 @@ public class CarroFabricanteView {
     public List<CarroFabricante>visualizarFabricante(){
         CarroFabricanteController carroFabricanteController = new CarroFabricanteController();
        return carroFabricanteController.listar();
-
     }
 }

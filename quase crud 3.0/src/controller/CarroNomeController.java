@@ -2,16 +2,13 @@ package controller;
 
 import DAO.DaoCarroNome;
 import model.CarroNome;
-
 import java.util.List;
 
 public class CarroNomeController {
 
-    DaoCarroNome daoCarroNome = new DaoCarroNome();
-
-    public void criarTabelaCarroNome(){ daoCarroNome.criarTabelaCarroNome(); }
-    public CarroNome adicionar (CarroNome carroNome){ return daoCarroNome.adicionar(carroNome);}
-    public List<CarroNome> listar(){ return daoCarroNome.listar();}
-    public CarroNome retornarNome(long id){ return daoCarroNome.retornarNome(id);}
-    public CarroNome selecionarNome(int id){ return daoCarroNome.determinaCurso(id);}
+    public void criarTabelaCarroNome(){DaoCarroNome daoCarroNome = new DaoCarroNome(); daoCarroNome.criarTabelaCarroNome(); }
+    public CarroNome adicionar (CarroNome carroNome){DaoCarroNome daoCarroNome = new DaoCarroNome(); return daoCarroNome.adicionar(carroNome);}
+    public List<CarroNome> listar(){DaoCarroNome daoCarroNome = new DaoCarroNome(); return daoCarroNome.listar();}
+    public CarroNome retornarNome(long id){ DaoCarroNome daoCarroNome = new DaoCarroNome();return daoCarroNome.retornarNome(id);}
+    public CarroNome selecionarNome(int id){DaoCarroNome daoCarroNome = new DaoCarroNome(); return daoCarroNome.determinaCurso(id);}
 }

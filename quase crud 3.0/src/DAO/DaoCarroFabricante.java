@@ -2,8 +2,6 @@ package DAO;
 
 import fabrica.Factory;
 import model.CarroFabricante;
-import model.Curso;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

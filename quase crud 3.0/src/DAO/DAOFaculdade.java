@@ -1,9 +1,7 @@
 package DAO;
 
 import fabrica.Factory;
-import model.Bairro;
 import model.Faculdade;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

@@ -1,24 +1,13 @@
 package view;
 
 import controller.*;
-import model.Bairro;
-import model.Curso;
-import model.Faculdade;
-import model.Usuario;
-import model.Carro;
+import model.*;
 import javax.swing.*;
 import java.util.List;
 import java.util.StringTokenizer;
 import javax.swing.JOptionPane;
 
 public class UsuarioView {
-    UsuarioController usuarioController = new UsuarioController();
-    CarroController carroController = new CarroController();
-    BairroView bairroView = new BairroView();
-    CursoView cursoView = new CursoView();
-    CorridaView corridaview = new CorridaView();
-    FaculdadeView faculdadeView = new FaculdadeView();
-    CarroView carroView = new CarroView();
 
     public String menuInicioExibir() {
             String[] escolhas = {"1", "2"};
@@ -40,8 +29,6 @@ public class UsuarioView {
 
 
     public void cadastroUsuario() {
-
-
 
         Usuario usuarioModel = new Usuario();
         BairroController bairroController = new BairroController();
@@ -72,10 +59,12 @@ public class UsuarioView {
         usuarioModel.setSexo(this.escolherSexo());
         usuarioModel.setEscolha(this.escolha());
 
+        UsuarioController usuarioController = new UsuarioController();
         usuarioController.realizarCadastro(usuarioModel);
 
         Usuario user = usuarioController.determinarUsuario(usuarioModel.getEmail(),usuarioModel.getSenha());
 
+        CarroView carroView = new CarroView();
         if (usuarioModel.getEscolha() == 1) {
             usuarioModel.setCarro(carroView.cadastrarCarro( user));
         }
@@ -83,6 +72,7 @@ public class UsuarioView {
 
     public int escolhendoBairro(int id) {
 
+        BairroView bairroView = new BairroView();
         List<Bairro> list;
         list = bairroView.visualizar();
         String[] object = new String[list.size()];
@@ -109,6 +99,7 @@ public class UsuarioView {
 
     public int escolhendoCurso(int id2) {
 
+        CursoView cursoView = new CursoView();
         List<Curso> list;
         list = cursoView.listar();
         String[] object = new String[list.size()];
@@ -135,6 +126,7 @@ public class UsuarioView {
 
     public int escolhendoFaculdade(int id3) {
 
+        FaculdadeView faculdadeView = new FaculdadeView();
         List<Faculdade> list;
         list = faculdadeView.listarFaculdades();
         String[] object = new String[list.size()];
@@ -200,6 +192,9 @@ public class UsuarioView {
         String email = JOptionPane.showInputDialog("Login\n Email: ");
         String senha = JOptionPane.showInputDialog("Login\n Senha: ");
 
+        UsuarioController usuarioController = new UsuarioController();
+        CarroController carroController = new CarroController();
+
         if (usuarioController.realizarLogin(email, senha)) {
             Usuario usuarioAtual = usuarioController.determinarUsuario(email, senha);
             Carro carroAtual = carroController.determinarCarro(usuarioAtual.getIdUsuario());
@@ -221,6 +216,8 @@ public class UsuarioView {
 
     public void menuMotorista(Usuario userAtual, Carro carroAtual) {
 
+        CorridaView corridaview = new CorridaView();
+
         while (true) {
             String  opcao = menuMotoristaExibir(userAtual);
 
@@ -241,6 +238,8 @@ public class UsuarioView {
     }
 
     public void menuCorridaPassageiro(Usuario userAtual){
+
+        CorridaView corridaview = new CorridaView();
 
         while (true) {
             String opcao = menuCorridaPassageiroExibir();
@@ -268,6 +267,8 @@ public class UsuarioView {
 
     public void menuPassageiro(Usuario userAtual, Carro carroAtual) {
 
+        CorridaView corridaview = new CorridaView();
+
         while (true) {
             String opcao = menuPassageiroExibir(userAtual);
 
@@ -289,8 +290,9 @@ public class UsuarioView {
 
     public void menuCorrida(Usuario userAtual, Carro carroAtual) {
 
-        while (true) {
+        CorridaView corridaview = new CorridaView();
 
+        while (true) {
             String opcao = menuCorridaExibir();
 
             switch (opcao) {
@@ -304,6 +306,9 @@ public class UsuarioView {
 
 
     public void visualizarUsuariosProximos(Usuario usuario) {
+
+        UsuarioController usuarioController = new UsuarioController();
+
         List<Usuario> list = usuarioController.visualizarUsuarios(usuario);
         JFrame frame = new JFrame();
         frame.setAlwaysOnTop(true);
@@ -339,7 +344,10 @@ public class UsuarioView {
         }
     }
 
-    public void salvarAlteracoes(Usuario usuario) {usuarioController.editarDados(usuario);}
+    public void salvarAlteracoes(Usuario usuario) {
+        UsuarioController usuarioController = new UsuarioController();
+        usuarioController.editarDados(usuario);
+    }
 
     public Usuario modificarSenha(Usuario usuarioAtual) {
 

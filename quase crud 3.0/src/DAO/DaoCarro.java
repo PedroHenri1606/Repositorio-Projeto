@@ -3,8 +3,6 @@ package DAO;
 import controller.*;
 import fabrica.Factory;
 import model.*;
-
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,11 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DaoCarro {
-
-    CarroCorController carroCorController = new CarroCorController();
-    CarroFabricanteController carroFabricanteController = new CarroFabricanteController();
-    CarroNomeController carroNomeController = new CarroNomeController();
-    UsuarioController usuarioController = new UsuarioController();
 
     Connection connection;
 
@@ -125,11 +118,15 @@ public class DaoCarro {
 
             if(status){
                 tmp1.setId(resultSet.getLong("id_carro"));
+                CarroNomeController carroNomeController = new CarroNomeController();
                 tmp1.setNome(carroNomeController.retornarNome(resultSet.getLong("modelo")));
+                CarroFabricanteController carroFabricanteController = new CarroFabricanteController();
                 tmp1.setFabricante(carroFabricanteController.retornarNome(resultSet.getLong("fabricante")));
+                CarroCorController carroCorController = new CarroCorController();
                 tmp1.setCor(carroCorController.retornarCor(resultSet.getLong("cor")));
                 tmp1.setAno(resultSet.getLong("ano_carro"));
                 tmp1.setPlaca(resultSet.getString("placa_carro"));
+                UsuarioController usuarioController = new UsuarioController();
                 tmp1.setDono(usuarioController.retornarDado(resultSet.getLong("dono")));
             }
             statement.close();

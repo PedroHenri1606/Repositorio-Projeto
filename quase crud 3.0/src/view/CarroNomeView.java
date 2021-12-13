@@ -10,5 +10,4 @@ public class CarroNomeView {
         CarroNomeController carroNomeController = new CarroNomeController();
         return carroNomeController.listar();
     }
-
 }
