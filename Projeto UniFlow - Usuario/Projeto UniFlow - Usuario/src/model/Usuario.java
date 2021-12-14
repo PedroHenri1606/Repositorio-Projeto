@@ -1,16 +1,16 @@
 package model;
 public class Usuario {
-    long idUsuario;
-    String nome;
-    String sobrenome;
-    String senha;
-    String email;
-    Bairro bairro;
-    Curso curso;
-    long sexo;
-    long escolha;
-    Faculdade destino;
-    Carro carro;
+    private long idUsuario;
+    private String nome;
+    private String sobrenome;
+    private String senha;
+    private String email;
+    private Bairro bairro;
+    private Curso curso;
+    private long sexo;
+    private long escolha;
+    private Faculdade destino;
+    private Carro carro;
 
     @Override
     public String toString() {

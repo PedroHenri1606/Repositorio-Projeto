@@ -13,10 +13,7 @@ public class DAOFaculdade {
 
     Connection connection;
 
-    public DAOFaculdade() {
-        this.connection = new Factory().getConection();
-        this.criarTabelaFaculdade();
-    }
+    public DAOFaculdade() {this.connection = new Factory().getConection();}
 
     public void criarTabelaFaculdade() {
         String sql = "create table if not exists faculdade(" +

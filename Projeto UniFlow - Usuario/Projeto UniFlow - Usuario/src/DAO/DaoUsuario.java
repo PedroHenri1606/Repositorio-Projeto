@@ -173,11 +173,7 @@ public class DaoUsuario {
         }
     }
 
-
-
     public void adicionar(Usuario user) {
-
-
 
         String sql = "INSERT INTO uniflow.usuario(nome, sobrenome, email, senha, idFaculdade, escolha ,sexo, id_curso, id_bairro) value(?,?,?,?,?,?,?,?,?)";
         try {
