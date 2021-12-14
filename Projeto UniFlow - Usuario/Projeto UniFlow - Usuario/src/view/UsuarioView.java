@@ -27,7 +27,6 @@ public class UsuarioView {
         }
     }
 
-
     public void cadastroUsuario() {
 
         Usuario usuarioModel = new Usuario();
@@ -174,7 +173,6 @@ public class UsuarioView {
         String menuSexo = "[1] - Homem\n[2] - Mulher";
         return (String) JOptionPane.showInputDialog(null, "         Selecione o seu Sexo\n\n" + menuSexo, "UniFlow", JOptionPane.INFORMATION_MESSAGE, null, escolhas, escolhas[0]);
     }
-
 
     public long escolherSexo(){
         while(true){

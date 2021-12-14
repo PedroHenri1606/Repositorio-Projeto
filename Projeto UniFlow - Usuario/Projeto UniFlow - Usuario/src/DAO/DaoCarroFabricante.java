@@ -29,21 +29,6 @@ public class DaoCarroFabricante {
         }
     }
 
-    public CarroFabricante adicionar (CarroFabricante carroFabricante){
-
-        String sql = "INSERT INTO uniflow.carroFabricante (nome) value (?)";
-
-        try{
-            PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setString(1, carroFabricante.getNome());
-            statement.execute();
-            statement.close();
-            return carroFabricante;
-        } catch (SQLException e){
-            throw new RuntimeException(e);
-        }
-    }
-
     public List<CarroFabricante> listar() {
 
         String sql = "SELECT * FROM uniflow.carrofabricante";

@@ -28,19 +28,6 @@ public class DAOFaculdade {
         }
     }
 
-    public void cadastrarFaculdade(Faculdade faculdade) {
-        String sql = "insert into uniflow.faculdade(nome) value (?);";
-        try {
-            PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setString(1, faculdade.getNome());
-            statement.execute();
-            statement.close();
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
     public List<Faculdade> listarFaculdade() {
         String sql = "select * from uniflow.faculdade";
         try {

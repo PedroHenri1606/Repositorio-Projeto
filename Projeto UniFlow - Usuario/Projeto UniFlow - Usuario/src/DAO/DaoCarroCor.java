@@ -28,21 +28,6 @@ public class DaoCarroCor {
         }
     }
 
-    public CarroCor adicionar(CarroCor carroCor){
-
-        String sql = "INSERT INTO uniflow.carroCor (nome) value (?)";
-
-        try{
-            PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setString(1,carroCor.getNome());
-            statement.execute();
-            statement.close();
-            return carroCor;
-        } catch (SQLException e){
-            throw new RuntimeException(e);
-        }
-    }
-
     public List<CarroCor> listar() {
 
         String sql = "SELECT * FROM uniflow.carrocor";

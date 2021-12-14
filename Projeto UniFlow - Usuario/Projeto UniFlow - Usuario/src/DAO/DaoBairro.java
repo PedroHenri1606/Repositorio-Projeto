@@ -29,44 +29,6 @@ public class DaoBairro {
         }
     }
 
-    public Bairro adicionar(Bairro bairro) {
-
-        String sql = "INSERT INTO uniflow.bairro (nome_bairro) value (?)";
-        try {
-            PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setString(1, bairro.getNome());
-            statement.execute();
-            statement.close();
-            return bairro;
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-
-    public String escolherBairro(long id) {
-
-        String sql = "SELECT nome_bairro from bairro where id_bairro =" + id;
-
-        String nomeBairro = "";
-        try {
-            PreparedStatement statement = connection.prepareStatement(sql);
-            ResultSet resultSet = statement.executeQuery();
-
-            while (resultSet.next()) {
-                nomeBairro = resultSet.getString("nome_bairro");
-            }
-            statement.execute();
-            statement.close();
-
-            return nomeBairro;
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-
-        }
-    }
-
-
     public List<Bairro> listar() {
 
         String sql = "SELECT * FROM uniflow.bairro";
